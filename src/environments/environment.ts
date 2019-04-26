@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyDfSUZcokR0U0q8EOlnpHpNE_zY1qE_8u4',
+    authDomain: 'medical-calc.firebaseapp.com',
+    projectId: 'medical-calc',
+    databaseURL: 'https://medical-calc.firebaseio.com',
+    storageBucket: 'medical-calc.appspot.com',
+    messagingSenderId: '1072798509485'
+  }
 };
 
 /*

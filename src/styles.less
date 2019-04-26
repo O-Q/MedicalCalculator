@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'IRANsans';
+  font-style: normal;
+  src: url('./assets/fonts/IRANSans.ttf');
+}
+
+* {
+  font-family: 'IRANsans';
+}
+
+body {
+  @import url('./app/Styles/_semantic-fix.less');
+  max-width: 1920px;
+  min-height: 100vh;
+  direction: rtl !important;
+  margin: 0 auto;
+  text-align: right !important;
+  font-family: IRANSans !important;
+  font-weight: 300;
+
+  //   nav {
+  //     background-color: black;
+  //     padding-top: 0 !important;
+  //     padding-bottom: 0 !important;
+  //   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  text,
+  textarea {
+    font-family: IRANSans !important;
+  }
+}

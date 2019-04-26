@@ -1,0 +1,191 @@
+[
+  {
+    "id": 1,
+    "name": "Creatinine Clearance",
+    "desc": "Renal function assessmet.",
+    "form": {
+      "selects": [
+        {
+          "title": "جنسیت",
+          "options": [
+            { "value": "0", "viewValue": "مرد" },
+            { "value": "1", "viewValue": "زن" }
+          ],
+          "hint": "",
+          "tip": ""
+        }
+      ],
+      "inputs": [
+        {
+          "title": "سن",
+          "unit": "سال",
+          "type": "age",
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "وزن",
+          "unit": "کیلوگرم",
+          "type": "weight",
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "کراتینین",
+          "unit": "میکرومول در لیتر",
+          "type": "density",
+          "hint": "به طور نرمال(62-115)",
+          "tip": ""
+        },
+        {
+          "title": "قد",
+          "unit": "سانتی‌متر",
+          "type": "height",
+          "hint": "به طور نرمال(152-213)",
+          "tip": ""
+        }
+      ]
+    },
+    "advice": "بعد از محاسبه‌ی creatinine clearance، مهیاکننده‌ها باید محاسبه‌ی یک GFR حقیقی را در نظر بگیرند تا شدت بیماری مزمن کلیه‌ی بیمار را اندازه‌گیری شود.",
+    "management": "",
+    "criticalAction": "",
+    "creatorId": "1",
+    "isFav": ""
+  },
+  {
+    "id": 2,
+    "name": "ARISCAT",
+    "desc": "Post-op pulmonary complications.",
+    "form": {
+      "selects": [
+        {
+          "title": "سن به سال",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "≤50"
+            },
+            {
+              "value": "3",
+              "viewValue": "51-80"
+            },
+            {
+              "value": "16",
+              "viewValue": ">80"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "SpO2 پیش از عمل",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "≥96%"
+            },
+            {
+              "value": "8",
+              "viewValue": "91-95%"
+            },
+            {
+              "value": "24",
+              "viewValue": "≤90%"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "عفونت تنفسی در آخرین ماه",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "نه"
+            },
+            {
+              "value": "17",
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "آنمی پیش از عمل(Hgb ≤ 10g/dL)",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "نه"
+            },
+            {
+              "value": "11",
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "برش عمل جراحی",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "خارجی"
+            },
+            {
+              "value": "15",
+              "viewValue": "شکم فوقانی"
+            },
+            {
+              "value": "24",
+              "viewValue": "داخل وریدی"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "مدت جراحی",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "بیشتر از دو ساعت"
+            },
+            {
+              "value": "16",
+              "viewValue": "دو تا سه ساعت"
+            },
+            {
+              "value": "23",
+              "viewValue": "بیشتر از سه ساعت"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "title": "اقدامات اورژانسی",
+          "options": [
+            {
+              "value": "0",
+              "viewValue": "نه"
+            },
+            {
+              "value": "8",
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        }
+      ],
+      "inputs": []
+    },
+    "advice": "حسش نبود",
+    "management": "",
+    "criticalAction": "",
+    "creatorId": "2",
+    "isFav": ""
+  }
+]

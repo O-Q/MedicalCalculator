@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfigService {
   BASE_ADDRESS = 'http://localhost:8443/api';
-  constructor(private _http: HttpClient) {}
+  constructor() {}
   getDefaultHeader() {
     return new HttpHeaders({
       'Content-Type': 'application/json'
@@ -18,9 +18,4 @@ export class ConfigService {
   getFile(filename: string) {
     return `${this.BASE_ADDRESS}/static/${filename}.json`;
   }
-}
-
-interface Config {
-  BaseAddress: string;
-  debugging: boolean;
 }

@@ -13,19 +13,29 @@ export class FilesManagerService {
   ) {}
 
   getCreators() {
+    const headers = this.configService.getDefaultHeader();
     return this.httpClient.get<ICreator[]>(
-      this.configService.getFile('creators')
+      this.configService.getFile('creators'),
+      { headers: headers }
     );
   }
   getCreatorsHash() {
-    return this.httpClient.get<string>(this.configService.getHash('creators'));
+    const headers = this.configService.getDefaultHeader();
+    return this.httpClient.get<string>(this.configService.getHash('creators'), {
+      headers: headers
+    });
   }
   getFormulas() {
+    const headers = this.configService.getDefaultHeader();
     return this.httpClient.get<IFormula[]>(
-      this.configService.getFile('formulas')
+      this.configService.getFile('formulas'),
+      { headers: headers }
     );
   }
   getFormulasHash() {
-    return this.httpClient.get<string>(this.configService.getHash('formulas'));
+    const headers = this.configService.getDefaultHeader();
+    return this.httpClient.get<string>(this.configService.getHash('formulas'), {
+      headers: headers
+    });
   }
 }

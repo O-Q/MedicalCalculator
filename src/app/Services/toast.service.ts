@@ -9,20 +9,20 @@ export class ToastService {
   /**
    * @param title Message title
    * @param message Text message
-   * @param messageType MessageType enum should be used
+   * @param toastType toastType enum should be used
    */
-  show(title: string, message: string, messageType: string) {
+  show(title: string, message: string, toastType: string) {
     $('body').toast({
       title: title,
       message: message,
-      class: messageType,
+      class: toastType,
       showProgress: 'bottom',
       position: 'bottom center',
       displayTime: 5000
     });
   }
 }
-export enum MessageType {
+export enum ToastType {
   WARNING = 'warning',
   SUCCESS = 'success',
   INFO = 'info',

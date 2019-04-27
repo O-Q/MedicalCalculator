@@ -26,18 +26,21 @@ export interface ICreator {
 }
 
 export interface IForm {
-  inputs: {
-    title: string;
-    unit: string;
-    type: string;
-    hint: string;
-    tip: string;
-  }[];
-  selects: {
-    title: string;
-    unit: string;
-    type: string;
-    hint: string;
-    tip: string;
-  }[];
+  inputs: IInput[];
+  selects: ISelect[];
+}
+
+export interface ISelect {
+  title: string;
+  unit: string;
+  type: string;
+  hint: string;
+  tip: string;
+}
+export interface IInput {
+  title: string;
+  unit: string;
+  type: string;
+  hint: string;
+  tip: string;
 }

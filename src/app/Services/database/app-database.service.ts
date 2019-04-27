@@ -5,7 +5,5 @@ import { AppDatabaseInitService } from './app-database-init.service';
   providedIn: 'root'
 })
 export class AppDatabaseService {
-  constructor(private db: AppDatabaseInitService) {
-    // this.db.fetchData();
-  }
+  constructor() {}
 }

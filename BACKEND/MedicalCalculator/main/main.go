@@ -16,7 +16,7 @@ func main() {
 	router.HandleFunc("/api/hash/{filename}", GetHash).Methods("GET")
 	router.PathPrefix("/api/static/").Handler(http.StripPrefix("/api/static/", fs)).Methods("GET")
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
-	originsOk := handlers.AllowedOrigins([]string{"*"})
+	originsOk := handlers.AllowedOrigins([]string{"http://localhost:4200"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "OPTIONS"})
 	srv := &http.Server{
 		Handler:      handlers.CORS(originsOk, headersOk, methodsOk)(router),
@@ -26,7 +26,7 @@ func main() {
 	}
 	log.Fatal(srv.ListenAndServe())
 
-	//log.Fatal(srv.ListenAndServeTLS(":8443","","",nil))
+	//log.Fatal(srv.ListenAndServeTLS(":8443","",""))
 }
 func GetHash(writer http.ResponseWriter, request *http.Request) {
 	params := mux.Vars(request)

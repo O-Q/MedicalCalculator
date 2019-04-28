@@ -13,12 +13,14 @@ export class ErrorHandlerService {
     if (!this._errorBlock$.getValue()) {
       this._errorBlock$.next(true);
       console.log(e);
-      if (e.status === 0) {
+      if (e.status === 504 || e.status === 0) {
         this.toastService.show(
           'خطای شبکه',
-          'شما به اینترنت متصل نیستید.',
-          ToastType.ERROR
+          'برنامه در حالت آفلاین',
+          ToastType.WARNING
         );
+      } else {
+        console.log(e);
       }
     }
     setTimeout(() => this._errorBlock$.next(false), 5000);

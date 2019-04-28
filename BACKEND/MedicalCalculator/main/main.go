@@ -16,7 +16,7 @@ func main() {
 	router.HandleFunc("/api/hash/{filename}", GetHash).Methods("GET")
 	router.PathPrefix("/api/static/").Handler(http.StripPrefix("/api/static/", fs)).Methods("GET")
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
-	originsOk := handlers.AllowedOrigins([]string{"http://localhost:4200"})
+	originsOk := handlers.AllowedOrigins([]string{"https://miakova.ddns.net:443"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "OPTIONS"})
 	srv := &http.Server{
 		Handler:      handlers.CORS(originsOk, headersOk, methodsOk)(router),
@@ -26,12 +26,18 @@ func main() {
 	}
 	log.Fatal(srv.ListenAndServe())
 
-	//log.Fatal(srv.ListenAndServeTLS(":8443","",""))
+	//log.Fatal(srv.ListenAndServeTLS(":8443",""))
 }
 func GetHash(writer http.ResponseWriter, request *http.Request) {
 	params := mux.Vars(request)
 	hash := utils.GetMd5Hash(params["filename"])
-	utils.PanicIf(json.NewEncoder(writer).Encode(hash))
+	println(hash)
+  hashR := hashResponse{hash}
+	utils.PanicIf(json.NewEncoder(writer).Encode(hashR))
+}
+
+type hashResponse struct{
+  Hash string
 }
 
 

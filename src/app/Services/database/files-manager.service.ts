@@ -6,6 +6,9 @@ import { ICreator, IFormula } from 'src/app/models/database.model';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Get files and hash of the files
+ */
 export class FilesManagerService {
   constructor(
     private httpClient: HttpClient,

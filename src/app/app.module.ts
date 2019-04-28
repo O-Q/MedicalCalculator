@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppDatabaseInitService } from './Services/database/app-database-init.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export function dbLoader(appDatabaseInitService: AppDatabaseInitService) {
   return () => appDatabaseInitService.load();
@@ -12,7 +14,14 @@ export function dbLoader(appDatabaseInitService: AppDatabaseInitService) {
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
+  ],
   providers: [
     {
       provide: APP_INITIALIZER,

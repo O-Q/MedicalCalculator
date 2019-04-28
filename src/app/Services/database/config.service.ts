@@ -5,7 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ConfigService {
-  BASE_ADDRESS = 'http://localhost:8443/api';
+  BASE_ADDRESS = 'https://miakova.ddns.net:8443/api';
   constructor() {}
   getDefaultHeader() {
     return new HttpHeaders({

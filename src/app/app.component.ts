@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AppDatabaseService } from './Services/database/app-database.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,5 +6,5 @@ import { AppDatabaseService } from './Services/database/app-database.service';
 })
 export class AppComponent {
   title = 'MedicalCalculator';
-  constructor(private appDatebaseService: AppDatabaseService) {}
+  constructor() {}
 }

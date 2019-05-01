@@ -35,7 +35,7 @@ export class AppDatabaseInitService extends Dexie {
         formulas:
           '++id, name, desc, form, advice, management, criticalActions, creatorId',
         specialties: '++id, name',
-        formulaSpecialty: '++id, specialtyId, formulaId',
+        formulaSpecialty: 'specialtyId, formulaId',
         creators: '++id, name, desc'
       });
       this._fetchTables();

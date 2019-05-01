@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ISpecialty, IFormula } from 'src/app/models/database.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,15 @@ export class LocalStorageService {
   getHash(tableName: string) {
     return localStorage.getItem(`${tableName}-hash`);
   }
-  saveUserSpecialty(specialty: string) {
-    localStorage.setItem('user-specialty', specialty);
+
+  saveUserSpecialty(specialty: ISpecialty) {
+    localStorage.setItem('user-specialty', JSON.stringify(specialty));
   }
-  getUserSpecialty() {
-    return localStorage.getItem('user-specialty');
+
+  getUserSpecialty(): ISpecialty {
+    return JSON.parse(localStorage.getItem('user-specialty'));
   }
+
   isFirstTime() {
     const _isFirstTime = localStorage.getItem('first-time');
     if (_isFirstTime === 'false') {
@@ -27,22 +31,39 @@ export class LocalStorageService {
     }
   }
 
-  addFavorites(formula: IFormulaStorage) {
-    const _favorites: IFormulaStorage[] = this.getFavorites();
-    _favorites.push(formula);
-    this.saveFavorites(_favorites);
+  private _saveFavorites(favotites: IFormulaStorage[]) {
+    localStorage.setItem('favorites', JSON.stringify(favotites));
   }
 
-  saveFavorites(favotites: IFormulaStorage[]) {
-    return localStorage.setItem('favorites', JSON.stringify(favotites));
+  addFavorite(formula: IFormulaStorage) {
+    const _favorites = this.getFavorites();
+    _favorites.push(formula);
+    this._saveFavorites(_favorites);
   }
 
   getFavorites(): IFormulaStorage[] {
     return JSON.parse(localStorage.getItem('favorites'));
   }
+
+  private _saveSpecialtyFavorites(specialtyFavorites: IFormulaStorage[]) {
+    localStorage.setItem(
+      'specialty-favorites',
+      JSON.stringify(specialtyFavorites)
+    );
+  }
+
+  getSpecialtyFavorites(): IFormulaStorage[] {
+    return JSON.parse(localStorage.getItem('specialty-favorites'));
+  }
+
+  addSpecialtyFavorite(formula: IFormulaStorage) {
+    const _favorites = this.getSpecialtyFavorites();
+    _favorites.push(formula);
+    this._saveSpecialtyFavorites(_favorites);
+  }
 }
 
-interface IFormulaStorage {
+export interface IFormulaStorage {
   id: number;
   name: string;
 }

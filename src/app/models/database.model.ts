@@ -17,7 +17,6 @@ export interface IResult {
   // ???
 }
 export interface IFormulaSpecialty {
-  id?: number;
   specialtyId: number;
   formulaId: number;
 }

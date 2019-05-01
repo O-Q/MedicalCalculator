@@ -7,11 +7,14 @@ export interface IFormula {
   management: string;
   criticalActions: string;
   creatorId: number;
-  isFav: boolean;
+  result: IResult[];
 }
 export interface ISpecialty {
   id?: number;
   name: string;
+}
+export interface IResult {
+  // ???
 }
 export interface IFormulaSpecialty {
   id?: number;
@@ -19,8 +22,11 @@ export interface IFormulaSpecialty {
   formulaId: number;
 }
 
-export interface ICreator {
+export interface ICreators {
   id?: number;
+  creators: ICreator[];
+}
+export interface ICreator {
   name: string;
   desc: string;
 }
@@ -31,13 +37,16 @@ export interface IForm {
 }
 
 export interface ISelect {
+  name: string;
   title: string;
+  options: any;
   unit: string;
   type: string;
   hint: string;
   tip: string;
 }
 export interface IInput {
+  name: string;
   title: string;
   unit: string;
   type: string;

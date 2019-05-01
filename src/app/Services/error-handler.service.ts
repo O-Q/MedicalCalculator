@@ -7,8 +7,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ErrorHandlerService {
-  constructor(private toastService: ToastService) {}
   private _errorBlock$ = new BehaviorSubject(false);
+  constructor(private toastService: ToastService) {
+    this._errorBlock$.subscribe(value => {
+      // when error is blocked, unblock it after 5 secs.
+      if (value) {
+        setTimeout(() => this._errorBlock$.next(false), 5000);
+      }
+    });
+  }
   handleServerError(e: HttpErrorResponse) {
     if (!this._errorBlock$.getValue()) {
       this._errorBlock$.next(true);
@@ -23,6 +30,5 @@ export class ErrorHandlerService {
         console.log(e);
       }
     }
-    setTimeout(() => this._errorBlock$.next(false), 5000);
   }
 }

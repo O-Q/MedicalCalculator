@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": 1,
     "name": "Creatinine Clearance",
@@ -6,6 +6,7 @@
     "form": {
       "selects": [
         {
+          "name": "sex",
           "title": "جنسیت",
           "options": [
             { "value": "0", "viewValue": "مرد" },
@@ -17,6 +18,7 @@
       ],
       "inputs": [
         {
+          "name": "age",
           "title": "سن",
           "unit": "سال",
           "type": "age",
@@ -24,6 +26,7 @@
           "tip": ""
         },
         {
+          "name": "weight",
           "title": "وزن",
           "unit": "کیلوگرم",
           "type": "weight",
@@ -31,6 +34,7 @@
           "tip": ""
         },
         {
+          "name": "creatinine",
           "title": "کراتینین",
           "unit": "میکرومول در لیتر",
           "type": "density",
@@ -38,6 +42,7 @@
           "tip": ""
         },
         {
+          "name": "height",
           "title": "قد",
           "unit": "سانتی‌متر",
           "type": "height",
@@ -59,6 +64,7 @@
     "form": {
       "selects": [
         {
+          "name": "age",
           "title": "سن به سال",
           "options": [
             {
@@ -78,6 +84,7 @@
           "tip": ""
         },
         {
+          "name": "spo2",
           "title": "SpO2 پیش از عمل",
           "options": [
             {
@@ -97,6 +104,7 @@
           "tip": ""
         },
         {
+          "name": "infection",
           "title": "عفونت تنفسی در آخرین ماه",
           "options": [
             {
@@ -112,6 +120,7 @@
           "tip": ""
         },
         {
+          "name": "anemia",
           "title": "آنمی پیش از عمل(Hgb ≤ 10g/dL)",
           "options": [
             {
@@ -127,6 +136,7 @@
           "tip": ""
         },
         {
+          "name": "incision",
           "title": "برش عمل جراحی",
           "options": [
             {
@@ -146,6 +156,7 @@
           "tip": ""
         },
         {
+          "name": "durationSurg",
           "title": "مدت جراحی",
           "options": [
             {
@@ -165,6 +176,7 @@
           "tip": ""
         },
         {
+          "name": "emergencyProcedure",
           "title": "اقدامات اورژانسی",
           "options": [
             {

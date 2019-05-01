@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AppDatabaseInitService } from './app-database-init.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppDatabaseService {
-  constructor() {}
+  constructor(private lsService: LocalStorageService) {
+    // TODO: if it's specialty formula, add it to favSpec
+  }
 }

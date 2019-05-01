@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { ICreator, IFormula } from 'src/app/models/database.model';
+import {
+  ICreator,
+  IFormula,
+  ISpecialty,
+  IFormulaSpecialty
+} from 'src/app/models/database.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +45,33 @@ export class FilesManagerService {
     return this.httpClient.get<string>(this.configService.getHash('formulas'), {
       headers: headers
     });
+  }
+  getSpecialties() {
+    const headers = this.configService.getDefaultHeader();
+    return this.httpClient.get<ISpecialty[]>(
+      this.configService.getFile('specialties'),
+      { headers: headers }
+    );
+  }
+  getSpecialtiesHash() {
+    const headers = this.configService.getDefaultHeader();
+    return this.httpClient.get<string>(
+      this.configService.getHash('specialties'),
+      { headers: headers }
+    );
+  }
+  getFormulaSpecialty() {
+    const headers = this.configService.getDefaultHeader();
+    return this.httpClient.get<IFormulaSpecialty[]>(
+      this.configService.getFile('formulaSpecialty'),
+      { headers: headers }
+    );
+  }
+  getFormulaSpecialtyHash() {
+    const headers = this.configService.getDefaultHeader();
+    return this.httpClient.get<string>(
+      this.configService.getHash('formulaSpecialty'),
+      { headers: headers }
+    );
   }
 }

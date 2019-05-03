@@ -19,7 +19,7 @@ export class CheckForUpdateService {
     }
     // when it downloaded completely
     this.swUpdate.available.subscribe(() => {
-      if (confirm('نسخه جدیدی آماده است. آیا بروزرسانی شود؟')) {
+      if (confirm('نسخه‌ی جدیدی آماده است. آیا بروزرسانی شود؟')) {
         this.swUpdate.activateUpdate().then(() => {
           this.ls.setUpdated();
           document.location.reload();

@@ -16,7 +16,6 @@ export class ToastService {
       title: title,
       message: message,
       class: toastType,
-      showProgress: 'bottom',
       position: 'bottom center',
       displayTime: 5000
     });

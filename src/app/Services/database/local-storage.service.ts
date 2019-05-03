@@ -30,6 +30,20 @@ export class LocalStorageService {
       return true;
     }
   }
+  resetFirstTime() {
+    localStorage.setItem('first-time', 'true');
+  }
+  setUpdated() {
+    localStorage.setItem('new-update', 'true');
+  }
+  isUpdated() {
+    const _isUpdated = localStorage.getItem('new-update');
+    if (_isUpdated === 'true') {
+      localStorage.removeItem('new-update');
+      return true;
+    }
+    return false;
+  }
 
   private _saveFavorites(favotites: IFormulaStorage[]) {
     localStorage.setItem('favorites', JSON.stringify(favotites));

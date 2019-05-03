@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService, IFormulaStorage } from './local-storage.service';
-import { IFormula } from 'src/app/models/database.model';
+import { IFormula, ICreator } from 'src/app/models/database.model';
 import { AppDatabaseInitService } from './app-database-init.service';
 
 @Injectable({
@@ -10,9 +10,7 @@ export class AppDatabaseService {
   constructor(
     private lsService: LocalStorageService,
     private database: AppDatabaseInitService
-  ) {
-    // TODO: if it's specialty formula, add it to favSpec
-  }
+  ) {}
 
   addToFavorite(formula: IFormula) {
     const _formulaStorage: IFormulaStorage = {
@@ -21,7 +19,7 @@ export class AppDatabaseService {
     };
     const _userSpecialty = this.lsService.getUserSpecialty();
     this.lsService.addFavorite(_formulaStorage);
-    // check and add to favorite specialty
+    // check and add to specialty favorites
     this.database.formulaSpecialty
       .where('formulaId')
       .equals(formula.id)
@@ -31,5 +29,13 @@ export class AppDatabaseService {
           this.lsService.addSpecialtyFavorite(_formulaStorage);
         }
       });
+  }
+
+  getFormula(formulaId: number): Promise<IFormula> {
+    return this.database.formulas.get(formulaId);
+  }
+
+  getCreator(creatorId: number): Promise<ICreator> {
+    return this.database.creators.get(creatorId);
   }
 }

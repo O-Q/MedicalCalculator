@@ -1,6 +1,6 @@
-import { Injectable, ApplicationRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
-import { first } from 'rxjs/operators';
+import { LocalStorageService } from './database/local-storage.service';
 import { ToastService, ToastType } from './toast.service';
 
 @Injectable({
@@ -9,25 +9,22 @@ import { ToastService, ToastType } from './toast.service';
 export class CheckForUpdateService {
   constructor(
     private swUpdate: SwUpdate,
-    private appRef: ApplicationRef,
-    private toastService: ToastService
-  ) {
+    private ls: LocalStorageService,
+    private toast: ToastService
+  ) {}
+
+  checkUpdate() {
+    if (this.ls.isUpdated()) {
+      this.toast.show('برنامه با موفقیت بروزرسانی شد.', '', ToastType.SUCCESS);
+    }
     // when it downloaded completely
     this.swUpdate.available.subscribe(() => {
       if (confirm('نسخه جدیدی آماده است. آیا بروزرسانی شود؟')) {
-        this.toastService.show(
-          'در حال بروزرسانی',
-          'بعد از بروزرسانی صفحه تازه‌سازی خواهد شد.',
-          ToastType.INFO
-        );
-        this.swUpdate.activateUpdate().then(() => document.location.reload());
+        this.swUpdate.activateUpdate().then(() => {
+          this.ls.setUpdated();
+          document.location.reload();
+        });
       }
-    });
-    const appIsStable$ = this.appRef.isStable.pipe(
-      first(isStable => isStable === true)
-    );
-    appIsStable$.subscribe(() => {
-      this.swUpdate.checkForUpdate();
     });
   }
 }

@@ -1,9 +1,10 @@
 {
   "name": "Medical Calculator",
-  "short_name": "Medical Calculator",
+  "short_name": "Medicalc",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "fullscreen",
+  "display": "standalone",
+
   "scope": "/",
   "start_url": "/",
   "icons": [

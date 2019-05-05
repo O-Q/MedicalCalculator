@@ -9,14 +9,10 @@ import {
 } from 'src/app/models/database.model';
 import { ErrorHandlerService } from '../error-handler.service';
 import { LocalStorageService } from './local-storage.service';
+import { first } from 'rxjs/operators';
+import { tableNames } from 'src/app/constants/tables.constant';
 @Injectable({ providedIn: 'root' })
 export class AppDatabaseInitService extends Dexie {
-  tableNames = {
-    CREATORS: 'creators',
-    FORMULAS: 'formulas',
-    SPECIALTIES: 'specialties',
-    FORMULASPECIALTY: 'formulaSpecialty'
-  };
   formulas: Dexie.Table<IFormula, number>;
   specialties: Dexie.Table<ISpecialty, number>;
   formulaSpecialty: Dexie.Table<IFormulaSpecialty, number>;
@@ -44,83 +40,63 @@ export class AppDatabaseInitService extends Dexie {
   }
   private _fetchTables() {
     // TODO: Add loading
-    this._fetchCreators();
-    this._fetchFormulas();
-    this._fetchSpecialties();
-    this._fetchFormulaSpecialty();
+    this.fmService.tables$.pipe(first()).subscribe(serverHashes => {
+      serverHashes.forEach(hash => this._fetchTable(hash));
+    });
   }
 
-  private _fetchCreators() {
-    this.fmService.getCreatorsHash().subscribe(
-      creatorHash => {
-        if (this._isFileChanged(creatorHash, this.tableNames.CREATORS)) {
-          this._updateTableHash(creatorHash, this.tableNames.CREATORS);
-          this.fmService.getCreators().subscribe(
-            creatorsDto => {
-              this._putData(creatorsDto, this.tableNames.CREATORS);
-            },
-            error => this.errorHandler.handleServerError(error)
-          );
+  private _fetchTable(serverTable: Hash) {
+    const { Name: tableName, Hash: serverHash } = serverTable;
+    if (this._isTableChanged(serverHash, tableName)) {
+      this.lsService.saveHash(serverHash, tableName);
+      switch (tableName) {
+        case tableNames.FORMULAS: {
+          this._fetchFormulas();
+          break;
         }
+        case tableNames.CREATORS: {
+          this._fetchCreators();
+          break;
+        }
+        case tableNames.SPECIALTIES: {
+          this._fetchSpecialties();
+          break;
+        }
+        case tableNames.FORMULASPECIALTY: {
+          this._fetchFormulaSpecialty();
+          break;
+        }
+      }
+    }
+  }
+  private _fetchCreators() {
+    this.fmService.creators$.pipe(first()).subscribe(
+      creatorsDto => {
+        this._putData(creatorsDto, tableNames.CREATORS);
       },
       error => this.errorHandler.handleServerError(error)
     );
   }
   private _fetchFormulas() {
-    this.fmService.getFormulasHash().subscribe(
-      formulaHash => {
-        if (this._isFileChanged(formulaHash, this.tableNames.FORMULAS)) {
-          this._updateTableHash(formulaHash, this.tableNames.FORMULAS);
-          this.fmService.getFormulas().subscribe(
-            formulasDto => {
-              this._putData(formulasDto, this.tableNames.FORMULAS);
-            },
-            error => this.errorHandler.handleServerError(error)
-          );
-        }
+    this.fmService.formulas$.pipe(first()).subscribe(
+      formulasDto => {
+        this._putData(formulasDto, tableNames.FORMULAS);
       },
       error => this.errorHandler.handleServerError(error)
     );
   }
   private _fetchSpecialties() {
-    this.fmService.getSpecialtiesHash().subscribe(
-      specialtiesHash => {
-        if (this._isFileChanged(specialtiesHash, this.tableNames.SPECIALTIES)) {
-          this._updateTableHash(specialtiesHash, this.tableNames.SPECIALTIES);
-          this.fmService.getSpecialties().subscribe(
-            specialtiesDto => {
-              this._putData(specialtiesDto, this.tableNames.CREATORS);
-            },
-            error => this.errorHandler.handleServerError(error)
-          );
-        }
+    this.fmService.specialties$.pipe(first()).subscribe(
+      specialtiesDto => {
+        this._putData(specialtiesDto, tableNames.CREATORS);
       },
       error => this.errorHandler.handleServerError(error)
     );
   }
   private _fetchFormulaSpecialty() {
-    this.fmService.getFormulaSpecialtyHash().subscribe(
-      formulaSpecialtyHash => {
-        if (
-          this._isFileChanged(
-            formulaSpecialtyHash,
-            this.tableNames.FORMULASPECIALTY
-          )
-        ) {
-          this._updateTableHash(
-            formulaSpecialtyHash,
-            this.tableNames.FORMULASPECIALTY
-          );
-          this.fmService.getFormulaSpecialty().subscribe(
-            formulaSpecialtyDto => {
-              this._putData(
-                formulaSpecialtyDto,
-                this.tableNames.FORMULASPECIALTY
-              );
-            },
-            error => this.errorHandler.handleServerError(error)
-          );
-        }
+    this.fmService.formulaSpecialty$.pipe(first()).subscribe(
+      formulaSpecialtyDto => {
+        this._putData(formulaSpecialtyDto, tableNames.FORMULASPECIALTY);
       },
       error => this.errorHandler.handleServerError(error)
     );
@@ -131,17 +107,8 @@ export class AppDatabaseInitService extends Dexie {
    * @param serverHash The hash which came from the server
    * @param tableName Table name. for getting hash stored in local Storage.
    */
-  private _isFileChanged(serverHash: string, tableName: string) {
+  private _isTableChanged(serverHash: string, tableName: string) {
     return serverHash !== this.lsService.getHash(tableName);
-  }
-
-  /**
-   * Update stored hash with server hash. (if file is changed)
-   * @param serverHash The hash which came from the server
-   * @param tableName Table name. for getting hash stored in local Storage.
-   */
-  private _updateTableHash(serverHash: string, tableName: string) {
-    this.lsService.saveHash(serverHash, tableName);
   }
 
   /**
@@ -150,8 +117,10 @@ export class AppDatabaseInitService extends Dexie {
    * @param tableName Table name to store
    */
   private _putData(array, tableName: string) {
-    array.forEach((item: any) => {
-      this.table(tableName).put(item);
-    });
+    if (array) {
+      array.forEach((item: any) => {
+        this.table(tableName).put(item);
+      });
+    }
   }
 }

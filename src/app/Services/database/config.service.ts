@@ -12,10 +12,10 @@ export class ConfigService {
       'Content-Type': 'application/json'
     });
   }
-  getHash(filename: string) {
-    return `${this.BASE_ADDRESS}/hash/${filename}`;
+  getHashes() {
+    return `${this.BASE_ADDRESS}/hash/files`;
   }
   getFile(filename: string) {
-    return `${this.BASE_ADDRESS}/static/${filename}.json`;
+    return `${this.BASE_ADDRESS}/static/${filename}`;
   }
 }

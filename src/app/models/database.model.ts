@@ -2,32 +2,29 @@ export interface IFormula {
   id?: number;
   name: string;
   desc: string;
+  creatorId: number;
+  specialtyIds: number[];
   form: IForm;
   advice: string;
   management: string;
   criticalActions: string;
-  creatorId: number;
-  result: IResult[];
+  results: IResult[];
 }
 export interface ISpecialty {
   id?: number;
   name: string;
 }
+export interface ICreator {
+  name: string;
+  desc: string;
+}
 export interface IResult {
   // ???
-}
-export interface IFormulaSpecialty {
-  specialtyId: number;
-  formulaId: number;
 }
 
 export interface ICreators {
   id?: number;
   creators: ICreator[];
-}
-export interface ICreator {
-  name: string;
-  desc: string;
 }
 
 export interface IForm {

@@ -1,37 +1,29 @@
 import Dexie from 'dexie';
 import { Injectable } from '@angular/core';
 import { FilesManagerService } from './files-manager.service';
-import {
-  IFormula,
-  ISpecialty,
-  IFormulaSpecialty,
-  ICreator
-} from 'src/app/models/database.model';
+import { IFormula, ISpecialty, ICreator } from 'src/app/models/database.model';
 import { ErrorHandlerService } from '../error-handler.service';
-import { LocalStorageService } from './local-storage.service';
 import { first } from 'rxjs/operators';
 import { tableNames } from 'src/app/constants/tables.constant';
 @Injectable({ providedIn: 'root' })
-export class AppDatabaseInitService extends Dexie {
+export class DatabaseService extends Dexie {
   formulas: Dexie.Table<IFormula, number>;
   specialties: Dexie.Table<ISpecialty, number>;
-  formulaSpecialty: Dexie.Table<IFormulaSpecialty, number>;
   creators: Dexie.Table<ICreator, number>;
 
   constructor(
     private fmService: FilesManagerService,
-    private errorHandler: ErrorHandlerService,
-    private lsService: LocalStorageService
+    private errorHandler: ErrorHandlerService
   ) {
     super('MedicalCalculator');
   }
   load() {
+    // understanding the purpose of indexing fields.
+    // A rule of thumb: Are you going to put your property in a where(‘…’) clause? If yes, index it, if not, dont.
     return new Promise(resolve => {
       this.version(1).stores({
-        formulas:
-          '++id, name, desc, form, advice, management, criticalActions, creatorId',
+        formulas: '++id, name, desc, creatorId, *specialtyIds',
         specialties: '++id, name',
-        formulaSpecialty: 'specialtyId, formulaId',
         creators: '++id, name, desc'
       });
       this._fetchTables();
@@ -40,7 +32,7 @@ export class AppDatabaseInitService extends Dexie {
   }
   private _fetchTables() {
     // TODO: Add loading
-    this.fmService.tables$.pipe(first()).subscribe(serverHashes => {
+    this.fmService.hashes$.pipe(first()).subscribe(serverHashes => {
       serverHashes.forEach(hash => this._fetchTable(hash));
     });
   }
@@ -48,7 +40,7 @@ export class AppDatabaseInitService extends Dexie {
   private _fetchTable(serverTable: Hash) {
     const { Name: tableName, Hash: serverHash } = serverTable;
     if (this._isTableChanged(serverHash, tableName)) {
-      this.lsService.saveHash(serverHash, tableName);
+      this._saveHash(serverHash, tableName);
       switch (tableName) {
         case tableNames.FORMULAS: {
           this._fetchFormulas();
@@ -60,10 +52,6 @@ export class AppDatabaseInitService extends Dexie {
         }
         case tableNames.SPECIALTIES: {
           this._fetchSpecialties();
-          break;
-        }
-        case tableNames.FORMULASPECIALTY: {
-          this._fetchFormulaSpecialty();
           break;
         }
       }
@@ -93,22 +81,22 @@ export class AppDatabaseInitService extends Dexie {
       error => this.errorHandler.handleServerError(error)
     );
   }
-  private _fetchFormulaSpecialty() {
-    this.fmService.formulaSpecialty$.pipe(first()).subscribe(
-      formulaSpecialtyDto => {
-        this._putData(formulaSpecialtyDto, tableNames.FORMULASPECIALTY);
-      },
-      error => this.errorHandler.handleServerError(error)
-    );
-  }
 
   /**
    * Compare local hash with server hash with each other.
    * @param serverHash The hash which came from the server
-   * @param tableName Table name. for getting hash stored in local Storage.
+   * @param tableName Table name. for getting hash stored in localStorage.
    */
   private _isTableChanged(serverHash: string, tableName: string) {
-    return serverHash !== this.lsService.getHash(tableName);
+    return serverHash !== this._getHash(tableName);
+  }
+
+  private _saveHash(serverHash: string, tableName: string) {
+    localStorage.setItem(`${tableName}-hash`, serverHash);
+  }
+
+  private _getHash(tableName: string) {
+    return localStorage.getItem(`${tableName}-hash`);
   }
 
   /**

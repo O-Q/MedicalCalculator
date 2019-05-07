@@ -3,6 +3,8 @@
     "id": 1,
     "name": "Creatinine Clearance",
     "desc": "Renal function assessmet.",
+    "creatorId": "1",
+    "specialtyIds": [1, 2],
     "form": {
       "selects": [
         {
@@ -53,14 +55,14 @@
     },
     "advice": "بعد از محاسبه‌ی creatinine clearance، مهیاکننده‌ها باید محاسبه‌ی یک GFR حقیقی را در نظر بگیرند تا شدت بیماری مزمن کلیه‌ی بیمار را اندازه‌گیری شود.",
     "management": "",
-    "criticalAction": "",
-    "creatorId": "1",
-    "isFav": ""
+    "criticalAction": ""
   },
   {
     "id": 2,
     "name": "ARISCAT",
     "desc": "Post-op pulmonary complications.",
+    "creatorId": "2",
+    "specialtyIds": [1],
     "form": {
       "selects": [
         {
@@ -196,8 +198,6 @@
     },
     "advice": "حسش نبود",
     "management": "",
-    "criticalAction": "",
-    "creatorId": "2",
-    "isFav": ""
+    "criticalAction": ""
   }
 ]

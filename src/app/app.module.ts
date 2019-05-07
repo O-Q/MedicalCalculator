@@ -3,12 +3,12 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppDatabaseInitService } from './Services/database/app-database-init.service';
+import { DatabaseService } from './Services/database/database.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
-export function dbLoader(appDatabaseInitService: AppDatabaseInitService) {
+function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
 }
 
@@ -26,7 +26,7 @@ export function dbLoader(appDatabaseInitService: AppDatabaseInitService) {
     {
       provide: APP_INITIALIZER,
       useFactory: dbLoader,
-      deps: [AppDatabaseInitService],
+      deps: [DatabaseService],
       multi: true
     }
   ],

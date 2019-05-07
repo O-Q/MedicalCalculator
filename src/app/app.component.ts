@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { LocalStorageService } from './Services/database/local-storage.service';
 import { ToastService, ToastType } from './Services/toast.service';
 import { CheckForUpdateService } from './Services/check-for-update.service';
+import { UtilityService } from './Services/database/utility.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,12 +10,12 @@ import { CheckForUpdateService } from './Services/check-for-update.service';
 export class AppComponent {
   title = 'MedicalCalculator';
   constructor(
-    private lsService: LocalStorageService,
     private toastService: ToastService,
-    private update: CheckForUpdateService
+    private update: CheckForUpdateService,
+    private utilityService: UtilityService
   ) {
     this.update.checkUpdate();
-    if (this.lsService.isFirstTime()) {
+    if (this.utilityService.isFirstTime()) {
       this.toastService.show('', 'اولین بارته!', ToastType.INFO);
       // do something like walkthrough
     }

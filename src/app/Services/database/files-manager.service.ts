@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import {
-  ICreator,
-  IFormula,
-  ISpecialty,
-  IFormulaSpecialty
-} from 'src/app/models/database.model';
+import { ICreator, IFormula, ISpecialty } from 'src/app/models/database.model';
 import { tableNames } from 'src/app/constants/tables.constant';
 
 @Injectable({
@@ -35,12 +30,7 @@ export class FilesManagerService {
     { headers: this.headers }
   );
 
-  formulaSpecialty$ = this.http.get<IFormulaSpecialty[]>(
-    this.configService.getFile(tableNames.FORMULASPECIALTY),
-    { headers: this.headers }
-  );
-
-  tables$ = this.http.get<Hash[]>(this.configService.getHashes(), {
+  hashes$ = this.http.get<Hash[]>(this.configService.getHashes(), {
     headers: this.headers
   });
 

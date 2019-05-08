@@ -7,13 +7,15 @@ import { DatabaseService } from './Services/database/database.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ErrorComponent } from './components/base/error/error.component';
+import { FormulaItemComponent } from './components/formula/formula-list/formula-item/formula-item.component';
 
-function dbLoader(appDatabaseInitService: DatabaseService) {
+export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ErrorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

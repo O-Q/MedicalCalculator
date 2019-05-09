@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ErrorComponent } from './components/base/error/error.component';
-import { FormulaItemComponent } from './components/formula/formula-list/formula-item/formula-item.component';
+import { SharedModule } from './components/shared/shared.module';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
@@ -18,6 +19,8 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
   declarations: [AppComponent, ErrorComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    SharedModule,
     AppRoutingModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

@@ -1,7 +1,11 @@
 <p>
   formula-list works!
 </p>
-
-<div *ngFor="let formula of formulas$ | async">
-  <app-formula-item [formula]="formula"></app-formula-item>
+<div *ngIf="formulas$ | async as formulas">
+  <div *ngFor="let formula of formulas">
+    <app-formula-item
+      (click)="onItemClick(formula)"
+      [formula]="formula"
+    ></app-formula-item>
+  </div>
 </div>

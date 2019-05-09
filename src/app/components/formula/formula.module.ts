@@ -4,16 +4,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormulaComponent } from './formula.component';
 import { FormulaListComponent } from './formula-list/formula-list.component';
 import { FormulaItemComponent } from './formula-list/formula-item/formula-item.component';
+import { FormulaDetailComponent } from './formula-detail/formula-detail.component';
 
 const routes: Routes = [
   {
     path: '',
     component: FormulaComponent,
-    children: [{ path: 'all', component: FormulaListComponent }]
+    children: [
+      { path: 'list', redirectTo: 'list/favorites' },
+      { path: 'list/all', component: FormulaListComponent },
+      { path: 'list/favorites', component: FormulaListComponent },
+      { path: 'list/recents', component: FormulaListComponent },
+      { path: 'list/specialties', component: FormulaListComponent },
+      { path: 'detail/:id', component: FormulaDetailComponent }
+    ]
   }
 ];
 @NgModule({
-  declarations: [FormulaComponent, FormulaListComponent, FormulaItemComponent],
+  declarations: [
+    FormulaComponent,
+    FormulaListComponent,
+    FormulaItemComponent,
+    FormulaDetailComponent
+  ],
   imports: [RouterModule.forChild(routes), CommonModule]
 })
 export class FormulaModule {}

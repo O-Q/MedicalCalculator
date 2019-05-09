@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IFormula, ISpecialty } from 'src/app/models/database.model';
 import { DatabaseService } from './database.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +10,28 @@ export class FormulaService {
   private recnets = new BehaviorSubject(this._getRecentsSummary());
   private favorites = new BehaviorSubject(this._getFavoritesSummary());
   private specialties = new BehaviorSubject(this._getSpecialtiesSummary());
+  private all = new BehaviorSubject(null);
   recents$ = this.recnets.asObservable();
   favorites$ = this.favorites.asObservable();
   specialties$ = this.specialties.asObservable();
+  all$ = this.all.asObservable();
+  private list: Subject<IFormulaStorage[]> = new Subject();
+  list$ = this.list.asObservable();
   recentLimit = 10;
-  constructor(private database: DatabaseService) {}
+  constructor(private database: DatabaseService) {
+    this.getAll();
+  }
 
   get(formulaId: number): Promise<IFormula> {
     return this.database.formulas.get(formulaId);
   }
-  getAll(): Promise<IFormula[]> {
-    return this.database.formulas.toArray();
+  private getAll() {
+    this.database.formulas.toArray().then(formulas => {
+      const _formulas = formulas.map(formula => {
+        return { id: formula.id, name: formula.name, desc: formula.desc };
+      });
+      this.all.next(_formulas);
+    });
   }
 
   updateSpecialtiesSummary(specialty: ISpecialty) {

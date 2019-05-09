@@ -1,4 +1,15 @@
 <p>
   formula works!
 </p>
-<router-outlet></router-outlet>
+<div style="display: flex; flex-direction: column">
+  <a [routerLink]="['list/all']" routerLinkActive="active">all</a>
+  <a [routerLink]="['list/favorites']" routerLinkActive="active">favorites</a>
+  <a [routerLink]="['list/specialties']" routerLinkActive="active"
+    >specialties</a
+  >
+  <a [routerLink]="['list/recents']" routerLinkActive="active">recents</a>
+</div>
+
+<div [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

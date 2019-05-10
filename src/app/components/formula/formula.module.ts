@@ -5,6 +5,8 @@ import { FormulaComponent } from './formula.component';
 import { FormulaListComponent } from './formula-list/formula-list.component';
 import { FormulaItemComponent } from './formula-list/formula-item/formula-item.component';
 import { FormulaDetailComponent } from './formula-detail/formula-detail.component';
+import { FormulaEquationComponent } from './formula-detail/formula-equation/formula-equation.component';
+import { FormulaInfoComponent } from './formula-detail/formula-info/formula-info.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,9 @@ const routes: Routes = [
     FormulaComponent,
     FormulaListComponent,
     FormulaItemComponent,
-    FormulaDetailComponent
+    FormulaDetailComponent,
+    FormulaEquationComponent,
+    FormulaInfoComponent
   ],
   imports: [RouterModule.forChild(routes), CommonModule]
 })

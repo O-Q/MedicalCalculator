@@ -2,7 +2,10 @@
   formula-detail works!
 </p>
 <div *ngIf="formula$ | async as formula">
-  <p>
-    {{ formula.name }}
-  </p>
+  <div *ngIf="showInfo$ | async; else equation">
+    <app-formula-info [formula]="formula"></app-formula-info>
+  </div>
+  <ng-template #equation>
+    <app-formula-equation [formula]="formula"></app-formula-equation>
+  </ng-template>
 </div>

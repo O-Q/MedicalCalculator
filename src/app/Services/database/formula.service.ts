@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IFormula, ISpecialty } from 'src/app/models/database.model';
 import { DatabaseService } from './database.service';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { SpecialtyService } from './specialty.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,39 +10,20 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class FormulaService {
   private recnets = new BehaviorSubject(this._getRecentsSummary());
   private favorites = new BehaviorSubject(this._getFavoritesSummary());
-  private specialties = new BehaviorSubject(this._getSpecialtiesSummary());
+  private specialties = new BehaviorSubject(null);
   private all = new BehaviorSubject(null);
   recents$ = this.recnets.asObservable();
   favorites$ = this.favorites.asObservable();
   specialties$ = this.specialties.asObservable();
   all$ = this.all.asObservable();
-  private list: Subject<IFormulaStorage[]> = new Subject();
-  list$ = this.list.asObservable();
   recentLimit = 10;
   constructor(private database: DatabaseService) {
-    this.getAll();
+    this._updateAllSummary();
+    this.updateSpecialtiesSummary();
   }
 
   get(formulaId: number): Promise<IFormula> {
     return this.database.formulas.get(formulaId);
-  }
-  private getAll() {
-    this.database.formulas.toArray().then(formulas => {
-      const _formulas = formulas.map(formula => {
-        return { id: formula.id, name: formula.name, desc: formula.desc };
-      });
-      this.all.next(_formulas);
-    });
-  }
-
-  updateSpecialtiesSummary(specialty: ISpecialty) {
-    this._getBySpecialty(specialty).then(formulas => {
-      const _specialties: IFormulaStorage[] = formulas.map(formula => {
-        return { id: formula.id, name: formula.name, desc: formula.desc };
-      });
-      this.specialties.next(_specialties);
-      localStorage.setItem('specialty-formulas', JSON.stringify(_specialties));
-    });
   }
 
   addRecent(formula: IFormula) {
@@ -79,6 +61,14 @@ export class FormulaService {
     localStorage.setItem('favorite-formulas', JSON.stringify(_favorites));
   }
 
+  private _updateAllSummary(): void {
+    this.database.formulas.toArray().then(formulas => {
+      const _formulas = formulas.map(formula => {
+        return { id: formula.id, name: formula.name, desc: formula.desc };
+      });
+      this.all.next(_formulas);
+    });
+  }
   private _getRecentsSummary(): IFormulaStorage[] {
     return JSON.parse(localStorage.getItem('recent-formulas'));
   }
@@ -86,19 +76,21 @@ export class FormulaService {
   private _getFavoritesSummary(): IFormulaStorage[] {
     return JSON.parse(localStorage.getItem('favorite-formulas'));
   }
-  private _getSpecialtiesSummary(): IFormulaStorage[] {
-    return JSON.parse(localStorage.getItem('specialty-formulas'));
-  }
 
-  /**
-   * Return all formulas with detail in specific specialty
-   * @param specialty default value is specialty of user stored in localStorage
-   */
-  private _getBySpecialty(specialty: ISpecialty): Promise<IFormula[]> {
-    return this.database.formulas
+  updateSpecialtiesSummary() {
+    const userSpecialty: ISpecialty = JSON.parse(
+      localStorage.getItem('user-specialty')
+    );
+    this.database.formulas
       .where('specialtyIds')
-      .equals(specialty.id)
-      .toArray();
+      .equals(userSpecialty.id)
+      .toArray()
+      .then(formulas => {
+        const _formulas = formulas.map(formula => {
+          return { id: formula.id, name: formula.name, desc: formula.desc };
+        });
+        this.specialties.next(_formulas);
+      });
   }
 }
 

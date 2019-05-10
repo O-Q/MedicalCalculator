@@ -11,15 +11,14 @@ export class SpecialtyService {
     private database: DatabaseService,
     private formulaService: FormulaService
   ) {}
+  getUserSpecialty(): ISpecialty {
+    return JSON.parse(localStorage.getItem('user-specialty'));
+  }
   getAll(): Promise<ISpecialty[]> {
     return this.database.specialties.toArray();
   }
   saveUserSpecialty(specialty: ISpecialty) {
     localStorage.setItem('user-specialty', JSON.stringify(specialty));
-    this.formulaService.updateSpecialtiesSummary(specialty);
-  }
-
-  getUserSpecialty(): ISpecialty {
-    return JSON.parse(localStorage.getItem('user-specialty'));
+    this.formulaService.updateSpecialtiesSummary();
   }
 }

@@ -1,14 +1,13 @@
-<p>
-  formula works!
-</p>
-<div style="display: flex; flex-direction: column">
-  <a [routerLink]="['list/all']" routerLinkActive="active">all</a>
-  <a [routerLink]="['list/favorites']" routerLinkActive="active">favorites</a>
-  <a [routerLink]="['list/specialties']" routerLinkActive="active"
-    >specialties</a
-  >
-  <a [routerLink]="['list/recents']" routerLinkActive="active">recents</a>
+<div style="display: flex; flex-direction: column; padding-top: 50px;">
+  <p>
+    formula works!
+  </p>
+  <a [routerLink]="['list/all']" routerLinkActive="active">همه</a>
+  <a [routerLink]="['list/favorites']" routerLinkActive="active">علاقه‌مندی</a>
+  <a [routerLink]="['list/specialties']" routerLinkActive="active">تخصص</a>
+  <a [routerLink]="['list/recents']" routerLinkActive="active">اخیر</a>
 </div>
+<a routerLink="detail/1">فرمول یک</a>
 
 <div [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
   <router-outlet #outlet="outlet"></router-outlet>

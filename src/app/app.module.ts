@@ -8,8 +8,8 @@ import { DatabaseService } from './Services/database/database.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { ErrorComponent } from './components/base/error/error.component';
 import { SharedModule } from './components/shared/shared.module';
+import { ErrorComponent } from './components/base/error/error.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 
@@ -18,7 +18,12 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, ErrorComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    ErrorComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,4 +44,4 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

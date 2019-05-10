@@ -1,13 +1,13 @@
-<div class="ui container">
+<div class="ui container" *ngIf="dataError$ | async as error">
   <div class="warning">
-    <img src="assets/images/warning-512x512.png" alt="Not Found" width="250">
+    <img src="assets/images/warning-512x512.png" alt="Not Found" width="250" />
     <h1 style="font-size: 6rem">
-      {{ (dataError$ | async)['codeError'] }}
+      {{ error.codeError }}
     </h1>
     <p>
-      {{ (dataError$ | async)['messageError'] }}
+      {{ error.messageError }}
     </p>
-    <a class="ui large right labeled icon button">
+    <a routerLink="/" class="ui large right labeled icon button">
       <i class="home icon"></i>
       خانه
     </a>

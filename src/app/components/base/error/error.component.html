@@ -1,6 +1,15 @@
-<p>
-  {{ (dataError$ | async)['codeError'] }}
-</p>
-<p>
-  {{ (dataError$ | async)['messageError'] }}
-</p>
+<div class="ui container">
+  <div class="warning">
+    <img src="assets/images/warning-512x512.png" alt="Not Found" width="250">
+    <h1 style="font-size: 6rem">
+      {{ (dataError$ | async)['codeError'] }}
+    </h1>
+    <p>
+      {{ (dataError$ | async)['messageError'] }}
+    </p>
+    <a class="ui large right labeled icon button">
+      <i class="home icon"></i>
+      خانه
+    </a>
+  </div>
+</div>

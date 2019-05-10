@@ -8,4 +8,4 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [CommonModule],
   exports: [CommonModule]
 })
-export class SharedModule {}
+export class SharedModule { }

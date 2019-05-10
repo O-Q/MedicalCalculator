@@ -1,7 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
 import { FormulaService } from 'src/app/Services/database/formula.service';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-formula-detail',
@@ -9,14 +14,15 @@ import { Subject } from 'rxjs';
   styleUrls: ['./formula-detail.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormulaDetailComponent implements OnInit {
+export class FormulaDetailComponent implements OnInit, OnDestroy {
   formula$ = this.formulaService.get(+this.route.snapshot.params.id);
   showInfo$ = new Subject<boolean>();
+  private _fragment: Subscription;
   constructor(
     private route: ActivatedRoute,
     private formulaService: FormulaService
   ) {
-    this.route.fragment.subscribe(fragment => {
+    this._fragment = this.route.fragment.subscribe(fragment => {
       fragment === 'info'
         ? this.showInfo$.next(true)
         : this.showInfo$.next(false);
@@ -24,4 +30,7 @@ export class FormulaDetailComponent implements OnInit {
   }
 
   ngOnInit() {}
+  ngOnDestroy() {
+    this._fragment.unsubscribe();
+  }
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { IFormula, ISpecialty } from 'src/app/models/database.model';
 import { DatabaseService } from './database.service';
 import { BehaviorSubject } from 'rxjs';
-import { SpecialtyService } from './specialty.service';
 
 @Injectable({
   providedIn: 'root'
@@ -81,16 +80,19 @@ export class FormulaService {
     const userSpecialty: ISpecialty = JSON.parse(
       localStorage.getItem('user-specialty')
     );
-    this.database.formulas
-      .where('specialtyIds')
-      .equals(userSpecialty.id)
-      .toArray()
-      .then(formulas => {
-        const _formulas = formulas.map(formula => {
-          return { id: formula.id, name: formula.name, desc: formula.desc };
+
+    if (userSpecialty) {
+      this.database.formulas
+        .where('specialtyIds')
+        .equals(userSpecialty.id)
+        .toArray()
+        .then(formulas => {
+          const _formulas = formulas.map(formula => {
+            return { id: formula.id, name: formula.name, desc: formula.desc };
+          });
+          this.specialties.next(_formulas);
         });
-        this.specialties.next(_formulas);
-      });
+    }
   }
 }
 

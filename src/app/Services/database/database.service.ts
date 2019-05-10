@@ -76,7 +76,7 @@ export class DatabaseService extends Dexie {
   private _fetchSpecialties() {
     this.fmService.specialties$.pipe(first()).subscribe(
       specialtiesDto => {
-        this._putData(specialtiesDto, tableNames.CREATORS);
+        this._putData(specialtiesDto, tableNames.SPECIALTIES);
       },
       error => this.errorHandler.handleServerError(error)
     );

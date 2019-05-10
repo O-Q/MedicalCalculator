@@ -10,13 +10,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ErrorComponent } from './components/base/error/error.component';
 import { SharedModule } from './components/shared/shared.module';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
 }
 
 @NgModule({
-  declarations: [AppComponent, ErrorComponent],
+  declarations: [AppComponent, ErrorComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -37,4 +39,4 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

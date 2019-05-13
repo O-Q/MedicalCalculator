@@ -15,6 +15,7 @@ export class CheckForUpdateService {
     // when it downloaded completely
     this.swUpdate.available.subscribe(() => {
       if (confirm('نسخه‌ی جدیدی آماده است. آیا بروزرسانی شود؟')) {
+        this.toast.show('برنامه در حال بروزرسانی است.', '', ToastType.INFO);
         this.swUpdate.activateUpdate().then(() => {
           this._setAppUpdated();
           document.location.reload();

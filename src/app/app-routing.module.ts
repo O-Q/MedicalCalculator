@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { ErrorComponent } from './components/base/error/error.component';
+import { AboutComponent } from './components/about/about.component';
+import { HelpComponent } from './components/help/help.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'formula', pathMatch: 'full' },
@@ -12,6 +14,8 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: 'src/app/components/settings/settings.module#SettingsModule'
   },
+  { path: 'about', component: AboutComponent },
+  { path: 'help', component: HelpComponent },
   {
     path: 'not-found',
     component: ErrorComponent,

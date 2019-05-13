@@ -12,6 +12,8 @@ import { SharedModule } from './components/shared/shared.module';
 import { ErrorComponent } from './components/base/error/error.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { HelpComponent } from './components/help/help.component';
+import { AboutComponent } from './components/about/about.component';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
@@ -22,7 +24,9 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
     AppComponent,
     ErrorComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HelpComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -2,14 +2,36 @@ export interface IFormula {
   id?: number;
   name: string;
   desc: string;
-  creatorId: number;
   specialtyIds: number[];
   form: IForm;
+  info: IInfo;
+  result: IResult;
+}
+
+export interface IInfo {
+  nextstep: INextStep;
+  evidence: IEvidence;
+  creatorId: number;
+}
+
+export interface INextStep {
   advice: string;
   management: string;
   criticalActions: string;
-  results: IResult[];
 }
+
+export interface IEvidence {
+  formula: string;
+  factsAndFigure: string;
+  evidenceAppraisal: string;
+  literature: ILink[];
+  validation: ILink[];
+}
+export interface ILink {
+  desc: string;
+  link: string;
+}
+
 export interface ISpecialty {
   id?: number;
   name: string;
@@ -19,7 +41,13 @@ export interface ICreator {
   desc: string;
 }
 export interface IResult {
-  // ???
+  unit: string;
+  classes: IResultClass[];
+}
+export interface IResultClass {
+  lowRange: number;
+  highRange: number;
+  desc: string;
 }
 
 export interface ICreators {

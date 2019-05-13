@@ -7,6 +7,7 @@ import { FormulaItemComponent } from './formula-list/formula-item/formula-item.c
 import { FormulaDetailComponent } from './formula-detail/formula-detail.component';
 import { FormulaEquationComponent } from './formula-detail/formula-equation/formula-equation.component';
 import { FormulaInfoComponent } from './formula-detail/formula-info/formula-info.component';
+import { FormulaSearchComponent } from './formula-list/formula-search/formula-search.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
     FormulaItemComponent,
     FormulaDetailComponent,
     FormulaEquationComponent,
-    FormulaInfoComponent
+    FormulaInfoComponent,
+    FormulaSearchComponent
   ],
   imports: [RouterModule.forChild(routes), CommonModule]
 })

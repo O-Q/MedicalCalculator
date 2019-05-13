@@ -9,11 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SharedModule } from './components/shared/shared.module';
-import { ErrorComponent } from './components/base/error/error.component';
-import { HeaderComponent } from './components/shared/header/header.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
 import { HelpComponent } from './components/help/help.component';
 import { AboutComponent } from './components/about/about.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
@@ -22,10 +20,8 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent,
-    HeaderComponent,
-    FooterComponent,
     HelpComponent,
+    ContactUsComponent,
     AboutComponent
   ],
   imports: [

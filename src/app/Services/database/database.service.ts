@@ -5,6 +5,7 @@ import { IFormula, ISpecialty, ICreator } from 'src/app/models/database.model';
 import { ErrorHandlerService } from '../error-handler.service';
 import { first } from 'rxjs/operators';
 import { tableNames } from 'src/app/constants/tables.constant';
+import { BaseService } from '../base.service';
 @Injectable({ providedIn: 'root' })
 export class DatabaseService extends Dexie {
   formulas: Dexie.Table<IFormula, number>;
@@ -13,22 +14,27 @@ export class DatabaseService extends Dexie {
 
   constructor(
     private fmService: FilesManagerService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private baseService: BaseService
   ) {
     super('MedicalCalculator');
   }
   load() {
-    // understanding the purpose of indexing fields.
-    // A rule of thumb: Are you going to put your property in a where(‘…’) clause? If yes, index it, if not, dont.
-    return new Promise(resolve => {
-      this.version(1).stores({
-        formulas: '++id, name, desc, creatorId, *specialtyIds',
-        specialties: '++id, name',
-        creators: '++id, name, desc'
+    if (this.baseService.isMobile) {
+      // understanding the purpose of indexing fields.
+      // A rule of thumb: Are you going to put your property in a where(‘…’) clause? If yes, index it, if not, dont.
+      return new Promise(resolve => {
+        this.version(1).stores({
+          formulas: '++id, name, desc, creatorId, *specialtyIds',
+          specialties: '++id, name',
+          creators: '++id, name, desc'
+        });
+        this._fetchTables();
+        resolve(this);
       });
-      this._fetchTables();
-      resolve(this);
-    });
+    } else {
+      return new Promise(resolve => resolve(null));
+    }
   }
   private _fetchTables() {
     // TODO: Add loading

@@ -12,7 +12,6 @@ import { SharedModule } from './components/shared/shared.module';
 import { HelpComponent } from './components/help/help.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
@@ -28,10 +27,9 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule,
-    AppRoutingModule,
     HttpClientModule,
-    MatSidenavModule,
+    AppRoutingModule,
+    SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     })
@@ -46,4 +44,4 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -9,15 +9,11 @@
   <app-footer></app-footer>
 </div> -->
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side">
-    <a href="#" class="item">خانه</a>
-    <a href="#" class="item">تخصص‌ها</a>
-    <a href="#" class="item">تنظیمات</a>
+  <mat-sidenav #sidenav mode="over" position="end">
+    <app-sidenav-items></app-sidenav-items>
   </mat-sidenav>
-
   <mat-sidenav-content>
-    <a (click)="sidenav.toggle()" style="margin-top: 10px;">open sidenav</a>
-    <app-header></app-header>
+    <app-header [sidenav]="sidenav"></app-header>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   </mat-sidenav-content>

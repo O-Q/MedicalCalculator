@@ -1,8 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ToastService, ToastType } from './Services/toast.service';
 import { CheckForUpdateService } from './Services/check-for-update.service';
 import { UtilityService } from './Services/database/utility.service';
-declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,7 @@ declare var $: any;
   styleUrls: ['./app.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'MedicalCalculator';
   constructor(
     private toastService: ToastService,
@@ -22,15 +21,5 @@ export class AppComponent implements OnInit {
       this.toastService.show('', 'اولین بارته!', ToastType.INFO);
       // do something like walkthrough
     }
-  }
-
-  ngOnInit(): void {
-    $(document).ready(() => {
-      $('#menu-toggle').click(() => {
-        $('.ui.sidebar')
-          .sidebar('toggle')
-          .sidebar({ context: $('app-root') });
-      });
-    });
   }
 }

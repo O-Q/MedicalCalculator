@@ -9,6 +9,7 @@ export interface IFormula {
 }
 
 export interface IInfo {
+  pearlsPitfalls: string;
   nextstep: INextStep;
   evidence: IEvidence;
   creatorId: number;
@@ -27,6 +28,7 @@ export interface IEvidence {
   literature: ILink[];
   validation: ILink[];
 }
+
 export interface ILink {
   desc: string;
   link: string;

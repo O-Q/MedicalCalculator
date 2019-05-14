@@ -4,17 +4,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavItemsComponent } from './sidenav-items/sidenav-items.component';
 
 const components: any[] = [
   ErrorComponent,
   HeaderComponent,
   FooterComponent,
-  SidenavComponent
+  SidenavItemsComponent
 ];
 @NgModule({
   declarations: [components],
-  imports: [CommonModule, RouterModule],
-  exports: [components, CommonModule]
+  imports: [CommonModule, RouterModule, MatSidenavModule],
+  exports: [components, CommonModule, MatSidenavModule]
 })
 export class SharedModule {}

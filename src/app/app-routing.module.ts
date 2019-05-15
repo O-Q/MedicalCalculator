@@ -4,6 +4,7 @@ import { ErrorComponent } from './components/base/error/error.component';
 import { AboutComponent } from './components/about/about.component';
 import { HelpComponent } from './components/help/help.component';
 import { MobileGuard } from './Services/guard/mobile.guard';
+import { FirstTimeComponent } from './components/first-time/first-time.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     redirectTo: 'formula',
     pathMatch: 'full'
   },
+  { path: 'first-time', component: FirstTimeComponent },
   {
     path: 'formula',
     loadChildren: 'src/app/components/formula/formula.module#FormulaModule',

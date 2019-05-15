@@ -12,6 +12,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { HelpComponent } from './components/help/help.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { FirstTimeComponent } from './components/first-time/first-time.component';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
@@ -22,7 +23,8 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
     AppComponent,
     HelpComponent,
     ContactUsComponent,
-    AboutComponent
+    AboutComponent,
+    FirstTimeComponent
   ],
   imports: [
     BrowserModule,

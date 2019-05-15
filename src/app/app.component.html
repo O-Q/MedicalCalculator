@@ -10,7 +10,7 @@
 </div> -->
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" position="end">
-    <app-sidenav-items></app-sidenav-items>
+    <app-sidenav-items [sidenav]="sidenav"></app-sidenav-items>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header [sidenav]="sidenav"></app-header>

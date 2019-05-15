@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { BaseService } from 'src/app/Services/base.service';
 
 @Component({
   selector: 'app-sidenav-items',
@@ -8,7 +7,12 @@ import { BaseService } from 'src/app/Services/base.service';
   styleUrls: ['./sidenav-items.component.less']
 })
 export class SidenavItemsComponent implements OnInit {
+  @Input() sidenav: MatSidenav;
   constructor() {}
 
   ngOnInit() {}
+
+  onItemClick() {
+    this.sidenav.close();
+  }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -8,5 +9,17 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class HeaderComponent implements OnInit {
   @Input() sidenav: MatSidenav;
-  ngOnInit() {}
+  searchbar: boolean = false;
+
+  ngOnInit() { }
+
+  showSearchBar() {
+    this.searchbar = true;
+  }
+
+  hideSearchBar() {
+    // console.log($('#searchbar'));
+    // $('#searchbar').transition('side right');
+    this.searchbar = false;
+  }
 }

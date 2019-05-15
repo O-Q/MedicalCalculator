@@ -1,7 +1,35 @@
-<div style="margin-bottom: 3.6rem;">
+<!-- <div style="margin-bottom: 3.6rem;">
   <div class="ui basic huge fixed menu">
+    <span>
+      <a (click)="sidenav.toggle()" id="menu-toggle" class="item">
+        <i class="sidebar icon"></i>
+      </a>
+    </span>
+    <div class="left menu">haa</div>
+  </div>
+</div> -->
+<div class="ui top attached menu">
+  <span>
     <a (click)="sidenav.toggle()" id="menu-toggle" class="item">
       <i class="sidebar icon"></i>
+    </a>
+  </span>
+  <div class="right menu" *ngIf="searchbar" id="searchbar">
+    <div class="ui right aligned category search item">
+      <div class="ui transparent icon input">
+        <input class="prompt" type="text" placeholder="به دنبال فرمول خود بگرد">
+        <i class="search link icon"></i>
+        <div class="ui right">
+          <a (click)="hideSearchBar()"><i class="close icon"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right menu" *ngIf="!searchbar" id="searchbar-icon">
+    <a (click)="showSearchBar()">
+      <div class="ui item">
+        <i class="search icon"></i>
+      </div>
     </a>
   </div>
 </div>

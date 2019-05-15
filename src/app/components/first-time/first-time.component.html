@@ -1,0 +1,14 @@
+<div class="ui container">
+  <img src="/assets/icons/icon-192x192.png" alt="Medicalc" />
+  <select [(ngModel)]="selectedSpecialtyId" class="ui fluid dropdown">
+    <option value="" disabled selected>تخصص</option>
+    <option *ngFor="let spec of specliaties$ | async" [value]="spec.id">{{
+      spec.name
+    }}</option>
+  </select>
+  <div style="margin-top: 15px">
+    <button class="ui large button" (click)="onConfirm()">
+      تایید
+    </button>
+  </div>
+</div>

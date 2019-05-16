@@ -6,11 +6,9 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import {
-  ToolbarTitle,
-  ToolbarFormulaDetailRegex
-} from 'src/app/constants/toolbar.constant';
+import { ToolbarTitle } from 'src/app/constants/toolbar.constant';
 import { Location } from '@angular/common';
+import { FormulaDetailRegex } from 'src/app/constants/regex.constant';
 
 @Component({
   selector: 'app-toolbar-back',
@@ -34,7 +32,7 @@ export class ToolbarBackComponent implements OnInit, OnDestroy {
         this.title$.next(ToolbarTitle.ABOUTUS);
       } else if (url === '/contact-us') {
         this.title$.next(ToolbarTitle.CONTACTUS);
-      } else if (url.match(ToolbarFormulaDetailRegex)) {
+      } else if (url.match(FormulaDetailRegex)) {
         console.log(url);
       }
     });

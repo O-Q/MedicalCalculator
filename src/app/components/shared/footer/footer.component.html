@@ -1,22 +1,4 @@
-<div class="ui centerd aligned grid">
-  <div class="column">
-    <div class="ui bottom fixed labeled icon menu">
-      <a routerLink="formula/list/specialties" class="item">
-        <i class="stethoscope icon"></i>
-        تخصص
-      </a>
-      <a routerLink="formula/list/favorites" class="item">
-        <i class="star icon"></i>
-        علاقه‌مندی
-      </a>
-      <a routerLink="formula/list/recents" class="item">
-        <i class="history icon"></i>
-        اخیر
-      </a>
-      <a routerLink="formula/list/all" class="item">
-        <i class="calculator icon"></i>
-        همه
-      </a>
-    </div>
-  </div>
+<div [ngSwitch]="mode$ | async">
+  <app-navigation-bar *ngSwitchCase="FooterType.MAIN"></app-navigation-bar>
+  <div *ngSwitchCase="FooterType.HIDDEN"></div>
 </div>

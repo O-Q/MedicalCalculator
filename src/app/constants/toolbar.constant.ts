@@ -3,11 +3,11 @@ export enum ToolbarType {
   BACK = 'back',
   SEARCH = 'search'
 }
-export const ToolbarMainURLRegex = /formula($|(\/list))/;
-export const ToolbarFormulaDetailRegex = /formula\/detail/;
+
 export enum ToolbarTitle {
   SETTINGS = 'تنظیمات',
   ABOUTUS = 'درباره ما',
   HELP = 'راهنما',
-  CONTACTUS = 'تماس با ما'
+  CONTACTUS = 'تماس با ما',
+  FORMULAINFO = 'اطلاعات فرمول'
 }

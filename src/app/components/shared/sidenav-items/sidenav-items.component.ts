@@ -1,7 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SpecialtyService } from 'src/app/Services/database/specialty.service';
-import { ISpecialty } from 'src/app/models/database.model';
 
 @Component({
   selector: 'app-sidenav-items',
@@ -11,10 +10,8 @@ import { ISpecialty } from 'src/app/models/database.model';
 })
 export class SidenavItemsComponent {
   @Input() sidenav: MatSidenav;
-  userSpecialty: ISpecialty;
-  constructor(private specialtyService: SpecialtyService) {
-    this.userSpecialty = this.specialtyService.getUserSpecialty();
-  }
+  userSpecialty$ = this.specialtyService.userSpecialty$;
+  constructor(private specialtyService: SpecialtyService) {}
 
   closeSidenav() {
     this.sidenav.close();

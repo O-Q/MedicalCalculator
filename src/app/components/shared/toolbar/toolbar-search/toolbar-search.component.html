@@ -1,16 +1,21 @@
 <div class="search-container">
-  <a class="backward" (click)="hideSearchBar()"
-    ><i class="arrow right icon"></i
-  ></a>
-  <div class="left menu" id="searchbar">
-    <div class="ui right aligned category search item">
-      <div class="ui transparent icon input">
-        <input
-          class="prompt"
-          type="search"
-          placeholder="به دنبال فرمول خود بگرد"
-        />
+  <div class="searchbar-container ">
+    <a class="backward" (click)="hideSearchBar()"
+      ><i class="arrow right icon"></i
+    ></a>
+    <div class="left menu animated fadeIn" id="searchbar">
+      <div class="ui right aligned category search item">
+        <div class="ui transparent icon input">
+          <input
+            class="prompt"
+            type="search"
+            placeholder="به دنبال فرمول خود بگرد"
+          />
+        </div>
       </div>
     </div>
+  </div>
+  <div class="serach-result-container">
+    <span>hello</span>
   </div>
 </div>

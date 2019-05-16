@@ -1,4 +1,4 @@
-<div [ngSwitch]="mode$ | async">
+<div style="overflow: hidden;" [ngSwitch]="mode$ | async">
   <app-toolbar-main
     class="ui top attached menu"
     *ngSwitchCase="ToolbarType.MAIN"
@@ -15,4 +15,5 @@
     *ngSwitchCase="ToolbarType.SEARCH"
     [mode$]="mode$"
   ></app-toolbar-search>
+  <div *ngSwitchDefault></div>
 </div>

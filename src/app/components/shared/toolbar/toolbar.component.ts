@@ -30,6 +30,8 @@ export class ToolbarComponent {
         this.url$.next(url);
         if (url.match(ToolbarMainURLRegex)) {
           this.mode$.next(ToolbarType.MAIN);
+        } else if (url === '/first-time') {
+          this.mode$.next(null);
         } else {
           this.mode$.next(ToolbarType.BACK);
         }

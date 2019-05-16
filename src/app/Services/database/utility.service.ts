@@ -16,4 +16,8 @@ export class UtilityService {
   resetFirstTime() {
     localStorage.setItem('first-time', 'true');
   }
+  resetApp() {
+    localStorage.clear();
+    document.location.reload();
+  }
 }

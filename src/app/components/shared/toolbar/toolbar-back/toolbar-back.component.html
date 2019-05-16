@@ -1,2 +1,4 @@
-<a (click)="onBack()"><i class="arrow right icon"></i></a>
-<p>{{ title$ | async }}</p>
+<div class="ui item">
+  <a (click)="onBack()"><i class="arrow right icon"></i></a>
+  <span class="back-title">{{ title$ | async }}</span>
+</div>

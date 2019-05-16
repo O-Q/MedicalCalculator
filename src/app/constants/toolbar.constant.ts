@@ -8,6 +8,6 @@ export const ToolbarFormulaDetailRegex = /formula\/detail/;
 export enum ToolbarTitle {
   SETTINGS = 'تنظیمات',
   ABOUTUS = 'درباره ما',
-  HELP = 'کمک',
+  HELP = 'راهنما',
   CONTACTUS = 'تماس با ما'
 }

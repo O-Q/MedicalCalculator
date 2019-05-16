@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { HelpComponent } from './components/help/help.component';
 import { MobileGuard } from './Services/guard/mobile.guard';
 import { FirstTimeComponent } from './components/first-time/first-time.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,9 @@ const routes: Routes = [
     loadChildren: 'src/app/components/settings/settings.module#SettingsModule',
     canActivate: [MobileGuard]
   },
-  { path: 'about', component: AboutComponent },
+  { path: 'about-us', component: AboutComponent },
   { path: 'help', component: HelpComponent },
+  { path: 'contact-us', component: ContactUsComponent },
   {
     path: 'not-found',
     component: ErrorComponent,

@@ -1,18 +1,22 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { SpecialtyService } from 'src/app/Services/database/specialty.service';
+import { ISpecialty } from 'src/app/models/database.model';
 
 @Component({
   selector: 'app-sidenav-items',
   templateUrl: './sidenav-items.component.html',
-  styleUrls: ['./sidenav-items.component.less']
+  styleUrls: ['./sidenav-items.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SidenavItemsComponent implements OnInit {
+export class SidenavItemsComponent {
   @Input() sidenav: MatSidenav;
-  constructor() {}
+  userSpecialty: ISpecialty;
+  constructor(private specialtyService: SpecialtyService) {
+    this.userSpecialty = this.specialtyService.getUserSpecialty();
+  }
 
-  ngOnInit() {}
-
-  onItemClick() {
+  closeSidenav() {
     this.sidenav.close();
   }
 }

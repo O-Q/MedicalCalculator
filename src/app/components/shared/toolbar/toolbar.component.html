@@ -1,0 +1,18 @@
+<div [ngSwitch]="mode$ | async">
+  <app-toolbar-main
+    class="ui top attached menu"
+    *ngSwitchCase="ToolbarType.MAIN"
+    [sidenav]="sidenav"
+    [mode$]="mode$"
+  ></app-toolbar-main>
+  <app-toolbar-back
+    [url$]="url$.asObservable()"
+    class="ui top attached menu"
+    *ngSwitchCase="ToolbarType.BACK"
+  ></app-toolbar-back>
+  <app-toolbar-search
+    class="ui top attached menu"
+    *ngSwitchCase="ToolbarType.SEARCH"
+    [mode$]="mode$"
+  ></app-toolbar-search>
+</div>

@@ -106,7 +106,7 @@
         },
         {
           "lowRange": 90,
-          "highRange": Number.MAX_VALUE,
+          "highRange": 100000000,
           "desc": ""
         }
       ]
@@ -292,7 +292,7 @@
         },
         {
           "lowRange": 45,
-          "highRange": Number.MAX_VALUE,
+          "highRange": 100000000,
           "desc": "ریسک بالا"
         }
       ]
@@ -491,7 +491,7 @@
       "classes": [
         {
           "lowRange": 0,
-          "highRange": Number.MAX_VALUE,
+          "highRange": 100000000,
           "desc": "دوز تزریق پلاسما"
         }
       ]

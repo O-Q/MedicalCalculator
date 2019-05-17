@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class FirstTimeComponent implements OnInit {
   selectedSpecialtyId: string = null;
-  specliaties$ = this.specialtyService.getAll();
+  specliaties$ = this.specialtyService.all$;
   constructor(
     private specialtyService: SpecialtyService,
     private router: Router

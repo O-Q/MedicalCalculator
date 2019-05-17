@@ -10,14 +10,13 @@ export class FormulaService {
   private recnets = new BehaviorSubject(this._getRecentsSummary());
   private favorites = new BehaviorSubject(this._getFavoritesSummary());
   private specialties = new BehaviorSubject(null);
-  private all = new BehaviorSubject(null);
+  all: BehaviorSubject<IFormulaStorage[]> = this.database.allFormula$;
   recents$ = this.recnets.asObservable();
   favorites$ = this.favorites.asObservable();
   specialties$ = this.specialties.asObservable();
   all$ = this.all.asObservable();
   recentLimit = 10;
   constructor(private database: DatabaseService) {
-    this._updateAllSummary();
     this.updateSpecialtiesSummary();
   }
 
@@ -60,14 +59,6 @@ export class FormulaService {
     localStorage.setItem('favorite-formulas', JSON.stringify(_favorites));
   }
 
-  private _updateAllSummary(): void {
-    this.database.formulas.toArray().then(formulas => {
-      const _formulas = formulas.map(formula => {
-        return { id: formula.id, name: formula.name, desc: formula.desc };
-      });
-      this.all.next(_formulas);
-    });
-  }
   private _getRecentsSummary(): IFormulaStorage[] {
     return JSON.parse(localStorage.getItem('recent-formulas'));
   }

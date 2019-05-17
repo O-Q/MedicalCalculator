@@ -6,16 +6,20 @@ import { ErrorHandlerService } from '../error-handler.service';
 import { first } from 'rxjs/operators';
 import { tableNames } from 'src/app/constants/tables.constant';
 import { BaseService } from '../base.service';
+import { IFormulaStorage } from './formula.service';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class DatabaseService extends Dexie {
   formulas: Dexie.Table<IFormula, number>;
   specialties: Dexie.Table<ISpecialty, number>;
   creators: Dexie.Table<ICreator, number>;
+  allSpecialty$: BehaviorSubject<ISpecialty[]> = new BehaviorSubject(null);
+  allFormula$: BehaviorSubject<IFormulaStorage[]> = new BehaviorSubject(null);
 
   constructor(
     private fmService: FilesManagerService,
     private errorHandler: ErrorHandlerService,
-    private baseService: BaseService
+    private baseService: BaseService // private formulaService: FormulaService,
   ) {
     super('MedicalCalculator');
   }
@@ -61,6 +65,17 @@ export class DatabaseService extends Dexie {
           break;
         }
       }
+    } else {
+      switch (tableName) {
+        case tableNames.FORMULAS: {
+          this._initFormulas();
+          break;
+        }
+        case tableNames.SPECIALTIES: {
+          this._initSpecialties();
+          break;
+        }
+      }
     }
   }
   private _fetchCreators() {
@@ -75,17 +90,35 @@ export class DatabaseService extends Dexie {
     this.fmService.formulas$.pipe(first()).subscribe(
       formulasDto => {
         this._putData(formulasDto, tableNames.FORMULAS);
+        const _formulas = formulasDto.map(formula => {
+          return { id: formula.id, name: formula.name, desc: formula.desc };
+        });
+        this.allFormula$.next(_formulas);
       },
       error => this.errorHandler.handleServerError(error)
     );
+  }
+  private _initFormulas() {
+    this.formulas.toArray().then(formulas => {
+      const _formulas = formulas.map(formula => {
+        return { id: formula.id, name: formula.name, desc: formula.desc };
+      });
+      this.allFormula$.next(_formulas);
+    });
   }
   private _fetchSpecialties() {
     this.fmService.specialties$.pipe(first()).subscribe(
       specialtiesDto => {
         this._putData(specialtiesDto, tableNames.SPECIALTIES);
+        this.allSpecialty$.next(specialtiesDto);
       },
       error => this.errorHandler.handleServerError(error)
     );
+  }
+  private _initSpecialties() {
+    this.specialties
+      .toArray()
+      .then(specialties => this.allSpecialty$.next(specialties));
   }
 
   /**

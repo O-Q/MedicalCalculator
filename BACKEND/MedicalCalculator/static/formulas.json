@@ -1,18 +1,17 @@
-﻿[
+[
   {
     "id": 1,
     "name": "Creatinine Clearance",
     "desc": "Renal function assessmet.",
-    "creatorId": "1",
-    "specialtyIds": [1, 2],
+    "specialtyIds": [1],
     "form": {
       "selects": [
         {
           "name": "sex",
           "title": "جنسیت",
           "options": [
-            { "value": "0", "viewValue": "مرد" },
-            { "value": "1", "viewValue": "زن" }
+            { "value": 0, "viewValue": "مرد" },
+            { "value": 1, "viewValue": "زن" }
           ],
           "hint": "",
           "tip": ""
@@ -53,16 +52,72 @@
         }
       ]
     },
-    "advice": "بعد از محاسبه‌ی creatinine clearance، مهیاکننده‌ها باید محاسبه‌ی یک GFR حقیقی را در نظر بگیرند تا شدت بیماری مزمن کلیه‌ی بیمار را اندازه‌گیری شود.",
-    "management": "",
-    "criticalAction": ""
+    "info": {
+      "nextstep": {
+        "advice": "بعد از محاسبه‌ی creatinine clearance، مهیاکننده‌ها باید محاسبه‌ی یک GFR حقیقی را در نظر بگیرند تا شدت بیماری مزمن کلیه‌ی بیمار را اندازه‌گیری شود.",
+        "management": "",
+        "criticalActions": ""
+      },
+      "evidence": {
+        "formula": "Cockcroft-Gault CrCl, mL/min =(140 – سن) × (وزن ، کیلوگرم) × (0.85 اگر زن ) / (72× Cr)",
+        "factsAndFigure": "شایع ترین فرمول برای تعیین ترشح کراتینین، که GFR  را تعیین می کند. براساس چندین مقاله و تخصص، ما تنضیمات مربوط به معادلهCockcroft-Gault را براساس وزن بدن و شاخص توده بدنی توصیه می کنیم",
+        "evidenceAppraisal": "",
+        "literature": [
+          {
+            "desc": "Cockcroft DW، Gault MH. پیش بینی کرنش کراتینین از کراتینین سرم Nephron 1976؛ 16 (1): 31-41. PMID PubMed: 1244564.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/1244564"
+          },
+          {
+            "desc": "Winter MA، Guhr KN، Berg GM. تاثیر وزن های مختلف بدن و غلظت کراتینین سرم بر روی تعصب و دقت معادله Cockcroft-Gault. فارماکوتراپی 2012 ژوئیه؛ 32 (7): 604-12. doi: 10.1002 / j.1875-9114.2012.01098.x. Epub 2012 May 10. PubMed PMID: 22576791.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/22576791"
+          },
+          {
+            "desc": "Brown DL، Masselink AJ، CD Lalla. محدوده کاربردی ترخیص کراتینین برای دوز دارو کلیه: یک راه حل عملی برای بحث برانگیز بودن وزن برای استفاده در معادله کوک کروفت-گول. ان فارماکوتر 2013 ژوئیه آگوست؛ 47 (7-8): 1039-44. doi: 10.1345 / aph.1S176. Epub 2013 11 ژوئن. مرور. PubMed PMID: 23757387.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/23757387"
+          }
+        ],
+        "validation": []
+      },
+      "creatorId": 1,
+      "pearlsPitfalls": "از Dan Brown، pharmD در دانشگاه  Palm Beach Atlantic University، نویسنده اصلی  مقاله محدوده عملکردی creatinine clearance می گوید:\n معادله Cockcroft-Gault به عنوان یک استاندارد طلایی بعد از تقریبا 40 سال باقی می ماند ؛ علی رغم اشتباهاتی  که ناشی از  تغییرات در ترکیبات بدن در میان بیماران است."
+    },
+    "result": {
+      "unit": "میلی لیتر بر دقیقه",
+      "classes": [
+        {
+          "lowRange": 0,
+          "highRange": 15,
+          "desc": ""
+        },
+        {
+          "lowRange": 15,
+          "highRange": 29,
+          "desc": ""
+        },
+        {
+          "lowRange": 30,
+          "highRange": 59,
+          "desc": ""
+        },
+        {
+          "lowRange": 60,
+          "highRange": 89,
+          "desc": ""
+        },
+        {
+          "lowRange": 90,
+          "highRange": Number.MAX_VALUE,
+          "desc": ""
+        }
+      ]
+    }
   },
   {
     "id": 2,
     "name": "ARISCAT",
     "desc": "Post-op pulmonary complications.",
-    "creatorId": "2",
-    "specialtyIds": [1],
+    "specialtyIds": [2],
+
     "form": {
       "selects": [
         {
@@ -70,15 +125,15 @@
           "title": "سن به سال",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "≤50"
             },
             {
-              "value": "3",
+              "value": 3,
               "viewValue": "51-80"
             },
             {
-              "value": "16",
+              "value": 16,
               "viewValue": ">80"
             }
           ],
@@ -90,15 +145,15 @@
           "title": "SpO2 پیش از عمل",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "≥96%"
             },
             {
-              "value": "8",
+              "value": 8,
               "viewValue": "91-95%"
             },
             {
-              "value": "24",
+              "value": 24,
               "viewValue": "≤90%"
             }
           ],
@@ -110,11 +165,11 @@
           "title": "عفونت تنفسی در آخرین ماه",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "نه"
             },
             {
-              "value": "17",
+              "value": 17,
               "viewValue": "بله"
             }
           ],
@@ -126,11 +181,11 @@
           "title": "آنمی پیش از عمل(Hgb ≤ 10g/dL)",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "نه"
             },
             {
-              "value": "11",
+              "value": 11,
               "viewValue": "بله"
             }
           ],
@@ -142,15 +197,15 @@
           "title": "برش عمل جراحی",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "خارجی"
             },
             {
-              "value": "15",
+              "value": 15,
               "viewValue": "شکم فوقانی"
             },
             {
-              "value": "24",
+              "value": 24,
               "viewValue": "داخل وریدی"
             }
           ],
@@ -162,15 +217,15 @@
           "title": "مدت جراحی",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "بیشتر از دو ساعت"
             },
             {
-              "value": "16",
+              "value": 16,
               "viewValue": "دو تا سه ساعت"
             },
             {
-              "value": "23",
+              "value": 23,
               "viewValue": "بیشتر از سه ساعت"
             }
           ],
@@ -182,11 +237,11 @@
           "title": "اقدامات اورژانسی",
           "options": [
             {
-              "value": "0",
+              "value": 0,
               "viewValue": "نه"
             },
             {
-              "value": "8",
+              "value": 8,
               "viewValue": "بله"
             }
           ],
@@ -196,8 +251,534 @@
       ],
       "inputs": []
     },
-    "advice": "حسش نبود",
-    "management": "",
-    "criticalAction": ""
+    "info": {
+      "nextstep": {
+        "advice": "کمک به تصمیم گیری برای کاهش خطر عوارض ریوی پس از عمل و تشویق به اقدامات پیش گیرانه",
+        "management": "",
+        "criticalActions": ""
+      },
+      "evidence": {
+        "formula": "",
+        "factsAndFigure": "عوارض به عنوان ترکیبی، شامل ضایعات تنفسی، عفونت تنفسی، پلورال افیوژن، آتکلوزای روی اشعه X، پنوموتوراکس، برونکوسپاسم تحت درمان با برونکودیلاتور و پنومونیت آسپیراسیون تعریف شد.",
+        "evidenceAppraisal": "",
+        "literature": [
+          {
+            "desc": "پيش بينی عوارض ريوی بعد از عمل در يک گروه جراحی مبتنی بر جمعيت. بیهوشی 2010؛ 113 (6): 1338-50.",
+            "link": "https://www.ncbi.nlm.nih.gov/pubmed/21045639"
+          }
+        ],
+        "validation": [
+          {
+            "desc": "Mazo V، Sabaté S، Canet J، و همکاران. اعتبار آینده چشم انداز از یک نمره پیش بینی برای عوارض پس از عمل ریه. بیهوشی 2014؛ 121 (2): 219-31.",
+            "link": "http://anesthesiology.pubs.asahq.org/article.aspx?articleid=1917609"
+          }
+        ]
+      },
+      "creatorId": 2,
+      "pearlsPitfalls": ""
+    },
+    "result": {
+      "unit": "",
+      "classes": [
+        {
+          "lowRange": 0,
+          "highRange": 25,
+          "desc": "ریسک کم"
+        },
+        {
+          "lowRange": 26,
+          "highRange": 44,
+          "desc": "ریسک متوسط"
+        },
+        {
+          "lowRange": 45,
+          "highRange": Number.MAX_VALUE,
+          "desc": "ریسک بالا"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "NAFLD",
+    "desc": "Diagnoses steatohepatitis, based on histology.",
+    "specialtyIds": [3],
+    "form": {
+      "selects": [
+        {
+          "name": "steatosisGrade",
+          "title": "درجه استاتوز",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "<5%"
+            },
+            {
+              "value": 1,
+              "viewValue": "5-33%"
+            },
+            {
+              "value": 2,
+              "viewValue": "34-66%"
+            },
+            {
+              "value": 3,
+              "viewValue": ">66%"
+            }
+          ],
+          "hint": "",
+          "tip": "ارزیابی کم و متوسط از درگیری پارنژیمال توسط استئاتوز"
+        },
+        {
+          "name": "lobularInflm",
+          "title": "التهاب لوبولار",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "بدون تقاطق"
+            },
+            {
+              "value": 1,
+              "viewValue": "1 تقاطع در  200× field"
+            },
+            {
+              "value": 2,
+              "viewValue": "2‐4 تقاطع در  200× field"
+            },
+            {
+              "value": 3,
+              "viewValue": ">4 تعقاطق در  200× field"
+            }
+          ],
+          "hint": "",
+          "tip": "ارزیابی کلی همه کانون های التهابی"
+        },
+        {
+          "name": "liverCellInjury",
+          "title": "آسیب سلول های کبدی",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "جند سلول بالون"
+            },
+            {
+              "value": 2,
+              "viewValue": "بسیاری از سلول ها"
+            }
+          ],
+          "hint": "",
+          "tip": "Ballooning"
+        }
+      ],
+      "inputs": []
+    },
+    "info": {
+      "nextstep": {
+        "advice": "آیا از نمره ی فعالیت NAFLD استفاده می کنید و می خواهید تخصص خود را به اشتراک بگذارید",
+        "management": "",
+        "criticalActions": ""
+      },
+      "evidence": {
+        "formula": "",
+        "factsAndFigure": "توجه: نمره با تشخیص استاتو هپاتیت ارتباط دارد، اما نباید برای تشخیص دقیق NASH استفاده شود.",
+        "evidenceAppraisal": "",
+        "literature": [
+          {
+            "desc": "Kleiner DE، Brunt EM، ون نکتا م، و همکاران. طراحی و تایید یک سیستم بهینه سازی بافتی برای بیماری کبدی چربی غیرالکلی. هپاتولوژی 2005؛ 41 (6): 1313-21.",
+            "link": "https://www.ncbi.nlm.nih.gov/pubmed/15915461"
+          }
+        ],
+        "validation": [
+          {
+            "desc": "Brunt EM، Kleiner DE، ویلسون LA، Belt P، Neuschwander-Tetri BA. نمره فعالیت کبد چرب غیرقرآل (NAFLD) و تشخیص هیستوپاتولوژیک در NAFLD: معانی کلینیکوپاتولوژیک متمایز است. هپاتولوژی 2011؛ 53 (3): 810-20.",
+            "link": "https://aasldpubs.onlinelibrary.wiley.com/doi/full/10.1002/hep.24127"
+          }
+        ]
+      },
+      "creatorId": 3,
+      "pearlsPitfalls": ""
+    },
+
+    "result": {
+      "unit": "points",
+      "classes": [
+        {
+          "lowRange": 0,
+          "highRange": 0,
+          "desc": "بدون فعالیت"
+        },
+        {
+          "lowRange": 1,
+          "highRange": 2,
+          "desc": "فعالیت خفیف"
+        },
+        {
+          "lowRange": 3,
+          "highRange": 5,
+          "desc": "فعالیت متعادل"
+        },
+        {
+          "lowRange": 6,
+          "highRange": 8,
+          "desc": "فعالیت نشان دار"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Plasma Dosage",
+    "desc": "دوز پلاسما برای انتقال خون در بیماران مبتلا به خونریزی فعال",
+    "specialtyIds": [4],
+    "form": {
+      "selects": [],
+      "inputs": [
+        {
+          "name": "weight",
+          "title": "وزن بیمار",
+          "unit": "کیلوگرم",
+          "type": "weight",
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "desiredPlasmaDose",
+          "title": "مقدار پلاسمای مطلوب",
+          "unit": "میلی لیتر بر کیلوگرم",
+          "type": "InvDensi",
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "unitVolume",
+          "title": "حجم واحد",
+          "unit": "میلی لیتر",
+          "type": "volume",
+          "hint": "",
+          "tip": ""
+        }
+      ]
+    },
+
+    "info": {
+      "nextstep": {
+        "advice": "",
+        "management": "",
+        "criticalActions": ""
+      },
+      "evidence": {
+        "formula": "کل پلاسمای )میلی لیتر( = مقدار پلاسمای مورد نظر )میلی لیتر / کیلوگرم( × وزن )کیلوگرم(",
+        "factsAndFigure": "توجه: نمره با تشخیص استاتو هپاتیت ارتباط دارد، اما نباید برای تشخیص دقیق NASH استفاده شود.",
+        "evidenceAppraisal": "",
+        "literature": [
+          {
+            "desc": "Liumbruno G، Bennardello F، Lattanzio A، Piccoli P، Rossetti G. توصیه برای انتقال از پلاسما و پلاکت ها. خون Transfus 2009؛ 7 (2): 132-50.",
+            "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2689068/"
+          },
+          {
+            "desc": "Roback JD. Technical Manual. American Association of Blood Banks (AABB); 2014.",
+            "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2689068/"
+          }
+        ],
+        "validation": []
+      },
+      "creatorId": 4,
+      "pearlsPitfalls": "انتقال خون کمتر از دوز درماني پلاسما بايد متوقف شود. پلاسما را باید در اسرع وقت پس از یخ زدگی و هرگز نباید انجماد کرد. پیش بینی دقیق میزان پلاسما که برای تجویز یک کواگولوپاتی خاص تجویز می شود، در حال حاضر امکان پذیر نیست. بنابراین، تکرار تست انعقادی پس از ترانسفوزیون که باعث انتقال خون می شود، ضروری است."
+    },
+
+    "result": {
+      "unit": "واحد",
+      "classes": [
+        {
+          "lowRange": 0,
+          "highRange": Number.MAX_VALUE,
+          "desc": "دوز تزریق پلاسما"
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "ABCD² Score for TIA",
+    "desc": "دوز پلاسما برای انتقال خون در بیماران مبتلا به خونریزی فعال",
+    "specialtyIds": [5],
+    "form": {
+      "selects": [
+        {
+          "name": "over60Age",
+          "title": "سن بیشتر از 60 سال",
+          "options": [
+            {
+              "value": 1,
+              "viewValue": "بله"
+            },
+            {
+              "value": 0,
+              "viewValue": "نه"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "BP",
+          "title": "BP ≥ 140/90 mmHg",
+          "options": [
+            {
+              "value": 1,
+              "viewValue": "بله"
+            },
+            {
+              "value": 0,
+              "viewValue": "نه"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "clinicalTIA",
+          "title": "ویژگی های بالینی TIA",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "علائم دیگر"
+            },
+            {
+              "value": 1,
+              "viewValue": "اختلال گفتاری بدون ضعف"
+            },
+            {
+              "value": 2,
+              "viewValue": "ضعف یک جانبه"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "durOfSymptoms",
+          "title": "مدت زمان علائم",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "<10 دقیقه"
+            },
+            {
+              "value": 1,
+              "viewValue": "10-59 دقیقه"
+            },
+            {
+              "value": 2,
+              "viewValue": "≥60 دقیقه"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "histOfDiabetes",
+          "title": "سابقه دیابت",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "نه"
+            },
+            {
+              "value": 1,
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        }
+      ],
+      "inputs": []
+    },
+
+    "info": {
+      "nextstep": {
+        "advice": "",
+        "management": "روش های تصویربرداری بیشتر شامل MRI و سونوگرافی کاروتید را در نظر بگیرید. برای بررسی اینکه آیا بیمار از ارزیابی بیشتر بیماران بستری و یا پیگیری های سرپایی در صورت لزوم استفاده می شود، به مشاوره نورولوژیکی مراجعه کنید. در بیمارانی که در معرض خطر ابتلا به سکته مغزی قرار دارند: با نورولوژي مشورت کنید. در نظر گرفتن MRI و سایر تصویربرداری عروقی و آمبولی مناسب را در نظر بگیرید. یک آستانه پایین برای اعتراف به بیمار برای ارزیابی بیشتر داشته باشید. در بیمارانی که مصمم هستند که در کوتاه مدت خطر ابتلا به سکته را کاهش دهند: ارزیابی سریع را به عنوان یک سرپوشیده با هدف دستیابی به مطالعات و مشاوره های مربوطه طی 24 ساعت انجام دهید.",
+        "criticalActions": "نمره ABCD2 نباید به عنوان جایگزین برای تصمیم گیری بالینی یا تصمیم گیری استفاده شود. در جمعیت هایی که دارای خطر ابتلا به سکته مغزی پایین هستند، نمره ABCD2 کم (0-2) با کمتر از 1٪ خطر سکته مغزی در هفته آینده ارتباط دارد. این بیماران ممکن است مناسب برای ارزیابی سرپایی سریع باشند. در مراكزي كه سونوگرافي كامپيوتر و مطالعات سونوگرافي كاروتيد در همكاري با يك سروتيك انجام مي شود، اضافه كردن نمره ABCD2 به ارزيابي غير ضروري است."
+      },
+      "evidence": {
+        "formula": "",
+        "factsAndFigure": "",
+        "evidenceAppraisal": "",
+        "literature": [
+          {
+            "desc": "Johnston SC، Rothwell PM، نگوین-Huynh MN، Giles MF، Elkins JS، Bernstein AL، Sidney S. اعتبارسنجی و اصلاح نمرات برای پیش بینی خطر ابتلا به سکته مغزی پس از حمله ایسکمیک گذرا. لنست 2007 ژانویه 27؛ 369 (9558): 283-92.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/17258668"
+          }
+        ],
+        "validation": [
+          {
+            "desc": "Josephson SA, Sidney S, Pham TN, Bernstein AL, Johnston SC. Higher ABCD2 score predicts patients most likely to have true transient ischemic attack. Stroke. 2008 Nov;39(11):3096-8. doi: 10.1161/STROKEAHA.108.514562. Epub 2008 Aug 7.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/18688003"
+          }
+        ]
+      },
+      "creatorId": 5,
+      "pearlsPitfalls": ""
+    },
+    "result": {
+      "unit": "points",
+      "classes": [
+        {
+          "lowRange": 0,
+          "highRange": 3,
+          "desc": "ریسک کم"
+        },
+        {
+          "lowRange": 4,
+          "highRange": 5,
+          "desc": "ریسک متوسط"
+        },
+        {
+          "lowRange": 0,
+          "highRange": 3,
+          "desc": "ریسک بالا"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "CHADS₂ Score-AFS Risk",
+    "desc": "برآورد خطر سکته مغزی در بیماران مبتلا به فیبریلاسیون دهلیزی.",
+    "specialtyIds": [6],
+    "form": {
+      "selects": [
+        {
+          "name": "CHFHistory",
+          "title": "سابقه CHF",
+          "options": [
+            {
+              "value": 1,
+              "viewValue": "بله"
+            },
+            {
+              "value": 0,
+              "viewValue": "نه"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "HypertensionHistory",
+          "title": "سابقه فشار خون بالا ",
+          "options": [
+            {
+              "value": 1,
+              "viewValue": "بله"
+            },
+            {
+              "value": 0,
+              "viewValue": "نه"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "over75Age",
+          "title": "سن بالای 75 سال",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "نه"
+            },
+            {
+              "value": 1,
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "diabetesMellitusHis",
+          "title": "سابقه دیابت",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "نه"
+            },
+            {
+              "value": 1,
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        },
+        {
+          "name": "strokeTIASymptoms",
+          "title": "سکته مغزی یا علائم TIA قبلا",
+          "options": [
+            {
+              "value": 0,
+              "viewValue": "نه"
+            },
+            {
+              "value": 2,
+              "viewValue": "بله"
+            }
+          ],
+          "hint": "",
+          "tip": ""
+        }
+      ],
+      "inputs": []
+    },
+
+    "info": {
+      "nextstep": {
+        "advice": "در نظر گرفتن ضریب CHA2DS2-VASc به بیماران با نمره CHADS2 0به منظور ریسک بیشتر این بیماران در نظر بگیرید.",
+        "management": "",
+        "criticalActions": "یک توصیه نشان می دهد که 0 نمره پایین ریسک است و ممکن است نیازی به ضد انعقاد نباشد، اما ادبیاتی وجود دارد که نشان می دهد که همه بیماران با نمره CHADS2 0 در خطر کمبود سکته مغزی ایسکمیک نیستند."
+      },
+      "evidence": {
+        "formula": "",
+        "factsAndFigure": "",
+        "evidenceAppraisal": "اگر چه در مطالعات مشتق و ارزشیابی اولیه، نمره CHADS2 0 با یک خطر سکته مغزی کم سالانه به ترتیب 1.9 و 0.8٪ همراه بود، اما مطالعات بعدی نشان داده اند که بیماران با نمره CHADS2 0 ممکن است تا 3/3٪ در سال در معرض خطر سکته مغزی ایسکمیک باشند. (Gage, 2004)",
+        "literature": [
+          {
+            "desc": "Gage BF، Waterman AD، Shannon W، Boechler M، Rich MW، Radford MJ. اعتبار سنجی طبقه بندی های بالینی برای پیش بینی سکته مغزی: نتایج حاصل از ثبت ملی ثبت فیبریلاسیون دهلیزی. جامه 2001 ژوئن 13؛ 285 (22): 2864-70.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/11401607"
+          }
+        ],
+        "validation": [
+          {
+            "desc": "Gage BF، Van Walraven C، Pearce L، Hart RG، Kudstaal PJ، Boode BS، Petersen P. انتخاب بیماران مبتلا به فیبریلاسیون دهلیزی برای ضد انعقاد: طبقه بندی خطر ابتلا به سکته مغزی در بیماران مصرف آسپرین. جریان. 2004 اکتبر 19؛ 110 (16): 2287-92. اپوب 2004 اکتبر 11.",
+            "link": "http://www.ncbi.nlm.nih.gov/pubmed/15477396"
+          }
+        ]
+      },
+      "creatorId": 6,
+      "pearlsPitfalls": "نمره CHADS2 می تواند به پزشکان کمک کند که خطر ابتلا به سکته مغزی را در بیماران مبتلا به فیبریلاسیون دهلیزی غير واگيری برآورد کند و درمان آنتی ترومبوتیک مناسب تر باشد."
+    },
+    "result": {
+      "unit": "points",
+      "classes": [
+        {
+          "lowRange": 0,
+          "highRange": 0,
+          "desc": "ریسک کم"
+        },
+        {
+          "lowRange": 1,
+          "highRange": 2,
+          "desc": "ریسک متوسط"
+        },
+        {
+          "lowRange": 3,
+          "highRange": 6,
+          "desc": "ریسک بالا"
+        }
+      ]
+    }
   }
 ]

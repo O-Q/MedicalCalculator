@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpecialtyService } from 'src/app/Services/database/specialty.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation-bar.component.less']
 })
 export class NavigationBarComponent implements OnInit {
-  constructor() {}
+  userSpecialty$ = this.specialtyService.userSpecialty$;
+  constructor(private specialtyService: SpecialtyService) {}
 
   ngOnInit() {}
 }

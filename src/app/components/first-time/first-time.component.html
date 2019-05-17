@@ -3,7 +3,7 @@
   <div class="select-container">
     <span>تخصص خود را انتخاب کنید</span>
     <select [(ngModel)]="selectedSpecialtyId" class="ui fluid dropdown">
-      <option value="" disabled selected>تخصص</option>
+      <option value="null" selected>بدون تخصص</option>
       <option *ngFor="let spec of specliaties$ | async" [value]="spec.id">{{
         spec.name
       }}</option>

@@ -7,6 +7,15 @@
 
 # dependencies
 /node_modules
+/semantic/dist
+/semantic/tasks
+/semantic/gulpfile.js
+/semantic/src/site
+/semantic/src/themes
+/semantic/src/definitions
+/semantic/src/theme.less
+/semantic/src/semantic.less
+
 
 # profiling files
 chrome-profiler-events.json
@@ -42,5 +51,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/semantic/
-!*/theme.config

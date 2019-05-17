@@ -28,7 +28,11 @@
               "src/manifest.webmanifest",
               "src/robots.txt"
             ],
-            "styles": ["src/styles.less", "./semantic/dist/semantic.min.css"],
+            "styles": [
+              "src/styles.less",
+              "./semantic/dist/semantic.min.css",
+              "./node_modules/animate.css/animate.min.css"
+            ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./semantic/dist/semantic.min.js"

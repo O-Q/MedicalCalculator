@@ -24,7 +24,7 @@ export class ToolbarComponent {
         if (url.match(FormulaListRegex)) {
           this.mode$.next(ToolbarType.MAIN);
         } else if (url === '/first-time') {
-          this.mode$.next(null);
+          this.mode$.next(ToolbarType.HIDDEN);
         } else {
           this.mode$.next(ToolbarType.BACK);
         }

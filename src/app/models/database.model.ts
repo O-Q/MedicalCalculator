@@ -65,7 +65,7 @@ export interface IForm {
 export interface ISelect {
   name: string;
   title: string;
-  options: any;
+  options: IOption[];
   unit: string;
   type: string;
   hint: string;
@@ -78,4 +78,8 @@ export interface IInput {
   type: string;
   hint: string;
   tip: string;
+}
+export interface IOption {
+  value: number;
+  viewValue: string;
 }

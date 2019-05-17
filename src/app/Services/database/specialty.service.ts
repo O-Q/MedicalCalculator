@@ -31,4 +31,9 @@ export class SpecialtyService {
       this.userSpecialty.next(specialty);
     });
   }
+  removeUserSpecialty() {
+    localStorage.removeItem('user-specialty');
+    this.formulaService.updateSpecialtiesSummary();
+    this.userSpecialty.next(null);
+  }
 }

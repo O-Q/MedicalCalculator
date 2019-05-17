@@ -1,7 +1,8 @@
 export enum ToolbarType {
   MAIN = 'main',
   BACK = 'back',
-  SEARCH = 'search'
+  SEARCH = 'search',
+  HIDDEN = 'hidden'
 }
 
 export enum ToolbarTitle {

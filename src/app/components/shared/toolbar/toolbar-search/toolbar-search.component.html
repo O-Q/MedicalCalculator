@@ -1,15 +1,22 @@
-<div class="search-container">
-  <div class="searchbar-container ">
-    <a class="backward" (click)="hideSearchBar()"><i class="arrow right icon"></i></a>
+<div class="search-container animated slideInDown">
+  <div class="searchbar-container">
+    <a class="backward" (click)="hideSearchBar()"
+      ><i class="arrow right icon"></i
+    ></a>
     <div class="left menu animated fadeIn" id="searchbar">
       <div class="ui right aligned category search item">
         <div class="ui transparent icon input">
-          <input class="prompt" type="search" placeholder="به دنبال فرمول خود بگرد" />
+          <input
+            class="prompt"
+            type="search"
+            placeholder="به دنبال فرمول خود بگرد"
+            (keyup.enter)="search($event)"
+          />
         </div>
       </div>
     </div>
   </div>
-  <div class="serach-result-container">
+  <div>
     <div class="ui middle aligned list">
       <div class="item" style="padding-top: 10px;">
         <div class="header">
@@ -149,3 +156,4 @@
       </div>
     </div>
   </div>
+</div>

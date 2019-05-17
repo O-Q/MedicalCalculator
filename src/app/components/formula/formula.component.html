@@ -1,9 +1,8 @@
-<div style="display: flex; flex-direction: column; padding-top: 80px;">
+<!-- <div style="display: flex; flex-direction: column; padding-top: 80px;">
   <div style="margin: 0 auto;">
     از منوی زیر دسته خود را انتخاب کنید
   </div>
-</div>
-<a routerLink="detail/1">فرمول یک</a>
+</div> -->
 
 <div [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
   <router-outlet #outlet="outlet"></router-outlet>

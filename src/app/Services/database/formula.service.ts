@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IFormula, ISpecialty } from 'src/app/models/database.model';
 import { DatabaseService } from './database.service';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { ToastService, ToastType } from '../toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FormulaService {
   all$ = this.all.asObservable();
   activeFormula = new Subject();
   recentLimit = 10;
-  constructor(private database: DatabaseService) {
+  constructor(private database: DatabaseService, private toast: ToastService) {
     this.updateSpecialtiesSummary();
   }
 
@@ -28,39 +29,54 @@ export class FormulaService {
     });
   }
 
-  addRecent(formula: IFormula) {
-    const _formulaStorage: IFormulaStorage = {
-      id: formula.id,
-      name: formula.name,
-      desc: formula.desc
-    };
-    const _recents = this.recnets.getValue();
-    while (_recents.length >= this.recentLimit) {
-      _recents.shift();
+  addRecent(formula: IFormulaStorage) {
+    let _recents = this.recnets.getValue();
+    if (!_recents) {
+      _recents = [];
     }
-    _recents.push(_formulaStorage);
-    this.recnets.next(_recents);
-    localStorage.setItem('recent-formulas', JSON.stringify(_recents));
+    if (!_recents.includes(formula)) {
+      while (_recents.length >= this.recentLimit) {
+        _recents.shift();
+      }
+      _recents.push(formula);
+      this.recnets.next(_recents);
+      localStorage.setItem('recent-formulas', JSON.stringify(_recents));
+    }
   }
 
-  addFavorite(formula: IFormula) {
+  addFavorite(formula: IFormulaStorage | IFormula) {
     const _formulaStorage: IFormulaStorage = {
       id: formula.id,
       name: formula.name,
       desc: formula.desc
     };
-    const _favorites = this.favorites.getValue();
+    let _favorites = this.favorites.getValue();
+    if (!_favorites) {
+      _favorites = [];
+    }
     _favorites.push(_formulaStorage);
     this.favorites.next(_favorites);
     localStorage.setItem('favorite-formulas', JSON.stringify(_favorites));
+    this.toast.show('پیام', 'فرمول به علاقه‌مندی اضافه شد.', ToastType.SUCCESS);
+  }
+  isFavorite(formulaId: number) {
+    if (this.favorites.getValue()) {
+      for (const formula of this.favorites.getValue()) {
+        if (formula.id === formulaId) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
-  removeFavorite(formula: IFormula) {
+  removeFavorite(formula: IFormulaStorage) {
     const _favorites = this.favorites.value.filter(
       favorite => favorite.id !== formula.id
     );
     this.favorites.next(_favorites);
     localStorage.setItem('favorite-formulas', JSON.stringify(_favorites));
+    this.toast.show('پیام', 'فرمول از علاقه‌مندی حذف شد.', ToastType.INFO);
   }
 
   private _getRecentsSummary(): IFormulaStorage[] {

@@ -1,4 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { ToolbarType } from 'src/app/constants/toolbar.constant';
@@ -6,7 +11,8 @@ import { ToolbarType } from 'src/app/constants/toolbar.constant';
 @Component({
   selector: 'app-toolbar-main',
   templateUrl: './toolbar-main.component.html',
-  styleUrls: ['./toolbar-main.component.less']
+  styleUrls: ['./toolbar-main.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolbarMainComponent implements OnInit {
   @Input() sidenav: MatSidenav;

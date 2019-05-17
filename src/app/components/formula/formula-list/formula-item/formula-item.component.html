@@ -1,11 +1,13 @@
-<div class="left floated content">
-  <i class="star outline icon"></i>
+<div (click)="onFavoriteClick()" class="left floated content">
+  <i
+    [ngClass]="(isFavorite | async) ? 'yellow star icon' : 'star outline icon'"
+  ></i>
 </div>
-<div class="middle aligned content">
+<div (click)="onItemClick(formula.id)" class="middle aligned content">
   <div class="header">
-    {{formula.name}}
+    {{ formula.name }}
   </div>
   <div class="desc">
-    {{formula.desc}}
+    {{ formula.desc }}
   </div>
 </div>

@@ -1,7 +1,11 @@
 <div class="ui centerd aligned grid">
   <div class="column">
     <div class="ui bottom fixed labeled icon menu animated slideInUp">
-      <a routerLink="formula/list/specialties" class="item">
+      <a
+        *ngIf="userSpecialty$ | async"
+        routerLink="formula/list/specialties"
+        class="item"
+      >
         <i class="stethoscope icon"></i>
         تخصص
       </a>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FirstTimeComponent implements OnInit {
-  selectedSpecialtyId: string;
+  selectedSpecialtyId: string = null;
   specliaties$ = this.specialtyService.getAll();
   constructor(
     private specialtyService: SpecialtyService,
@@ -19,7 +19,9 @@ export class FirstTimeComponent implements OnInit {
   onConfirm() {
     if (this.selectedSpecialtyId) {
       this.specialtyService.saveUserSpecialty(+this.selectedSpecialtyId);
-      this.router.navigate(['formula']);
+    } else {
+      this.specialtyService.removeUserSpecialty();
     }
+    this.router.navigate(['formula']);
   }
 }

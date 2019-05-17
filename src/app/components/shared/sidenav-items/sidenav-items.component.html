@@ -13,7 +13,7 @@
       </div>
       <div class="content">
         <span class="left floated">
-          {{ 'تخصص شما: ' + (userSpecialty$ | async)?.name }}
+          {{ 'تخصص شما: ' + ((userSpecialty$ | async)?.name || 'بدون تخصص') }}
           <a (click)="sidenav.close()" routerLink="/settings"
             ><i class="edit icon"></i
           ></a>

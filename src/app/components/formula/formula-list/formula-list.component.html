@@ -1,11 +1,18 @@
-<p>
-  formula-list works!
-</p>
-<div *ngIf="formulas$ | async as formulas">
+<!-- <div *ngIf="formulas$ | async as formulas">
   <div *ngFor="let formula of formulas">
     <app-formula-item
       (click)="onItemClick(formula.id)"
       [formula]="formula"
     ></app-formula-item>
+  </div>
+</div>
+ -->
+<div *ngIf="formulas$ | async as formulas">
+  <div style="display: flex; flex-direction: column; padding-top: 2.5em;">
+    <div class="ui middle aligned celled list">
+      <div class="item" *ngFor="let formula of formulas">
+        <app-formula-item (click)="onItemClick(formula)" [formula]="formula"></app-formula-item>
+      </div>
+    </div>
   </div>
 </div>

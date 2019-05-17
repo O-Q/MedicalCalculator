@@ -1,11 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import {
   FormulaService,
   IFormulaStorage
 } from 'src/app/Services/database/formula.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-formula-item',

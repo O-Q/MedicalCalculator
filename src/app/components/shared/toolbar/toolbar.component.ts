@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { Router, NavigationEnd, Event } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { ToolbarType } from 'src/app/constants/toolbar.constant';
 import { FormulaListRegex } from 'src/app/constants/regex.constant';
 

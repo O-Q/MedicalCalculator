@@ -8,6 +8,7 @@ import { FormulaDetailComponent } from './formula-detail/formula-detail.componen
 import { FormulaEquationComponent } from './formula-detail/formula-equation/formula-equation.component';
 import { FormulaInfoComponent } from './formula-detail/formula-info/formula-info.component';
 import { FormulaSearchComponent } from './formula-list/formula-search/formula-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -33,6 +34,6 @@ const routes: Routes = [
     FormulaInfoComponent,
     FormulaSearchComponent
   ],
-  imports: [RouterModule.forChild(routes), CommonModule]
+  imports: [RouterModule.forChild(routes), CommonModule, ReactiveFormsModule]
 })
 export class FormulaModule {}

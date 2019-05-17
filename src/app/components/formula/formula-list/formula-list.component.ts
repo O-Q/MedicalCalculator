@@ -3,7 +3,7 @@ import {
   FormulaService,
   IFormulaStorage
 } from 'src/app/Services/database/formula.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IFormula } from 'src/app/models/database.model';
 
@@ -17,7 +17,8 @@ export class FormulaListComponent {
   formulas$: Observable<IFormulaStorage[]>;
   constructor(
     private formulaService: FormulaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     const listType = this.route.snapshot.url[1].path;
     switch (listType) {
@@ -42,7 +43,7 @@ export class FormulaListComponent {
       }
     }
   }
-  onItemClick(formula: IFormula | IFormulaStorage) {
-    console.log(formula);
+  onItemClick(formulaId: number) {
+    this.router.navigate(['formula', 'detail', formulaId]);
   }
 }

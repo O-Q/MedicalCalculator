@@ -9,6 +9,8 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ToolbarTitle } from 'src/app/constants/toolbar.constant';
 import { Location } from '@angular/common';
 import { FormulaDetailRegex } from 'src/app/constants/regex.constant';
+import { FormulaService } from 'src/app/Services/database/formula.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-toolbar-back',
@@ -20,7 +22,10 @@ export class ToolbarBackComponent implements OnInit, OnDestroy {
   @Input() url$: Observable<string>;
   title$ = new BehaviorSubject(null);
   urlSub: Subscription;
-  constructor(private location: Location) {}
+  constructor(
+    private location: Location,
+    private formulaService: FormulaService
+  ) {}
 
   ngOnInit() {
     this.urlSub = this.url$.subscribe(url => {
@@ -33,7 +38,11 @@ export class ToolbarBackComponent implements OnInit, OnDestroy {
       } else if (url === '/contact-us') {
         this.title$.next(ToolbarTitle.CONTACTUS);
       } else if (url.match(FormulaDetailRegex)) {
-        console.log(url);
+        this.formulaService.activeFormula
+          .pipe(first())
+          .subscribe(formulaName => {
+            this.title$.next(formulaName);
+          });
       }
     });
   }

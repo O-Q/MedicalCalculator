@@ -22,7 +22,12 @@ import { FormulaCalculatorService } from 'src/app/Services/formula-calculator.se
 export class FormulaEquationComponent implements OnInit {
   @Input() formula: IFormula;
   form: FormGroup;
-  constructor(private fb: FormBuilder, private calc: FormulaCalculatorService) {
+  constructor(
+    private fb: FormBuilder,
+    private calc: FormulaCalculatorService
+  ) {}
+
+  ngOnInit() {
     const formControls: { [name: string]: FormControl } = {};
     this.formula.form.selects.forEach(select => {
       formControls[select.name] = new FormControl('', {
@@ -36,6 +41,8 @@ export class FormulaEquationComponent implements OnInit {
     });
     this.form = this.fb.group([{ formControls }]);
     this.form.statusChanges.subscribe((status: string) => {
+      console.log('form status changes provoke!');
+
       if (status === 'VALID') {
         const values: number[] = [];
         // tslint:disable-next-line: forin
@@ -54,6 +61,4 @@ export class FormulaEquationComponent implements OnInit {
       }
     });
   }
-
-  ngOnInit() {}
 }

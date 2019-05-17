@@ -4,7 +4,7 @@
 <div *ngIf="formulas$ | async as formulas">
   <div *ngFor="let formula of formulas">
     <app-formula-item
-      (click)="onItemClick(formula)"
+      (click)="onItemClick(formula.id)"
       [formula]="formula"
     ></app-formula-item>
   </div>

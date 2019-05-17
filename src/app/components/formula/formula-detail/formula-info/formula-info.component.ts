@@ -5,6 +5,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { IFormula } from 'src/app/models/database.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-formula-info',
@@ -15,7 +16,10 @@ import { IFormula } from 'src/app/models/database.model';
 export class FormulaInfoComponent implements OnInit {
   @Input() formula: IFormula;
 
-  constructor() {}
+  constructor(private location: Location) {}
 
   ngOnInit() {}
+  onBack() {
+    this.location.back();
+  }
 }

@@ -11,6 +11,7 @@ import { NavigationBarComponent } from './footer/navigation-bar/navigation-bar.c
 import { ToolbarMainComponent } from './toolbar/toolbar-main/toolbar-main.component';
 import { ToolbarSearchComponent } from './toolbar/toolbar-search/toolbar-search.component';
 import { ToolbarBackComponent } from './toolbar/toolbar-back/toolbar-back.component';
+import { FooterResultComponent } from './footer/footer-result/footer-result.component';
 
 const components: any[] = [
   ErrorComponent,
@@ -20,7 +21,8 @@ const components: any[] = [
   NavigationBarComponent,
   ToolbarMainComponent,
   ToolbarSearchComponent,
-  ToolbarBackComponent
+  ToolbarBackComponent,
+  FooterResultComponent
 ];
 @NgModule({
   declarations: [components],

@@ -1,16 +1,9 @@
-import {
-  Component,
-  Input,
-  ChangeDetectionStrategy,
-  EventEmitter
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { Router, NavigationEnd, Event } from '@angular/router';
-import {
-  ToolbarType,
-  ToolbarMainURLRegex
-} from 'src/app/constants/toolbar.constant';
+import { ToolbarType } from 'src/app/constants/toolbar.constant';
+import { FormulaListRegex } from 'src/app/constants/regex.constant';
 
 @Component({
   selector: 'app-toolbar',
@@ -28,8 +21,10 @@ export class ToolbarComponent {
       if (event instanceof NavigationEnd) {
         const url = event.urlAfterRedirects;
         this.url$.next(url);
-        if (url.match(ToolbarMainURLRegex)) {
+        if (url.match(FormulaListRegex)) {
           this.mode$.next(ToolbarType.MAIN);
+        } else if (url === '/first-time') {
+          this.mode$.next(null);
         } else {
           this.mode$.next(ToolbarType.BACK);
         }

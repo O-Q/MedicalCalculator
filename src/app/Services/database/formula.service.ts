@@ -34,7 +34,10 @@ export class FormulaService {
     if (!_recents) {
       _recents = [];
     }
-    if (!_recents.includes(formula)) {
+    const isFormulaNotExist = !_recents.find(
+      recent => recent.id === formula.id
+    );
+    if (isFormulaNotExist) {
       while (_recents.length >= this.recentLimit) {
         _recents.shift();
       }

@@ -2,12 +2,13 @@
 
 .ui.menu {
   font-size: 0.95rem;
+  background-color: @primary;
   &::after {
     content: none;
   }
-  .item {
-    width: 25%;
-  }
+  // .item {
+  //   width: 25%;
+  // }
 }
 .navigation-container {
   display: inline-flex;
@@ -15,5 +16,15 @@
 }
 
 .active {
-  color: @secondry !important;
+  color: @secondary !important;
+}
+.four-items {
+  .item {
+    width: 25%;
+  }
+}
+.three-items {
+  .item {
+    width: 33.33%;
+  }
 }

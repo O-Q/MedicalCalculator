@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './app/Styles/_color.constant.less';
 @font-face {
   font-family: 'IRANsans';
   font-style: normal;
@@ -32,7 +33,22 @@ body {
   text,
   textarea {
     font-family: IRANSans !important;
+    &.primary-text {
+      color: @primary-text !important;
+    }
+    &.secondary-text {
+      color: @secondary-text !important;
+    }
   }
+}
+.primary-bg {
+  background-color: @primary !important;
+}
+.secondary-bg {
+  background-color: @secondary !important;
+}
+.secondary-bg-light {
+  background-color: @secondary-light !important;
 }
 
 .mat-drawer:not(.mat-drawer-side) {

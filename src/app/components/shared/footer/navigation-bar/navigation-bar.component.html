@@ -2,12 +2,13 @@
   <div class="column">
     <div
       class="navigation-container ui bottom fixed labeled icon menu animated slideInUp"
+      [ngClass]="(userSpecialty$ | async) ? 'four-items' : 'three-items'"
     >
       <a
         *ngIf="userSpecialty$ | async"
         routerLink="formula/list/specialties"
         routerLinkActive="active"
-        class="item"
+        class="primary-text item"
       >
         <i class="stethoscope icon"></i>
         تخصص
@@ -15,7 +16,7 @@
       <a
         routerLink="formula/list/favorites"
         routerLinkActive="active"
-        class="item"
+        class="primary-text item"
       >
         <i class="star icon"></i>
         علاقه‌مندی
@@ -23,12 +24,16 @@
       <a
         routerLink="formula/list/recents"
         routerLinkActive="active"
-        class="item"
+        class="primary-text item"
       >
         <i class="history icon"></i>
         اخیر
       </a>
-      <a routerLink="formula/list/all" routerLinkActive="active" class="item">
+      <a
+        routerLink="formula/list/all"
+        routerLinkActive="active"
+        class="primary-text item"
+      >
         <i class="calculator icon"></i>
         همه
       </a>

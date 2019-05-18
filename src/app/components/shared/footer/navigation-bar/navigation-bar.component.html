@@ -1,23 +1,34 @@
 <div class="ui centerd aligned grid">
   <div class="column">
-    <div class="ui bottom fixed labeled icon menu animated slideInUp">
+    <div
+      class="navigation-container ui bottom fixed labeled icon menu animated slideInUp"
+    >
       <a
         *ngIf="userSpecialty$ | async"
         routerLink="formula/list/specialties"
+        routerLinkActive="active"
         class="item"
       >
         <i class="stethoscope icon"></i>
         تخصص
       </a>
-      <a routerLink="formula/list/favorites" class="item">
+      <a
+        routerLink="formula/list/favorites"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="star icon"></i>
         علاقه‌مندی
       </a>
-      <a routerLink="formula/list/recents" class="item">
+      <a
+        routerLink="formula/list/recents"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="history icon"></i>
         اخیر
       </a>
-      <a routerLink="formula/list/all" class="item">
+      <a routerLink="formula/list/all" routerLinkActive="active" class="item">
         <i class="calculator icon"></i>
         همه
       </a>

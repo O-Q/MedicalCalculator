@@ -1,4 +1,5 @@
 <div [ngSwitch]="mode$ | async">
   <app-navigation-bar *ngSwitchCase="FooterType.MAIN"></app-navigation-bar>
+  <app-footer-result *ngSwitchCase="FooterType.RESULT"></app-footer-result>
   <div *ngSwitchCase="FooterType.HIDDEN"></div>
 </div>

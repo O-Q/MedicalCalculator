@@ -12,6 +12,7 @@ import { ToolbarMainComponent } from './toolbar/toolbar-main/toolbar-main.compon
 import { ToolbarSearchComponent } from './toolbar/toolbar-search/toolbar-search.component';
 import { ToolbarBackComponent } from './toolbar/toolbar-back/toolbar-back.component';
 import { FooterResultComponent } from './footer/footer-result/footer-result.component';
+import { SearchItemComponent } from './toolbar/toolbar-search/search-item/search-item.component';
 
 const components: any[] = [
   ErrorComponent,
@@ -22,7 +23,8 @@ const components: any[] = [
   ToolbarMainComponent,
   ToolbarSearchComponent,
   ToolbarBackComponent,
-  FooterResultComponent
+  FooterResultComponent,
+  SearchItemComponent
 ];
 @NgModule({
   declarations: [components],

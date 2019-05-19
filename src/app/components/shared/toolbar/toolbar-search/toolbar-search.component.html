@@ -1,155 +1,80 @@
-<div class="search-container animated slideInDown">
+<div class="search-container">
   <div class="searchbar-container">
     <a class="backward" (click)="hideSearchBar()"
       ><i class="arrow right icon"></i
     ></a>
-    <div class="left menu animated fadeIn" id="searchbar">
+    <div class="left menu" id="searchbar">
       <div class="ui right aligned category search item">
         <div class="ui transparent icon input">
           <input
-            class="prompt"
             type="search"
             placeholder="به دنبال فرمول خود بگرد"
-            (keyup.enter)="search($event)"
+            (keyup.enter)="onChangeInput($event)"
           />
         </div>
       </div>
     </div>
   </div>
-  <div>
-    <div class="ui middle aligned list">
-      <div class="item" style="padding-top: 10px;">
-        <div class="header">
-          <i class="history icon"></i>
-          اخیر
-        </div>
-        <div class="ui middle aligned celled list">
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
-            </div>
+  <div class="search-result-container">
+    <div class="search-result-row">
+      <div class="ui middle aligned list">
+        <div
+          *ngIf="recentResults | async as recents"
+          class="item"
+          style="padding-top: 10px;"
+        >
+          <div class="header">
+            <i class="history icon"></i>
+            اخیر
           </div>
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
+          <div class="ui middle aligned celled list">
+            <div *ngFor="let recent of recents" class="item">
+              <app-search-item [formula]="recent"> </app-search-item>
             </div>
           </div>
         </div>
-      </div>
-      <div class="item" style="padding-top: 10px;">
-        <div class="header">
-          <i class="star icon"></i>
-          علاقه‌مندی
-        </div>
-        <div class="ui middle aligned celled list">
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
-            </div>
+        <div
+          *ngIf="favoriteResults | async as favorites"
+          class="item"
+          style="padding-top: 10px;"
+        >
+          <div class="header">
+            <i class="star icon"></i>
+            علاقه‌مندی
           </div>
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
+          <div class="ui middle aligned celled list">
+            <div *ngFor="let favorite of favorites" class="item">
+              <app-search-item [formula]="favorite"> </app-search-item>
             </div>
           </div>
         </div>
-      </div>
-      <div class="item" style="padding-top: 10px;">
-        <div class="header">
-          <i class="stethoscope icon"></i>
-          تخصص
-        </div>
-        <div class="ui middle aligned celled list">
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
-            </div>
+        <div
+          *ngIf="specialtyResults | async as specialties"
+          class="item"
+          style="padding-top: 10px;"
+        >
+          <div class="header">
+            <i class="stethoscope icon"></i>
+            تخصص
           </div>
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
+          <div class="ui middle aligned celled list">
+            <div *ngFor="let specialty of specialties" class="item">
+              <app-search-item [formula]="specialty"> </app-search-item>
             </div>
           </div>
         </div>
-      </div>
-      <div class="item" style="padding-top: 10px;">
-        <div class="header">
-          <i class="cubes icon"></i>
-          دیگر
-        </div>
-        <div class="ui middle aligned celled list">
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
-            </div>
+        <div
+          *ngIf="allResults | async as all"
+          class="item"
+          style="padding-top: 10px;"
+        >
+          <div class="header">
+            <i class="cubes icon"></i>
+            دیگر
           </div>
-          <div class="item">
-            <div class="left floated content">
-              <i class="star outline icon"></i>
-            </div>
-            <div class="middle aligned content">
-              <div class="header">
-                Formula Name
-              </div>
-              <div class="desc">
-                Formula Description
-              </div>
+          <div class="ui middle aligned celled list">
+            <div *ngFor="let each of all" class="item">
+              <app-search-item [formula]="each"> </app-search-item>
             </div>
           </div>
         </div>

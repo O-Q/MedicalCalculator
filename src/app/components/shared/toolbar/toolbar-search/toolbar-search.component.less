@@ -1,3 +1,4 @@
+@import '../../../../Styles/_color.constant.less';
 .search-container {
   width: 100%;
 
@@ -5,10 +6,13 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 42px;
-    margin-top: 8px;
+    height: 60px;
+    padding-top: 8px;
+    padding-bottom: 3px;
+    background-color: @primary;
 
     .backward {
+      color: @primary-text;
       margin: auto 5px auto 13px;
       font-size: 23px;
 
@@ -19,8 +23,10 @@
     }
 
     .left.menu {
+      margin-bottom: 5px;
+      border-radius: 1.5rem !important;
       width: 100%;
-      background-color: #fafafa;
+      background-color: #d2d2d280;
       border-radius: 2px;
       border-color: #00000030;
       border-style: solid;
@@ -35,19 +41,27 @@
     }
   }
 
-  //   .serach-result-container {
-  //     animation: slideDown 1.5s 1 both;
-  //   }
+  .search-result-container {
+    .search-result-row {
+      // animation: slideDown 1.5s 1 both;
+      overflow-y: scroll;
+      max-height: 78vh;
+    }
 
-  //   @keyframes slideDown {
-  //     0% {
-  //       height: 0;
-  //     }
+    i.star {
+      font-size: large;
+    }
+  }
 
-  //     100% {
-  //       height: 100%;
-  //     }
-  //   }
+  @keyframes slideDown {
+    0% {
+      max-height: 0;
+    }
+
+    100% {
+      max-height: auto;
+    }
+  }
 }
 
 .animated {
@@ -67,5 +81,5 @@
 }
 
 .header {
-  font-family: IRANSans !important;
+  margin-right: 5px !important;
 }

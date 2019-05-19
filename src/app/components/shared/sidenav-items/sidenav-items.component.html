@@ -1,22 +1,23 @@
 <div class="ui continer">
   <div class="ui row">
     <div class="ui card secondary-text secondary-bg-light">
-      <div class="content">
+      <div class="content" style="margin-top: 4em; margin-right: 1em">
         <div class="ui internally celled grid">
-          <div class="four wide column">
-            <i id="profile-pic" class="circular user icon"></i>
+          <div class="four wide column" style="padding: 0">
+            <!-- <i id="profile-pic" class="circular user icon"></i> -->
+            <img
+              class="ui medium circular image"
+              src="/assets/images/avatar.jpg"
+            />
           </div>
-          <div
-            class="twelve wide column"
-            style="margin: auto; box-shadow: none;"
-          >
-            محمدحسین سعادت
+          <div class="twelve wide column">
+            مهدی شیری
           </div>
         </div>
       </div>
       <div class="content">
         <span class="left floated">
-          {{ 'تخصص شما: ' + ((userSpecialty$ | async)?.name || 'بدون تخصص') }}
+          {{ 'تخصص: ' + ((userSpecialty$ | async)?.name || 'بدون تخصص') }}
           <a (click)="sidenav.close()" routerLink="/first-time"
             ><i class="edit icon"></i
           ></a>

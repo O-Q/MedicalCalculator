@@ -8,9 +8,9 @@ import { ToastService, ToastType } from '../toast.service';
   providedIn: 'root'
 })
 export class FormulaService {
-  private recnets = new BehaviorSubject(this._getRecentsSummary());
-  private favorites = new BehaviorSubject(this._getFavoritesSummary());
-  private specialties = new BehaviorSubject(null);
+  recnets = new BehaviorSubject(this._getRecentsSummary());
+  favorites = new BehaviorSubject(this._getFavoritesSummary());
+  specialties = new BehaviorSubject<IFormulaStorage[]>(null);
   all: BehaviorSubject<IFormulaStorage[]> = this.database.allFormula$;
   recents$ = this.recnets.asObservable();
   favorites$ = this.favorites.asObservable();

@@ -18,3 +18,10 @@ Units[UnitTypes.DENSITY] = { default: 'mmolL', secondary: 'mgdl' };
 Units[UnitTypes.INV_DENSITY] = { default: 'mlkg', secondary: null };
 Units[UnitTypes.VOLUME] = { default: 'ml', secondary: null };
 Units[UnitTypes.PRESSURE] = { default: 'kPa', secondary: 'mmHg' };
+
+export const convertable = [
+  UnitTypes.WEIGHT,
+  UnitTypes.HEIGHT,
+  UnitTypes.DENSITY,
+  UnitTypes.PRESSURE
+];

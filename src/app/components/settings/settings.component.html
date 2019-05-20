@@ -34,10 +34,17 @@
               تخصص
               <div class="left floated" style="margin-top: -10px;">
                 <div class="field">
-                  <select class="ui fluid dropdown">
-                    <option value="">تخصص</option>
-                    <option value="بیهوشی">بیهوشی</option>
-                    <option value="روانشناسی">روانشناسی</option>
+                  <select
+                    [ngModel]="(userSpecialty$ | async).id"
+                    (ngModelChange)="onChangeSpecialty($event)"
+                    class="ui fluid dropdown"
+                  >
+                    <option value="null" selected>بدون تخصص</option>
+                    <option
+                      *ngFor="let spec of specialties$ | async"
+                      [value]="spec.id"
+                      >{{ spec.name }}</option
+                    >
                   </select>
                 </div>
               </div>
@@ -69,7 +76,7 @@
       </div>
     </div>
     <div class="actions">
-      <div class="ui labeled icon button">
+      <div class="ui labeled icon button" (click)="onResetApp()">
         بله، مطمئنم
         <i class="checkmark icon"></i>
       </div>

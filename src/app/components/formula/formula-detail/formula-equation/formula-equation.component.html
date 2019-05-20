@@ -16,5 +16,11 @@
   <div *ngFor="let input of formula.form.inputs">
     <span>{{ input.title }}</span>
     <input [formControlName]="input.name" type="number" />
+    <button
+      *ngIf="convertableTypes.includes(input.type)"
+      (click)="onConvert(input)"
+    >
+      تبدیل
+    </button>
   </div>
 </div>

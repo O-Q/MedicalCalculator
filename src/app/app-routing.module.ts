@@ -10,7 +10,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'formula',
+    redirectTo: 'formula/list',
     pathMatch: 'full'
   },
   { path: 'first-time', component: FirstTimeComponent },

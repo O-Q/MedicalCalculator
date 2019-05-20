@@ -1,3 +1,11 @@
-<p>
-  footer-result works!
-</p>
+<div *ngIf="result$ | async as result">
+  <p>
+    {{ result.value }}
+  </p>
+  <p>
+    {{ result.unit }}
+  </p>
+  <p>
+    {{ result.desc }}
+  </p>
+</div>

@@ -1,9 +1,15 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  Output
+} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Subject, BehaviorSubject } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
 import { ToolbarType } from 'src/app/constants/toolbar.constant';
 import { FormulaListRegex } from 'src/app/constants/regex.constant';
+import { BaseService } from 'src/app/Services/base.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +22,8 @@ export class ToolbarComponent {
   @Input() sidenav: MatSidenav;
   mode$ = new Subject<ToolbarType>();
   url$ = new BehaviorSubject(null);
-  constructor(public router: Router) {
+  constructor(public router: Router, private base: BaseService) {
+    this.mode$.subscribe(x => this.base.isSearchActive.next(x === 'search'));
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const url = event.urlAfterRedirects;

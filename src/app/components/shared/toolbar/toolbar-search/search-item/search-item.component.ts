@@ -1,4 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import {
   IFormulaStorage,
   FormulaService
@@ -9,7 +14,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
-  styleUrls: ['./search-item.component.less']
+  styleUrls: ['./search-item.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchItemComponent implements OnInit {
   @Input() formula: IFormulaStorage;

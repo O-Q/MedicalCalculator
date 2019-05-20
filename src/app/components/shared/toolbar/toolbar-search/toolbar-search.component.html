@@ -9,7 +9,7 @@
           <input
             type="search"
             placeholder="به دنبال فرمول خود بگرد"
-            (keyup.enter)="onChangeInput($event)"
+            [formControl]="input"
           />
         </div>
       </div>

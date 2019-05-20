@@ -5,6 +5,8 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { IFormula } from 'src/app/models/database.model';
+import { IResult } from 'src/app/models/result.model';
+
 import {
   FormGroup,
   FormBuilder,
@@ -39,22 +41,27 @@ export class FormulaEquationComponent implements OnInit {
         validators: [Validators.required]
       });
     });
-    this.form = this.fb.group([{ formControls }]);
-    this.form.statusChanges.subscribe((status: string) => {
-      console.log('form status changes provoke!');
+    this.form = this.fb.group({ ...formControls });
 
+    this.form.statusChanges.subscribe((status: string) => {
       if (status === 'VALID') {
         const values: number[] = [];
         // tslint:disable-next-line: forin
         for (const controlName in formControls) {
           values.push(+this.form.value[controlName]);
         }
-        const result = this.calc[this.formula.id](...values);
-        console.log(result);
+        const resultEq = +this.calc[this.formula.id](...values).toFixed(2);
+
         for (const c of this.formula.result.classes) {
           // maybe is not a number. convert with + needed
-          if (result > c.lowRange && result < c.highRange) {
-            console.log(c.desc);
+          if (resultEq > c.lowRange && resultEq < c.highRange) {
+            const _result: IResult = {
+              value: resultEq,
+              desc: c.desc,
+              unit: this.formula.result.unit
+            };
+            console.log(_result);
+            this.calc.result.next(_result);
             break;
           }
         }

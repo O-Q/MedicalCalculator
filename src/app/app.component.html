@@ -4,7 +4,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-toolbar [sidenav]="sidenav"></app-toolbar>
-    <div class="outlet-container">
+    <div
+      class="outlet-container"
+      [ngClass]="{ dimmer: isSearchActive | async }"
+    >
       <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>

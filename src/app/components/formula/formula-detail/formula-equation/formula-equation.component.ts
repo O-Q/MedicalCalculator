@@ -39,7 +39,9 @@ export class FormulaEquationComponent implements OnInit {
         validators: [Validators.required]
       });
     });
-    this.form = this.fb.group([{ formControls }]);
+    this.form = this.fb.group({ ...formControls });
+    console.log(this.form);
+
     this.form.statusChanges.subscribe((status: string) => {
       console.log('form status changes provoke!');
 

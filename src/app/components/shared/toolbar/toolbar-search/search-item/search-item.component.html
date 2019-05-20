@@ -1,8 +1,3 @@
-<div (click)="onFavoriteClick()" class="left floated content animated fadeIn">
-  <i
-    [ngClass]="(isFavorite | async) ? 'yellow star icon' : 'star outline icon'"
-  ></i>
-</div>
 <div
   (click)="onItemClick(formula.id)"
   class="middle aligned content animated slideInRight"
@@ -13,4 +8,9 @@
   <div class="desc">
     {{ formula.desc }}
   </div>
+</div>
+<div (click)="onFavoriteClick()" class="left floated content animated fadeIn">
+  <i
+    [ngClass]="(isFavorite | async) ? 'yellow star icon' : 'star outline icon'"
+  ></i>
 </div>

@@ -12,7 +12,7 @@
     background-color: @primary;
 
     .backward {
-      color: @primary-text;
+      color: @secondary-dark;
       margin: auto 5px auto 13px;
       font-size: 23px;
 
@@ -45,11 +45,13 @@
     .search-result-row {
       // animation: slideDown 1.5s 1 both;
       overflow-y: scroll;
-      max-height: 78vh;
+      max-height: 55vh;
     }
-
-    i.star {
-      font-size: large;
+    app-search-item {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
     }
   }
 

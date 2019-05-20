@@ -1,4 +1,20 @@
 <p>
   formula-equation works!
 </p>
+<!-- must move to toolbar -->
 <button routerLink="./" fragment="info">info</button>
+<!-- DEMO -->
+<div [formGroup]="form">
+  <div *ngFor="let select of formula.form.selects">
+    <span>{{ select.title }}</span>
+    <select [formControlName]="select.name">
+      <option *ngFor="let option of select.options" [value]="option.value">{{
+        option.viewValue
+      }}</option>
+    </select>
+  </div>
+  <div *ngFor="let input of formula.form.inputs">
+    <span>{{ input.title }}</span>
+    <input [formControlName]="input.name" type="number" />
+  </div>
+</div>

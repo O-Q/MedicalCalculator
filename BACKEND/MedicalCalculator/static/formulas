@@ -41,14 +41,6 @@
           "type": "density",
           "hint": "به طور نرمال(62-115)",
           "tip": ""
-        },
-        {
-          "name": "height",
-          "title": "قد",
-          "unit": "سانتی‌متر",
-          "type": "height",
-          "hint": "به طور نرمال(152-213)",
-          "tip": ""
         }
       ]
     },
@@ -87,27 +79,27 @@
         {
           "lowRange": 0,
           "highRange": 15,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 15,
           "highRange": 29,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 30,
           "highRange": 59,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 60,
           "highRange": 89,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 90,
           "highRange": 100000,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         }
       ]
     }

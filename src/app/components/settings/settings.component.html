@@ -1,4 +1,81 @@
-<p>
-  settings works!
-</p>
-<router-outlet></router-outlet>
+<div class="ui container">
+  <div class="sixteen wide column">
+    <div class="ui header">
+      حساب
+    </div>
+    <div class="ui list">
+      <div class="item">
+        <i class="user icon"></i>
+        <div class="content">
+          <div class="header">نام</div>
+        </div>
+      </div>
+      <div class="item">
+        <i class="user icon"></i>
+        <div class="content">
+          <div class="header">نام خانوادگی</div>
+        </div>
+      </div>
+      <div class="item">
+        <i class="stethoscope icon"></i>
+        <div class="content">
+          <div class="header">تخصص</div>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui header">
+        دیگر
+      </div>
+      <div class="ui list">
+        <div class="item">
+          <i class="stethoscope icon"></i>
+          <div class="content">
+            <div class="header">
+              تخصص
+              <div class="left floated" style="margin-top: -10px;">
+                <div class="field">
+                  <select class="ui fluid dropdown">
+                    <option value="">تخصص</option>
+                    <option value="بیهوشی">بیهوشی</option>
+                    <option value="روانشناسی">روانشناسی</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+      <div class="ui header">
+        بازنشانی
+        <div class="sub header" style="padding-top: 10px;">
+          با زدن دکمه زیر اپلیکیشن پیشرو را بازنشانی کنید.
+        </div>
+      </div>
+      <div class="sixteen wide column">
+        <button class="ui negative button fluid">بازنشانی</button>
+      </div>
+    </div>
+  </div>
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header" style="padding-right: 50px !important;">
+      بازنشانی
+    </div>
+    <div class="image content">
+      <div class="description">
+        <div class="ui header">آیا مطمئن هستید؟</div>
+        <p>با بازنشانی اپلیکیشن پیشرو تنظیمات شما از بین می‌رود</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui labeled icon button">
+        بله، مطمئنم
+        <i class="checkmark icon"></i>
+      </div>
+      <div class="ui red deny button">
+        نه
+      </div>
+    </div>
+  </div>
+</div>

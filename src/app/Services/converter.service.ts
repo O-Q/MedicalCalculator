@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ConvertorService {
+export class ConverterService {
   // weight
   lbs2kg(lbs: number) {
     return +(lbs / 2.2046).toFixed(1);

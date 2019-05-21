@@ -26,7 +26,9 @@ export class FormulaEquationComponent implements OnInit {
   @Input() formula: IFormula;
   convertableTypes = convertable;
   form: FormGroup;
-  isDefaultUnitInput: { [name: string]: boolean } = {};
+  isDefaultUnitInput: {
+    [name: string]: { isDefault: boolean; type: string };
+  } = {};
   constructor(
     private fb: FormBuilder,
     private calc: FormulaCalculatorService,
@@ -44,17 +46,29 @@ export class FormulaEquationComponent implements OnInit {
       formControls[input.name] = new FormControl('', {
         validators: [Validators.required]
       });
-      this.isDefaultUnitInput[input.name] = true;
+      this.isDefaultUnitInput[input.name] = {
+        isDefault: true,
+        type: input.type
+      };
     });
     this.form = this.fb.group({ ...formControls });
 
     this.form.statusChanges.subscribe((status: string) => {
       if (status === 'VALID') {
         const values: number[] = [];
+
         // key iteration
         // tslint:disable-next-line: forin
         for (const controlName in formControls) {
-          values.push(+this.form.value[controlName]);
+          const input = this.isDefaultUnitInput[controlName];
+          if (input && input.isDefault === false) {
+            const _newValue = this.converter[
+              `${Units[input.type].secondary}2${Units[input.type].default}`
+            ](+this.form.value[controlName]);
+            values.push(+_newValue);
+          } else {
+            values.push(+this.form.value[controlName]);
+          }
         }
         // calculate formula with calling method with ID!
         const resultEq = +this.calc[this.formula.id](...values).toFixed(2);
@@ -80,12 +94,12 @@ export class FormulaEquationComponent implements OnInit {
     let _newValue: number;
     const _defaultType = Units[input.type].default;
     const _secondaryType = Units[input.type].secondary;
-    if (this.isDefaultUnitInput[inputName]) {
+    if (this.isDefaultUnitInput[inputName].isDefault) {
       _newValue = this.converter[`${_defaultType}2${_secondaryType}`](_value);
-      this.isDefaultUnitInput[inputName] = false;
+      this.isDefaultUnitInput[inputName].isDefault = false;
     } else {
       _newValue = this.converter[`${_secondaryType}2${_defaultType}`](_value);
-      this.isDefaultUnitInput[inputName] = true;
+      this.isDefaultUnitInput[inputName].isDefault = true;
     }
     this.form.get(inputName).setValue(_newValue);
   }

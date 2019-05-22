@@ -38,6 +38,8 @@ export class FormulaEquationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    $('.ui.dropdown').dropdown();
+
     const formControls: { [name: string]: FormControl } = {};
     this.formula.form.selects.forEach(select => {
       formControls[select.name] = new FormControl('', {
@@ -91,7 +93,6 @@ export class FormulaEquationComponent implements OnInit {
         }
       }
     });
-    $('.ui.dropdown').dropdown();
   }
 
   /**

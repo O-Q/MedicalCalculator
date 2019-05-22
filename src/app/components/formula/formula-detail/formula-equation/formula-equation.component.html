@@ -107,8 +107,16 @@
                 </div>
               </div>
               <div class="sixteen wide column" style="text-align: left;">
-                <div>
-                  {{ input.hint }}
+                <div *ngIf="input.hint">
+                  <a class="ui circular icon right">
+                    <i
+                      #tooltip="matTooltip"
+                      [matTooltip]="input.hint"
+                      matTooltipPosition="after"
+                      class="question circle outline icon"
+                      (click)="tooltip.toggle()"
+                    ></i>
+                  </a>
                 </div>
               </div>
             </div>

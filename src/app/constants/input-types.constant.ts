@@ -4,7 +4,7 @@ export enum UnitTypes {
   AGE = 'age',
   HEIGHT = 'height',
   DENSITY = 'density',
-  INV_DENSITY = 'invDensity',
+  INV_DENSITY = 'InvDensity',
   VOLUME = 'volume',
   PRESSURE = 'pressure'
 }

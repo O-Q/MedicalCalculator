@@ -24,24 +24,30 @@
           <div class="sixteen wide field">
             <div class="ui grid" style="width: 100%">
               <div class="sixteen wide row">
-                <div class="ten wide right floated column" style="padding-top: 10px;">
+                <div
+                  class="ten wide right floated column"
+                  style="padding-top: 10px;"
+                >
                   <label>
-                    {{ select.title }}<span *ngIf="select.unit != ''">({{select.unit}})</span>
+                    {{ select.title }}
+                    <!-- <span *ngIf="select.unit != ''">({{ select.unit }})</span> -->
                   </label>
                 </div>
                 <div class="six wide left floated column">
                   <div>
                     <select [formControlName]="select.name" class="ui dropdown">
-                      <option *ngFor="let option of select.options" [value]="option.value">{{
-                      option.viewValue
-                    }}</option>
+                      <option
+                        *ngFor="let option of select.options"
+                        [value]="option.value"
+                        >{{ option.viewValue }}</option
+                      >
                     </select>
                   </div>
                 </div>
               </div>
               <div class="sixteen wide column" style="text-align: left;">
                 <div>
-                  {{select.hint}}
+                  {{ select.hint }}
                 </div>
               </div>
             </div>
@@ -58,20 +64,51 @@
           <div class="sixteen wide field">
             <div class="ui grid" style="width: 100%">
               <div class="sixteen wide row">
-                <div class="ten wide right floated column" style="padding-top: 10px;">
+                <div
+                  class="ten wide right floated column"
+                  style="padding-top: 10px;"
+                >
                   <label>
-                    {{ input.title }}<span *ngIf="input.unit != ''">({{input.unit}})</span>
+                    {{ input.title
+                    }}<span
+                      *ngIf="
+                        isDefaultUnitInput[input.name].isDefault;
+                        else secondary
+                      "
+                      >({{
+                        Units[isDefaultUnitInput[input.name].type]?.default
+                          | unitFa
+                      }})</span
+                    >
+                    <ng-template #secondary>
+                      <span
+                        >({{
+                          Units[isDefaultUnitInput[input.name].type]?.secondary
+                            | unitFa
+                        }})</span
+                      >
+                    </ng-template>
                   </label>
+                  <button
+                    *ngIf="convertableTypes.includes(input.type)"
+                    (click)="onConvert(input)"
+                  >
+                    t
+                  </button>
                 </div>
                 <div class="six wide left floated column">
                   <div class="ui input">
-                    <input [formControlName]="input.name" type="number" placeholder="{{ input.title }}" />
+                    <input
+                      [formControlName]="input.name"
+                      type="number"
+                      placeholder="{{ input.title }}"
+                    />
                   </div>
                 </div>
               </div>
               <div class="sixteen wide column" style="text-align: left;">
                 <div>
-                  {{input.hint}}
+                  {{ input.hint }}
                 </div>
               </div>
             </div>

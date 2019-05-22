@@ -1,6 +1,3 @@
-<p>
-  formula-detail works!
-</p>
 <div *ngIf="formula$ | async as formula">
   <div *ngIf="showInfo$ | async; else equation">
     <app-formula-info [formula]="formula"></app-formula-info>

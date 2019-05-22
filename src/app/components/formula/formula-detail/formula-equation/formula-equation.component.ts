@@ -26,6 +26,7 @@ import { ConverterService } from 'src/app/Services/converter.service';
 export class FormulaEquationComponent implements OnInit {
   @Input() formula: IFormula;
   convertableTypes = convertable;
+  Units = Units;
   form: FormGroup;
   isDefaultUnitInput: {
     [name: string]: { isDefault: boolean; type: string };
@@ -34,7 +35,7 @@ export class FormulaEquationComponent implements OnInit {
     private fb: FormBuilder,
     private calc: FormulaCalculatorService,
     private converter: ConverterService
-  ) { }
+  ) {}
 
   ngOnInit() {
     const formControls: { [name: string]: FormControl } = {};
@@ -47,6 +48,7 @@ export class FormulaEquationComponent implements OnInit {
       formControls[input.name] = new FormControl('', {
         validators: [Validators.required]
       });
+
       this.isDefaultUnitInput[input.name] = {
         isDefault: true,
         type: input.type

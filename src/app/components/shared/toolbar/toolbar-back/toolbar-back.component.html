@@ -1,4 +1,18 @@
 <div class="ui item">
-  <a (click)="onBack()"><i class="arrow right icon"></i></a>
+  <a (click)="onBack()" class="backward"><i class="arrow right icon"></i></a>
   <span class="back-title">{{ title$ | async }}</span>
+</div>
+<div *ngIf="isShowInfoIcon" style="display: flex; margin-right: auto;">
+  <a (click)="onFavorite()" class="favorite"
+    ><i
+      [ngClass]="
+        (isFavorite | async) ? 'yellow star icon' : 'star outline icon'
+      "
+    ></i
+  ></a>
+  <div class="info">
+    <a *ngIf="!(isInfo | async)" (click)="onInfo()"
+      ><i class="exclamation circle icon"></i
+    ></a>
+  </div>
 </div>

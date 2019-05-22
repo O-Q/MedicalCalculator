@@ -2,7 +2,9 @@ import {
   Component,
   Input,
   ChangeDetectionStrategy,
-  OnInit
+  OnInit,
+  ViewChild,
+  AfterViewInit
 } from '@angular/core';
 import { ToolbarType } from 'src/app/constants/toolbar.constant';
 import { Subject, BehaviorSubject } from 'rxjs';
@@ -13,7 +15,6 @@ import {
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
-import { BaseService } from 'src/app/Services/base.service';
 
 @Component({
   selector: 'app-toolbar-search',
@@ -21,19 +22,22 @@ import { BaseService } from 'src/app/Services/base.service';
   styleUrls: ['./toolbar-search.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarSearchComponent implements OnInit {
+export class ToolbarSearchComponent implements OnInit, AfterViewInit {
   @Input() mode$: Subject<ToolbarType>;
   allResults = new BehaviorSubject<IFormulaStorage[]>(null);
   specialtyResults = new BehaviorSubject<IFormulaStorage[]>(null);
   favoriteResults = new BehaviorSubject<IFormulaStorage[]>(null);
   recentResults = new BehaviorSubject<IFormulaStorage[]>(null);
   input = new FormControl('');
-
+  @ViewChild('inputTag') inputTag;
   constructor(private formulaService: FormulaService, private router: Router) {}
   ngOnInit(): void {
     this.input.valueChanges
       .pipe(debounceTime(1000))
       .subscribe(text => this.onChangeInput(text));
+  }
+  ngAfterViewInit(): void {
+    this.inputTag.nativeElement.focus();
   }
 
   hideSearchBar() {

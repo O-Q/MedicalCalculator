@@ -13,31 +13,74 @@ const routes: Routes = [
     redirectTo: 'formula/list',
     pathMatch: 'full'
   },
-  { path: 'first-time', component: FirstTimeComponent },
+  {
+    path: 'first-time',
+    component: FirstTimeComponent,
+    data: {
+      title: 'به برنامه خوش آمدید',
+      description: 'صفحه اصلی'
+    }
+  },
   {
     path: 'formula',
     loadChildren: 'src/app/components/formula/formula.module#FormulaModule',
-    canActivate: [MobileGuard]
+    canActivate: [MobileGuard],
+    data: {
+      title: 'فرمول‌ها',
+      description: 'صفحه اصلی'
+    }
   },
   {
     path: 'settings',
     loadChildren: 'src/app/components/settings/settings.module#SettingsModule',
-    canActivate: [MobileGuard]
+    canActivate: [MobileGuard],
+    data: {
+      title: 'تنظیمات',
+      description: 'صفحه جانبی'
+    }
   },
-  { path: 'about-us', component: AboutComponent },
-  { path: 'help', component: HelpComponent },
-  { path: 'contact-us', component: ContactUsComponent },
+  {
+    path: 'about-us',
+    component: AboutComponent,
+    data: {
+      title: 'درباره ما',
+      description: 'صفحه جانبی'
+    }
+  },
+  {
+    path: 'help',
+    component: HelpComponent,
+    data: {
+      title: 'راهنمایی',
+      description: 'صفحه جانبی'
+    }
+  },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent,
+    data: {
+      title: 'تماس با ما',
+      description: 'صفحه جانبی'
+    }
+  },
   {
     path: 'not-found',
     component: ErrorComponent,
-    data: { codeError: 404, messageError: 'صفحه مورد نظر پیدا نشد.' }
+    data: {
+      codeError: 404,
+      messageError: 'صفحه مورد نظر پیدا نشد.',
+      title: 'پیدا نشد',
+      description: 'خطا'
+    }
   },
   {
     path: 'incompatible-device',
     component: ErrorComponent,
     data: {
       codeError: 423,
-      messageError: 'در حال حاضر این برنامه فقط در تلفن همراه قابل اجراست.'
+      messageError: 'در حال حاضر این برنامه فقط در تلفن همراه قابل اجراست.',
+      title: 'دستگاه ناسازگار',
+      description: 'خطا'
     }
   },
   { path: '**', redirectTo: 'not-found' }

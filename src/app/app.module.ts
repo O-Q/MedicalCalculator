@@ -32,7 +32,7 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('./ngsw-worker.js', {
       enabled: environment.production
     })
   ],

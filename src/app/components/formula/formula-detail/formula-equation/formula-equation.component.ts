@@ -62,6 +62,7 @@ export class FormulaEquationComponent implements OnInit {
         for (const controlName in formControls) {
           const input = this.isDefaultUnitInput[controlName];
           if (input && input.isDefault === false) {
+            // Call method to convert input value to default
             const _newValue = this.converter[
               `${Units[input.type].secondary}2${Units[input.type].default}`
             ](+this.form.value[controlName]);
@@ -88,6 +89,10 @@ export class FormulaEquationComponent implements OnInit {
       }
     });
   }
+
+  /**
+   * Check whether input unit is default or not. afterwards, convert it to another unit.
+   */
   onConvert(input: IInput) {
     const inputName = input.name;
     const _value = +this.form.value[inputName];

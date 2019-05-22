@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { IFormula, IInput } from 'src/app/models/database.model';
 import { IResult } from 'src/app/models/result.model';
+declare var $: any;
 
 import {
   FormGroup,
@@ -33,7 +34,7 @@ export class FormulaEquationComponent implements OnInit {
     private fb: FormBuilder,
     private calc: FormulaCalculatorService,
     private converter: ConverterService
-  ) {}
+  ) { }
 
   ngOnInit() {
     const formControls: { [name: string]: FormControl } = {};
@@ -88,6 +89,7 @@ export class FormulaEquationComponent implements OnInit {
         }
       }
     });
+    $('.ui.dropdown').dropdown();
   }
 
   /**

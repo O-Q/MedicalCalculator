@@ -15,12 +15,54 @@ const routes: Routes = [
     path: '',
     component: FormulaComponent,
     children: [
-      { path: 'list', redirectTo: 'list/favorites' },
-      { path: 'list/all', component: FormulaListComponent },
-      { path: 'list/favorites', component: FormulaListComponent },
-      { path: 'list/recents', component: FormulaListComponent },
-      { path: 'list/specialties', component: FormulaListComponent },
-      { path: 'detail/:id', component: FormulaDetailComponent }
+      {
+        path: 'list',
+        redirectTo: 'list/favorites',
+        data: {
+          title: 'لیست',
+          description: 'لیست فرمول‌ها'
+        }
+      },
+      {
+        path: 'list/all',
+        component: FormulaListComponent,
+        data: {
+          title: 'همه',
+          description: 'لیست فرمول‌ها'
+        }
+      },
+      {
+        path: 'list/favorites',
+        component: FormulaListComponent,
+        data: {
+          title: 'علاقه‌مندی',
+          description: 'لیست فرمول‌ها'
+        }
+      },
+      {
+        path: 'list/recents',
+        component: FormulaListComponent,
+        data: {
+          title: 'اخیر',
+          description: 'لیست فرمول‌ها'
+        }
+      },
+      {
+        path: 'list/specialties',
+        component: FormulaListComponent,
+        data: {
+          title: 'تخصص',
+          description: 'لیست فرمول‌ها'
+        }
+      },
+      {
+        path: 'detail/:id',
+        component: FormulaDetailComponent,
+        data: {
+          title: 'محاسبه‌گر فرمول',
+          description: 'جزئیات فرمول'
+        }
+      }
     ]
   }
 ];

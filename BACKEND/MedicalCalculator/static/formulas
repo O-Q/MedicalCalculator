@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Creatinine Clearance",
-    "desc": "Renal function assessmet.",
+    "desc": "ارزیابی عملکرد کلیه",
     "specialtyIds": [1],
     "form": {
       "selects": [
@@ -37,17 +37,9 @@
         {
           "name": "creatinine",
           "title": "کراتینین",
-          "unit": "میکرومول در لیتر",
+          "unit": "میکرومول بر لیتر",
           "type": "density",
           "hint": "به طور نرمال(62-115)",
-          "tip": ""
-        },
-        {
-          "name": "height",
-          "title": "قد",
-          "unit": "سانتی‌متر",
-          "type": "height",
-          "hint": "به طور نرمال(152-213)",
           "tip": ""
         }
       ]
@@ -79,35 +71,35 @@
         "validation": []
       },
       "creatorId": 1,
-      "pearlsPitfalls": "از Dan Brown، pharmD در دانشگاه  Palm Beach Atlantic University، نویسنده اصلی  مقاله محدوده عملکردی creatinine clearance می گوید:\n معادله Cockcroft-Gault به عنوان یک استاندارد طلایی بعد از تقریبا 40 سال باقی می ماند ؛ علی رغم اشتباهاتی  که ناشی از  تغییرات در ترکیبات بدن در میان بیماران است."
+      "pearlsPitfalls": "از Dan Brown، pharmD در دانشگاه  Palm Beach Atlantic University، نویسنده اصلی مقاله محدوده عملکردی creatinine clearance می گوید:\n معادله Cockcroft-Gault به عنوان یک استاندارد طلایی بعد از تقریبا 40 سال باقی می ماند ؛ علی رغم اشتباهاتی  که ناشی از  تغییرات در ترکیبات بدن در میان بیماران است."
     },
     "result": {
-      "unit": "میلی لیتر بر دقیقه",
+      "unit": "میلی‌لیتر بر دقیقه",
       "classes": [
         {
           "lowRange": 0,
           "highRange": 15,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 15,
           "highRange": 29,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 30,
           "highRange": 59,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 60,
           "highRange": 89,
-          "desc": ""
+          "desc": "آزادسازی کراتینین"
         },
         {
           "lowRange": 90,
-          "highRange": 100000000,
-          "desc": ""
+          "highRange": 100000,
+          "desc": "آزادسازی کراتینین"
         }
       ]
     }
@@ -115,7 +107,7 @@
   {
     "id": 2,
     "name": "ARISCAT",
-    "desc": "Post-op pulmonary complications.",
+    "desc": "عوارض ریوی بعد از عمل",
     "specialtyIds": [2],
 
     "form": {
@@ -292,7 +284,7 @@
         },
         {
           "lowRange": 45,
-          "highRange": 100000000,
+          "highRange": 100000,
           "desc": "ریسک بالا"
         }
       ]
@@ -301,7 +293,7 @@
   {
     "id": 3,
     "name": "NAFLD",
-    "desc": "Diagnoses steatohepatitis, based on histology.",
+    "desc": "تشخیص بافت‌شناسی استئاتوهپاتیت",
     "specialtyIds": [3],
     "form": {
       "selects": [
@@ -351,19 +343,19 @@
             }
           ],
           "hint": "",
-          "tip": "ارزیابی کلی همه کانون های التهابی"
+          "tip": "ارزیابی کلی همه کانون‌های التهابی"
         },
         {
           "name": "liverCellInjury",
-          "title": "آسیب سلول های کبدی",
+          "title": "آسیب سلول‌های کبدی",
           "options": [
             {
               "value": 0,
-              "viewValue": "جند سلول بالون"
+              "viewValue": "چند سلول بالون"
             },
             {
               "value": 2,
-              "viewValue": "بسیاری از سلول ها"
+              "viewValue": "بسیاری از سلول‌ها"
             }
           ],
           "hint": "",
@@ -374,13 +366,13 @@
     },
     "info": {
       "nextstep": {
-        "advice": "آیا از نمره ی فعالیت NAFLD استفاده می کنید و می خواهید تخصص خود را به اشتراک بگذارید",
+        "advice": "آیا از نمره‌ی فعالیت NAFLD استفاده می کنید و می‌خواهید تخصص خود را به اشتراک بگذارید",
         "management": "",
         "criticalActions": ""
       },
       "evidence": {
         "formula": "",
-        "factsAndFigure": "توجه: نمره با تشخیص استاتو هپاتیت ارتباط دارد، اما نباید برای تشخیص دقیق NASH استفاده شود.",
+        "factsAndFigure": "توجه: نمره با تشخیص استئاتوهپاتیت ارتباط دارد، اما نباید برای تشخیص دقیق NASH استفاده شود.",
         "evidenceAppraisal": "",
         "literature": [
           {
@@ -420,7 +412,7 @@
         {
           "lowRange": 6,
           "highRange": 8,
-          "desc": "فعالیت نشان دار"
+          "desc": "فعالیت نشان‌دار"
         }
       ]
     }
@@ -428,7 +420,7 @@
   {
     "id": 4,
     "name": "Plasma Dosage",
-    "desc": "دوز پلاسما برای انتقال خون در بیماران مبتلا به خونریزی فعال",
+    "desc": "دوز تزریق پلاسما",
     "specialtyIds": [4],
     "form": {
       "selects": [],
@@ -444,15 +436,15 @@
         {
           "name": "desiredPlasmaDose",
           "title": "مقدار پلاسمای مطلوب",
-          "unit": "میلی لیتر بر کیلوگرم",
-          "type": "InvDensi",
+          "unit": "میلی‌لیتر بر کیلوگرم",
+          "type": "InvDensity",
           "hint": "",
           "tip": ""
         },
         {
           "name": "unitVolume",
           "title": "حجم واحد",
-          "unit": "میلی لیتر",
+          "unit": "میلی‌لیتر",
           "type": "volume",
           "hint": "",
           "tip": ""
@@ -491,7 +483,7 @@
       "classes": [
         {
           "lowRange": 0,
-          "highRange": 100000000,
+          "highRange": 100000,
           "desc": "دوز تزریق پلاسما"
         }
       ]
@@ -500,7 +492,7 @@
   {
     "id": 5,
     "name": "ABCD² Score for TIA",
-    "desc": "دوز پلاسما برای انتقال خون در بیماران مبتلا به خونریزی فعال",
+    "desc": "ریسک سکته‌ی مغزی بعد از TIA",
     "specialtyIds": [5],
     "form": {
       "selects": [
@@ -538,7 +530,7 @@
         },
         {
           "name": "clinicalTIA",
-          "title": "ویژگی های بالینی TIA",
+          "title": "ویژگی‌های بالینی TIA",
           "options": [
             {
               "value": 0,
@@ -646,7 +638,7 @@
   {
     "id": 6,
     "name": "CHADS₂ Score-AFS Risk",
-    "desc": "برآورد خطر سکته مغزی در بیماران مبتلا به فیبریلاسیون دهلیزی.",
+    "desc": "ریسک سکته‌ی مغزی در بیماران فیبریلاسیون دهلیزی",
     "specialtyIds": [6],
     "form": {
       "selects": [

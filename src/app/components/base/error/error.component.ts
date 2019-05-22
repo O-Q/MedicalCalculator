@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +10,5 @@ import { Observable } from 'rxjs';
 })
 export class ErrorComponent {
   dataError$: Observable<Data> = this.route.data;
-  constructor(private route: ActivatedRoute, private title: Title) {
-    this.title.setTitle('خطا - صفحه مورد نظر پیدا نشد!');
-  }
+  constructor(private route: ActivatedRoute) {}
 }

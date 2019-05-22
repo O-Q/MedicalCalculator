@@ -7,9 +7,10 @@
       <div class="ui right aligned category search item">
         <div class="ui transparent icon input">
           <input
+            #inputTag
             type="search"
             placeholder="به دنبال فرمول خود بگرد"
-            (keyup.enter)="onChangeInput($event)"
+            [formControl]="input"
           />
         </div>
       </div>

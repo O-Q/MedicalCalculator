@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { IResult } from 'src/app/models/result.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormulaCalculatorService {
+  result = new Subject<IResult>();
   constructor() {}
   private getSum(total: number, arg: number) {
     return total + arg;

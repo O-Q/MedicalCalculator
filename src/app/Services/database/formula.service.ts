@@ -16,7 +16,7 @@ export class FormulaService {
   favorites$ = this.favorites.asObservable();
   specialties$ = this.specialties.asObservable();
   all$ = this.all.asObservable();
-  activeFormula = new Subject();
+  activeFormula = new Subject<IFormulaStorage>();
   recentLimit = 10;
   constructor(private database: DatabaseService, private toast: ToastService) {
     this.updateSpecialtiesSummary();
@@ -24,7 +24,11 @@ export class FormulaService {
 
   async get(formulaId: number): Promise<IFormula> {
     return this.database.formulas.get(formulaId).then(formula => {
-      this.activeFormula.next(formula.name);
+      this.activeFormula.next({
+        id: formula.id,
+        name: formula.name,
+        desc: formula.desc
+      });
       return formula;
     });
   }

@@ -16,11 +16,13 @@
         </div>
       </div>
       <div class="content">
-        <span class="left floated">
+        <span
+          class="left floated"
+          (click)="sidenav.close()"
+          routerLink="/settings"
+        >
           {{ 'تخصص: ' + ((userSpecialty$ | async)?.name || 'بدون تخصص') }}
-          <a (click)="sidenav.close()" routerLink="/first-time"
-            ><i class="edit icon"></i
-          ></a>
+          <a><i class="edit icon"></i></a>
         </span>
       </div>
     </div>

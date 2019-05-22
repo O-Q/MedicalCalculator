@@ -1,9 +1,5 @@
-<p>
-  formula-equation works!
-</p>
-
 <!-- DEMO -->
-<div [formGroup]="form">
+<!-- <div [formGroup]="form">
   <div *ngFor="let select of formula.form.selects">
     <span>{{ select.title }}</span>
     <select [formControlName]="select.name">
@@ -15,11 +11,74 @@
   <div *ngFor="let input of formula.form.inputs">
     <span>{{ input.title }}</span>
     <input [formControlName]="input.name" type="number" />
-    <button
-      *ngIf="convertableTypes.includes(input.type)"
-      (click)="onConvert(input)"
-    >
+    <button *ngIf="convertableTypes.includes(input.type)" (click)="onConvert(input)">
       تبدیل
     </button>
+  </div>
+</div> -->
+<div [formGroup]="form">
+  <div *ngFor="let select of formula.form.selects">
+    <div class="sixteen wide column">
+      <div class="ui form">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <div class="ui grid" style="width: 100%">
+              <div class="sixteen wide row">
+                <div class="ten wide right floated column" style="padding-top: 10px;">
+                  <label>
+                    {{ select.title }}<span *ngIf="select.unit != ''">({{select.unit}})</span>
+                  </label>
+                </div>
+                <div class="six wide left floated column">
+                  <div>
+                    <select [formControlName]="select.name" class="ui dropdown">
+                      <option *ngFor="let option of select.options" [value]="option.value">{{
+                      option.viewValue
+                    }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="sixteen wide column" style="text-align: left;">
+                <div>
+                  {{select.hint}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+    </div>
+  </div>
+  <div *ngFor="let input of formula.form.inputs">
+    <div class="sixteen wide column">
+      <div class="ui form">
+        <div class="inline fields">
+          <div class="sixteen wide field">
+            <div class="ui grid" style="width: 100%">
+              <div class="sixteen wide row">
+                <div class="ten wide right floated column" style="padding-top: 10px;">
+                  <label>
+                    {{ input.title }}<span *ngIf="input.unit != ''">({{input.unit}})</span>
+                  </label>
+                </div>
+                <div class="six wide left floated column">
+                  <div class="ui input">
+                    <input [formControlName]="input.name" type="number" placeholder="{{ input.title }}" />
+                  </div>
+                </div>
+              </div>
+              <div class="sixteen wide column" style="text-align: left;">
+                <div>
+                  {{input.hint}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+    </div>
   </div>
 </div>

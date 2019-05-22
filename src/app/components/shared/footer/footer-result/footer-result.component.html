@@ -1,4 +1,4 @@
-<div *ngIf="result$ | async as result">
+<!-- <div *ngIf="result$ | async as result">
   <p>
     {{ result.value }}
   </p>
@@ -8,4 +8,16 @@
   <p>
     {{ result.desc }}
   </p>
+</div>
+ -->
+<div class="ui grid">
+  <div class="six wide column">
+    نتیجه:
+  </div>
+  <div class="ten wide column" *ngIf="result$ | async as result">
+    {{ result.value }} {{ result.unit }}
+  </div>
+  <div class="sixteen wide column" *ngIf="result$ | async as result">
+    {{ result.desc }}
+  </div>
 </div>

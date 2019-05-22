@@ -18,7 +18,7 @@
       <div class="content">
         <span
           class="left floated"
-          (click)="sidenav.close()"
+          (click)="closeSidenav()"
           routerLink="/settings"
         >
           {{ 'تخصص: ' + ((userSpecialty$ | async)?.name || 'بدون تخصص') }}

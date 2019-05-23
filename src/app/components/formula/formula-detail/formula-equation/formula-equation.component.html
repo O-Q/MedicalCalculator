@@ -22,9 +22,11 @@
       <div class="ui form">
         <div class="inline fields">
           <div class="sixteen wide field">
-            <div class="ui grid" style="width: 100%">
+            <div class="ui grid"
+                 style="width: 100%">
               <div class="sixteen wide row">
-                <div class="ten wide right floated column" style="padding-top: 10px;">
+                <div class="ten wide right floated column"
+                     style="padding-top: 10px;">
                   <label>
                     {{ select.title }}
                     <!-- <span *ngIf="select.unit != ''">({{ select.unit }})</span> -->
@@ -32,14 +34,17 @@
                 </div>
                 <div class="six wide left floated column">
                   <div>
-                    <select [formControlName]="select.name" class="ui dropdown">
-                      <option *ngFor="let option of select.options" [value]="option.value">{{ option.viewValue }}
+                    <select [formControlName]="select.name"
+                            class="ui dropdown">
+                      <option *ngFor="let option of select.options"
+                              [value]="option.value">{{ option.viewValue }}
                       </option>
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="sixteen wide column" style="text-align: left;">
+              <div class="sixteen wide column"
+                   style="text-align: left;">
                 <div>
                   {{ select.hint }}
                 </div>
@@ -56,9 +61,11 @@
       <div class="ui form">
         <div class="inline fields">
           <div class="sixteen wide field">
-            <div class="ui grid" style="width: 100%">
+            <div class="ui grid"
+                 style="width: 100%">
               <div class="sixteen wide row">
-                <div class="ten wide right floated column" style="padding-top: 10px;">
+                <div class="ten wide right floated column"
+                     style="padding-top: 10px;">
                   <label>
                     {{ input.title
                     }}<span *ngIf="
@@ -75,22 +82,31 @@
                         }})</span>
                     </ng-template>
                   </label>
-                  <button *ngIf="convertableTypes.includes(input.type)" (click)="onConvert(input)"
-                    class="ui secondary button" style="margin-right: 5px;padding-top: 3px;padding-bottom: 3px;">
-                    <i class="icon exchange" style="margin: 0;"></i>
+                  <button *ngIf="convertableTypes.includes(input.type)"
+                          (click)="onConvert(input)"
+                          class="ui secondary button"
+                          style="margin-right: 5px;padding-top: 3px;padding-bottom: 3px;">
+                    <i class="icon exchange"
+                       style="margin: 0;"></i>
                   </button>
                 </div>
                 <div class="six wide left floated column">
                   <div class="ui input">
-                    <input [formControlName]="input.name" type="number" placeholder="{{ input.title }}" />
+                    <input [formControlName]="input.name"
+                           type="number"
+                           placeholder="{{ input.title }}" />
                   </div>
                 </div>
               </div>
-              <div class="sixteen wide column" style="text-align: left;">
+              <div class="sixteen wide column"
+                   style="text-align: left;">
                 <div *ngIf="input.hint">
                   <a class="ui circular icon right">
-                    <i #tooltip="matTooltip" [matTooltip]="input.hint" matTooltipPosition="after"
-                      class="question circle outline icon" (click)="tooltip.toggle()"></i>
+                    <i #tooltip="matTooltip"
+                       [matTooltip]="input.hint"
+                       matTooltipPosition="after"
+                       class="question circle outline icon"
+                       (click)="tooltip.toggle()"></i>
                   </a>
                 </div>
               </div>

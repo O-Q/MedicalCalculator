@@ -13,12 +13,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./formula-info.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormulaInfoComponent implements OnInit {
+export class FormulaInfoComponent {
   @Input() formula: IFormula;
-
   constructor(private location: Location) {}
 
-  ngOnInit() {}
   onBack() {
     this.location.back();
   }

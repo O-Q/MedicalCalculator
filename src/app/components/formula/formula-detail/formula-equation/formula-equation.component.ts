@@ -35,7 +35,7 @@ export class FormulaEquationComponent implements OnInit {
     private fb: FormBuilder,
     private calc: FormulaCalculatorService,
     private converter: ConverterService
-  ) {}
+  ) { }
 
   ngOnInit() {
     $('.ui.dropdown').dropdown();
@@ -93,6 +93,7 @@ export class FormulaEquationComponent implements OnInit {
         }
       }
     });
+    $('.ui.dropdown').dropdown();
   }
 
   /**

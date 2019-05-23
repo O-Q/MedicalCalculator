@@ -1,3 +1,103 @@
-<p>
-  formula-info works!
-</p>
+<div class="sixteen wide column">
+  <div class="row">
+    <div class="ui container"
+         style="padding-top: 20px;">
+      <div class="ui medium header">
+        مزایا و معایب
+      </div>
+      <p>
+        {{formula.info.pearlsPitfalls}}
+      </p>
+    </div>
+  </div>
+  <div class="ui divider fluid"></div>
+  <div class="row">
+    <div class="ui container">
+      <div class="ui medium header">
+        قدم بعد
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          پیشنهاد
+        </div>
+        <p>
+          {{formula.info.nextstep.advice}}
+        </p>
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          مدیریت
+        </div>
+        <p>
+          {{formula.info.nextstep.management}}
+        </p>
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          اعمال حساس
+        </div>
+        <p>
+          {{formula.info.nextstep.criticalActions}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="ui divider fluid"></div>
+  <div class="row">
+    <div class="ui container">
+      <div class="ui medium header">
+        مدارک
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          فرمول
+        </div>
+        <p class="formula">
+          {{formula.info.evidence.formula}}
+        </p>
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          آمار و ارقام
+        </div>
+        <p>
+          {{formula.info.evidence.factsAndFigure}}
+        </p>
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          ارزیابی شواهد
+        </div>
+        <p>
+          {{formula.info.evidence.evidenceAppraisal}}
+        </p>
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          ادبیات
+        </div>
+        <div *ngFor="let literature of formula.info.evidence.literature; last as isLast">
+          <p>
+            {{literature.desc}}
+          </p>
+          <a [href]="literature.link">لینک</a>
+          <div class="ui divider"
+               *ngIf="!isLast"></div>
+        </div>
+      </div>
+      <div class="ui segment">
+        <div class="ui tiny header">
+          اعتبار سنجی
+        </div>
+        <div *ngFor="let validation of formula.info.evidence.validation; last as isLast">
+          <p>
+            {{validation.desc}}
+          </p>
+          <a [href]="validation.link">لینک</a>
+          <div class="ui divider"
+               *ngIf="!isLast"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

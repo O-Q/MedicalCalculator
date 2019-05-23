@@ -40,11 +40,7 @@
                     class="ui fluid dropdown"
                   >
                     <option value="null" selected>بدون تخصص</option>
-                    <option
-                      *ngFor="let spec of specialties$ | async"
-                      [value]="spec.id"
-                      >{{ spec.name }}</option
-                    >
+                    <option *ngFor="let spec of specialties$ | async" [value]="spec.id">{{ spec.name }}</option>
                   </select>
                 </div>
               </div>

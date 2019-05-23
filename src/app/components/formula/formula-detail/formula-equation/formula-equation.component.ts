@@ -36,7 +36,7 @@ export class FormulaEquationComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private calc: FormulaCalculatorService,
     private converter: ConverterService
-  ) {}
+  ) { }
 
   ngOnInit() {
     const formControls: { [name: string]: FormControl } = {};
@@ -96,7 +96,7 @@ export class FormulaEquationComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     $('.ui.dropdown').dropdown();
-    // $('.ui.dropdown').css('position', 'inherit !important');
+    $('div.ui.dropdown').css('float', 'left');
   }
 
   /**

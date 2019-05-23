@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  AfterViewInit
 } from '@angular/core';
 import { IFormula, IInput } from 'src/app/models/database.model';
 import { IResult } from 'src/app/models/result.model';
@@ -23,7 +24,7 @@ import { ConverterService } from 'src/app/Services/converter.service';
   styleUrls: ['./formula-equation.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormulaEquationComponent implements OnInit {
+export class FormulaEquationComponent implements OnInit, AfterViewInit {
   @Input() formula: IFormula;
   convertableTypes = convertable;
   Units = Units;
@@ -38,8 +39,6 @@ export class FormulaEquationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    $('.ui.dropdown').dropdown();
-
     const formControls: { [name: string]: FormControl } = {};
     this.formula.form.selects.forEach(select => {
       formControls[select.name] = new FormControl('', {
@@ -93,7 +92,11 @@ export class FormulaEquationComponent implements OnInit {
         }
       }
     });
+  }
+
+  ngAfterViewInit(): void {
     $('.ui.dropdown').dropdown();
+    $('.ui.dropdown').css('position', 'inherit !important');
   }
 
   /**

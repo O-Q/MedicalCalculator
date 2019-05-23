@@ -9,7 +9,8 @@ import { FormulaEquationComponent } from './formula-detail/formula-equation/form
 import { FormulaInfoComponent } from './formula-detail/formula-info/formula-info.component';
 import { FormulaSearchComponent } from './formula-list/formula-search/formula-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { UnitFaPipe } from 'src/app/pipes/unit.pipe';
+import { MatTooltipModule } from '@angular/material';
 const routes: Routes = [
   {
     path: '',
@@ -74,8 +75,14 @@ const routes: Routes = [
     FormulaDetailComponent,
     FormulaEquationComponent,
     FormulaInfoComponent,
-    FormulaSearchComponent
+    FormulaSearchComponent,
+    UnitFaPipe
   ],
-  imports: [RouterModule.forChild(routes), CommonModule, ReactiveFormsModule]
+  imports: [
+    RouterModule.forChild(routes),
+    CommonModule,
+    ReactiveFormsModule,
+    MatTooltipModule
+  ]
 })
 export class FormulaModule {}

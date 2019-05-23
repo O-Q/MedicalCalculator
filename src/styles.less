@@ -3,46 +3,46 @@
 @import './app/Styles/_color.constant.less';
 
 @font-face {
-    font-family: 'IRANsans';
-    font-style: normal;
-    src: url('./assets/fonts/IRANSans.ttf');
+  font-family: 'IRANsans';
+  font-style: normal;
+  src: url('./assets/fonts/IRANSans.ttf');
 }
 
 body {
-    @import url('./app/Styles/_semantic-fix');
-    max-width: 1920px;
-    min-height: 100vh;
-    direction: rtl !important;
-    margin: 0 auto;
-    text-align: right !important;
+  @import url('./app/Styles/_semantic-fix');
+  max-width: 1920px;
+  min-height: 100vh;
+  direction: rtl !important;
+  margin: 0 auto;
+  text-align: right !important;
+  font-family: IRANSans !important;
+  font-weight: 300;
+  user-select: none;
+
+  div,
+  button,
+  a,
+  select,
+  option,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  text,
+  textarea {
     font-family: IRANSans !important;
-    font-weight: 300;
-    user-select: none;
 
-    div,
-    button,
-    a,
-    select,
-    option,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    input,
-    text,
-    textarea {
-        font-family: IRANSans !important;
-
-        &.primary-text {
-            color: @primary-text  !important;
-        }
-
-        &.secondary-text {
-            color: @secondary-text  !important;
-        }
+    &.primary-text {
+      color: @primary-text !important;
     }
+
+    &.secondary-text {
+      color: @secondary-text !important;
+    }
+  }
 }
 
 a {
@@ -55,21 +55,25 @@ a {
 }
 
 .primary-bg {
-    background-color: @primary  !important;
+  background-color: @primary !important;
 }
 
 .secondary-bg {
-    background-color: @secondary  !important;
+  background-color: @secondary !important;
 }
 
 .secondary-bg-light {
-    background-color: @secondary-light  !important;
+  background-color: @secondary-light !important;
 }
 
 .mat-drawer:not(.mat-drawer-side) {
-    position: fixed;
+  position: fixed;
 }
 
 .mat-drawer-backdrop {
-    position: fixed !important;
+  position: fixed !important;
+}
+.mat-tooltip {
+  direction: rtl;
+  font-size: 12px;
 }

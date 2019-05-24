@@ -2,3 +2,17 @@
   min-height: 50px;
   vertical-align: middle;
 }
+
+.ui.middle.aligned.celled.list {
+  animation: fromLeft 1s 1 both;
+  position: relative;
+
+  @keyframes fromLeft {
+    0% {
+      left: 100vw;
+    }
+    100% {
+      left: 0;
+    }
+  }
+}

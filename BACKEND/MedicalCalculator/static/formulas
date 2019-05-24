@@ -825,8 +825,8 @@
       "unit": "میلی‌متر جیوه",
       "classes": [
         {
-          "lowRange": 73,
-          "highRange": 93,
+          "lowRange": 0,
+          "highRange": 100000,
           "desc": "میانگین فشار عروق (MAP)"
         }
       ]

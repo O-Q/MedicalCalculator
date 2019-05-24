@@ -1,21 +1,3 @@
-<!-- DEMO -->
-<!-- <div [formGroup]="form">
-  <div *ngFor="let select of formula.form.selects">
-    <span>{{ select.title }}</span>
-    <select [formControlName]="select.name">
-      <option *ngFor="let option of select.options" [value]="option.value">{{
-        option.viewValue
-      }}</option>
-    </select>
-  </div>
-  <div *ngFor="let input of formula.form.inputs">
-    <span>{{ input.title }}</span>
-    <input [formControlName]="input.name" type="number" />
-    <button *ngIf="convertableTypes.includes(input.type)" (click)="onConvert(input)">
-      تبدیل
-    </button>
-  </div>
-</div> -->
 <div [formGroup]="form">
   <div style="padding-top: 20px;">
     <div *ngFor="let select of formula.form.selects">
@@ -23,28 +5,46 @@
         <div class="ui form">
           <div class="inline fields">
             <div class="sixteen wide field">
-              <div class="ui grid"
-                   style="width: 100%">
-                <div class="sixteen wide row">
-                  <div class="six wide right floated column"
-                       style="padding-top: 10px;">
+              <div class="ui grid" style="width: 100%">
+                <div class="sixteen wide row" style="flex-wrap: nowrap">
+                  <div
+                    class="six wide right floated select-label"
+                    style="padding: 10px 0 0 0;"
+                  >
                     <label>
                       {{ select.title }}
-                      <!-- <span *ngIf="select.unit != ''">({{ select.unit }})</span> -->
                     </label>
+                    <a
+                      *ngIf="select.tip"
+                      class="ui icon"
+                      (click)="tooltip.toggle()"
+                    >
+                      <div
+                        #tooltip="matTooltip"
+                        [matTooltip]="select.tip"
+                        matTooltipPosition="below"
+                        style="display: inherit"
+                      ></div>
+                      <i
+                        class="fitted circular labeled question circle icon"
+                      ></i>
+                    </a>
                   </div>
                   <div class="ten wide left floated column">
-                    <select [formControlName]="select.name"
-                            class="ui dropdown"
-                            style="float: left;">
-                      <option *ngFor="let option of select.options"
-                              [value]="option.value">{{ option.viewValue }}
+                    <select [formControlName]="select.name" class="ui dropdown">
+                      <option
+                        *ngFor="let option of select.options"
+                        [value]="option.value"
+                        >{{ option.viewValue }}
                       </option>
                     </select>
                   </div>
                 </div>
-                <div class="sixteen wide column"
-                     style="text-align: left;">
+                <div
+                  *ngIf="select.hint"
+                  class="sixteen wide column"
+                  style="text-align: left;"
+                >
                   <div>
                     {{ select.hint }}
                   </div>
@@ -61,53 +61,68 @@
         <div class="ui form">
           <div class="inline fields">
             <div class="sixteen wide field">
-              <div class="ui grid"
-                   style="width: 100%">
+              <div class="ui grid" style="width: 100%">
                 <div class="sixteen wide row">
-                  <div class="ten wide right floated column"
-                       style="padding-top: 10px;">
+                  <div
+                    class="ten wide right floated column"
+                    style="padding-top: 10px;"
+                  >
                     <label>
                       {{ input.title
-                      }}<span *ngIf="
+                      }}<span
+                        style="font-size: 12px;"
+                        *ngIf="
                           isDefaultUnitInput[input.name].isDefault;
                           else secondary
-                        ">({{
+                        "
+                      >
+                        ({{
                           Units[isDefaultUnitInput[input.name].type]?.default
                             | unitFa
-                        }})</span>
+                        }}<a
+                          *ngIf="convertableTypes.includes(input.type)"
+                          (click)="onConvert(input)"
+                          class="ui secondary"
+                          style="margin-right: 5px;padding-top: 3px;padding-bottom: 3px; font-size: 16px;"
+                        >
+                          <i
+                            class="icon circular exchange"
+                            style="margin: 0;"
+                          ></i> </a
+                        >)</span
+                      >
                       <ng-template #secondary>
-                        <span>({{
+                        <span style="font-size: 12px;">
+                          ({{
                             Units[isDefaultUnitInput[input.name].type]
                               ?.secondary | unitFa
-                          }})</span>
+                          }}<a
+                            *ngIf="convertableTypes.includes(input.type)"
+                            (click)="onConvert(input)"
+                            class="ui secondary"
+                            style="margin-right: 5px;padding-top: 3px;padding-bottom: 3px; font-size: 16px;"
+                          >
+                            <i class="icon exchange" style="margin: 0;"></i> </a
+                          >)</span
+                        >
                       </ng-template>
                     </label>
-                    <button *ngIf="convertableTypes.includes(input.type)"
-                            (click)="onConvert(input)"
-                            class="ui secondary button"
-                            style="margin-right: 5px;padding-top: 3px;padding-bottom: 3px;">
-                      <i class="icon exchange"
-                         style="margin: 0;"></i>
-                    </button>
                   </div>
                   <div class="six wide left floated column">
-                    <div class="ui input">
-                      <input [formControlName]="input.name"
-                             type="number"
-                             placeholder="{{ input.title }}" />
-                    </div>
-                  </div>
-                </div>
-                <div class="sixteen wide column"
-                     style="text-align: left;">
-                  <div *ngIf="input.tip">
-                    <a class="ui circular icon right">
-                      <i #tooltip="matTooltip"
-                         [matTooltip]="input.tip"
-                         matTooltipPosition="after"
-                         class="question circle outline icon"
-                         (click)="tooltip.toggle()"></i>
+                    <a
+                      *ngIf="input.tip"
+                      class="ui circular icon right"
+                      [matTooltip]="input.tip"
+                      matTooltipPosition="after"
+                    >
+                      <i class="question circle outline icon"></i>
                     </a>
+                    <div class="ui input">
+                      <input [formControlName]="input.name" type="number" />
+                    </div>
+                    <div *ngIf="input.hint" class="hint-container">
+                      {{ input.hint }}
+                    </div>
                   </div>
                 </div>
               </div>

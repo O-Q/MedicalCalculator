@@ -32,4 +32,7 @@ export class FormulaCalculatorService {
   6(...args: number[]) {
     return args.reduce(this.getSum);
   }
+  7(SBP, DBP) {
+    return Math.round(SBP / 3 + (2 / 3) * DBP);
+  }
 }

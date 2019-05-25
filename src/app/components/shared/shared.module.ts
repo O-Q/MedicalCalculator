@@ -13,6 +13,7 @@ import { ToolbarSearchComponent } from './toolbar/toolbar-search/toolbar-search.
 import { ToolbarBackComponent } from './toolbar/toolbar-back/toolbar-back.component';
 import { FooterResultComponent } from './footer/footer-result/footer-result.component';
 import { SearchItemComponent } from './toolbar/toolbar-search/search-item/search-item.component';
+import { MatRippleModule } from '@angular/material';
 
 const components: any[] = [
   ErrorComponent,
@@ -33,8 +34,15 @@ const components: any[] = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatRippleModule
   ],
-  exports: [components, CommonModule, FormsModule, MatSidenavModule]
+  exports: [
+    components,
+    CommonModule,
+    FormsModule,
+    MatSidenavModule,
+    MatRippleModule
+  ]
 })
 export class SharedModule {}

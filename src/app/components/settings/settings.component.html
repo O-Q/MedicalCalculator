@@ -40,7 +40,11 @@
                     class="ui fluid dropdown"
                   >
                     <option value="null" selected>بدون تخصص</option>
-                    <option *ngFor="let spec of specialties$ | async" [value]="spec.id">{{ spec.name }}</option>
+                    <option
+                      *ngFor="let spec of specialties$ | async"
+                      [value]="spec.id"
+                      >{{ spec.name }}</option
+                    >
                   </select>
                 </div>
               </div>
@@ -61,7 +65,7 @@
     </div>
   </div>
   <div class="ui modal">
-    <i class="close icon"></i>
+    <i matRipple class="close icon"></i>
     <div class="header" style="padding-right: 50px !important;">
       بازنشانی
     </div>
@@ -72,11 +76,11 @@
       </div>
     </div>
     <div class="actions">
-      <div class="ui labeled icon button" (click)="onResetApp()">
+      <div matRipple class="ui red labeled icon button" (click)="onResetApp()">
         بله، مطمئنم
         <i class="checkmark icon"></i>
       </div>
-      <div class="ui red deny button">
+      <div matRipple class="ui deny button">
         نه
       </div>
     </div>

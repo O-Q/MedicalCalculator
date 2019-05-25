@@ -5,6 +5,7 @@
       [ngClass]="(userSpecialty$ | async) ? 'four-items' : 'three-items'"
     >
       <a
+        matRipple
         *ngIf="userSpecialty$ | async"
         routerLink="formula/list/specialties"
         routerLinkActive="active"
@@ -14,6 +15,7 @@
         تخصص
       </a>
       <a
+        matRipple
         routerLink="formula/list/favorites"
         routerLinkActive="active"
         class="item"
@@ -22,6 +24,7 @@
         علاقه‌مندی
       </a>
       <a
+        matRipple
         routerLink="formula/list/recents"
         routerLinkActive="active"
         class="item"
@@ -29,7 +32,12 @@
         <i class="history icon"></i>
         اخیر
       </a>
-      <a routerLink="formula/list/all" routerLinkActive="active" class="item">
+      <a
+        matRipple
+        routerLink="formula/list/all"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="infinity icon"></i>
         همه
       </a>

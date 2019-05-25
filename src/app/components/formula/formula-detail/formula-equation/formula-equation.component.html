@@ -81,6 +81,7 @@
                             | unitFa
                         }}<a
                           *ngIf="convertableTypes.includes(input.type)"
+                          matRipple
                           (click)="onConvert(input)"
                           class="ui secondary"
                           style="margin-right: 5px;padding-top: 3px;padding-bottom: 3px; font-size: 16px;"
@@ -94,6 +95,7 @@
                             Units[isDefaultUnitInput[input.name].type]
                               ?.secondary | unitFa
                           }}<a
+                            matRipple
                             *ngIf="convertableTypes.includes(input.type)"
                             (click)="onConvert(input)"
                             class="ui secondary"
@@ -114,7 +116,7 @@
                     >
                       <i class="question circle outline icon"></i>
                     </a>
-                    <div class="ui input">
+                    <div matRipple class="ui input">
                       <input [formControlName]="input.name" type="number" />
                     </div>
                     <div *ngIf="input.hint" class="hint-container">

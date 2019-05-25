@@ -18,6 +18,7 @@ export class FooterComponent implements OnInit {
   FooterType = FooterType;
   mode$ = new BehaviorSubject(null);
   result = new BehaviorSubject(null);
+  result$ = this.result.asObservable();
   constructor(private router: Router, private calc: FormulaCalculatorService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

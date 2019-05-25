@@ -1,8 +1,10 @@
 <div *ngIf="formula$ | async as formula">
-  <div *ngIf="showInfo$ | async; else equation">
-    <app-formula-info [formula]="formula"></app-formula-info>
-  </div>
-  <ng-template #equation>
-    <app-formula-equation [formula]="formula"></app-formula-equation>
-  </ng-template>
+  <app-formula-info
+    [hidden]="!(showInfo$ | async)"
+    [formula]="formula"
+  ></app-formula-info>
+  <app-formula-equation
+    [hidden]="showInfo$ | async"
+    [formula]="formula"
+  ></app-formula-equation>
 </div>

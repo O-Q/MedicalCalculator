@@ -1,14 +1,15 @@
-<div class="ui grid animated slideInUp">
+<div class="ui grid animated slideInUp primary-bg">
   <h5 class="six wide column">
     نتیجه:
   </h5>
-  <div class="ten wide column"
-       *ngIf="result | async as result">
+  <div class="ten wide column" *ngIf="result$ | async as result">
     <h5 style="padding-top: 1px;">{{ result.value }} {{ result.unit }}</h5>
   </div>
-  <div class="sixteen wide column"
-       *ngIf="result | async as result"
-       style="font-size: 1.2em;color: #000;">
+  <div
+    class="sixteen wide column"
+    *ngIf="result$ | async as result"
+    style="font-size: 1.2em;color: #000;"
+  >
     {{ result.desc }}
   </div>
 </div>

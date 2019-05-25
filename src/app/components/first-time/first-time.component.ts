@@ -26,6 +26,6 @@ export class FirstTimeComponent implements OnInit {
       // select no specialty
       this.specialtyService.removeUserSpecialty();
     }
-    this.router.navigate(['formula']);
+    this.router.navigate(['formula', 'list', 'all']);
   }
 }

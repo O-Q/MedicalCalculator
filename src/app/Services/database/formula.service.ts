@@ -3,6 +3,7 @@ import { IFormula, ISpecialty } from 'src/app/models/database.model';
 import { DatabaseService } from './database.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ToastService, ToastType } from '../toast.service';
+import { BaseService } from '../base.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,14 @@ export class FormulaService {
   all$ = this.all.asObservable();
   activeFormula = new Subject<IFormulaStorage>();
   recentLimit = 10;
-  constructor(private database: DatabaseService, private toast: ToastService) {
-    this.updateSpecialtiesSummary();
+  constructor(
+    private database: DatabaseService,
+    private toast: ToastService,
+    private baseService: BaseService
+  ) {
+    if (this.baseService.isMobile) {
+      this.updateSpecialtiesSummary();
+    }
   }
 
   async get(formulaId: number): Promise<IFormula> {

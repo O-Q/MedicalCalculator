@@ -19,7 +19,7 @@ const routes: Routes = [
     children: [
       {
         path: 'list',
-        redirectTo: 'list/favorites',
+        redirectTo: 'list/all',
         data: {
           title: 'لیست',
           description: 'لیست فرمول‌ها'

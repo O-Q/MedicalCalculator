@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   Input
 } from '@angular/core';
-import { FormulaCalculatorService } from 'src/app/Services/formula-calculator.service';
+import { Observable } from 'rxjs';
+import { IResult } from 'src/app/models/result.model';
 
 @Component({
   selector: 'app-footer-result',
@@ -14,7 +15,7 @@ import { FormulaCalculatorService } from 'src/app/Services/formula-calculator.se
 })
 export class FooterResultComponent implements OnInit {
   @Input()
-  result;
+  result$: Observable<IResult>;
   constructor() {}
 
   ngOnInit() {}

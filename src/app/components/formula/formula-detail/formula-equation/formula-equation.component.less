@@ -1,4 +1,29 @@
 .ui.dropdown,
 * {
-    position: inherit !important;
+  position: inherit !important;
+}
+.ui.grid > .row > .column {
+  position: relative !important;
+}
+
+.select-label {
+  width: 230px !important;
+  @media screen and (max-width: 398px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 330px) {
+    width: 94px !important;
+  }
+}
+.hint-container {
+  text-align: right;
+  font-size: 11px;
+  color: rgb(172, 172, 172);
+  width: max-content;
+  margin-top: 5px;
+}
+.ten.wide.right.floated.column {
+  @media screen and (max-width: 363px) {
+    padding: 0;
+  }
 }

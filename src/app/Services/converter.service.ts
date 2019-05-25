@@ -30,7 +30,7 @@ export class ConverterService {
 
   // pressure
   kPa2mmHg(kPa: number) {
-    return +(kPa * 7.501).toFixed(2);
+    return +(kPa * 7.501).toFixed();
   }
   mmHg2kPa(mmHg: number) {
     return +(mmHg / 7.501).toFixed();

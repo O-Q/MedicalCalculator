@@ -12,7 +12,6 @@ export class FormulaCalculatorService {
     return total + arg;
   }
   1(sex, age, weight, creatinine, height) {
-    // TODO: no height
     // Sex 0: Man, Sex 1: Woman
     const sexRatio = sex === 1 ? 0.85 : 1;
     return ((140 - age) * weight * sexRatio) / (72 * creatinine);
@@ -31,5 +30,8 @@ export class FormulaCalculatorService {
   }
   6(...args: number[]) {
     return args.reduce(this.getSum);
+  }
+  7(SBP, DBP) {
+    return Math.round(SBP / 3 + (2 / 3) * DBP);
   }
 }

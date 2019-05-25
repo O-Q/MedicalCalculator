@@ -11,6 +11,7 @@ import { FormulaSearchComponent } from './formula-list/formula-search/formula-se
 import { ReactiveFormsModule } from '@angular/forms';
 import { UnitFaPipe } from 'src/app/pipes/unit.pipe';
 import { MatTooltipModule } from '@angular/material';
+
 const routes: Routes = [
   {
     path: '',

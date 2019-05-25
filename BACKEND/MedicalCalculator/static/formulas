@@ -771,7 +771,7 @@
   },
   {
     "id": 7,
-    "name": "Mean Arterial Pressure (MAP)",
+    "name": "Mean Arterial Pressure",
     "desc": "فشار متوسط عروق",
     "specialtyIds": [6],
     "form": {
@@ -779,7 +779,7 @@
       "inputs": [
         {
           "name": "systolicBP",
-          "title": "فشار خون سیستولیک",
+          "title": "فشار سیستولیک",
           "unit": "میلی‌متر جیوه",
           "type": "pressure",
           "hint": "نرمال: 100-120",
@@ -787,10 +787,10 @@
         },
         {
           "name": "diastolicBP",
-          "title": "فشار خون دیاستولیک",
+          "title": "فشار دیاستولیک",
           "unit": "میلی‌متر جیوه",
           "type": "pressure",
-          "hint": "نرمال: 60 تا 80",
+          "hint": "نرمال: 60-80",
           "tip": ""
         }
       ]
@@ -825,8 +825,8 @@
       "unit": "میلی‌متر جیوه",
       "classes": [
         {
-          "lowRange": 73,
-          "highRange": 93,
+          "lowRange": 0,
+          "highRange": 100000,
           "desc": "میانگین فشار عروق (MAP)"
         }
       ]

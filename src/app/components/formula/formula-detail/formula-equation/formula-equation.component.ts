@@ -36,7 +36,7 @@ export class FormulaEquationComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private calc: FormulaCalculatorService,
     private converter: ConverterService
-  ) { }
+  ) {}
 
   ngOnInit() {
     const formControls: { [name: string]: FormControl } = {};

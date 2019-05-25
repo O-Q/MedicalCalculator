@@ -17,7 +17,7 @@ Units[UnitTypes.HEIGHT] = { default: 'cm', secondary: 'in' };
 Units[UnitTypes.DENSITY] = { default: 'mmolL', secondary: 'mgdl' };
 Units[UnitTypes.INV_DENSITY] = { default: 'mlkg', secondary: null };
 Units[UnitTypes.VOLUME] = { default: 'ml', secondary: null };
-Units[UnitTypes.PRESSURE] = { default: 'kPa', secondary: 'mmHg' };
+Units[UnitTypes.PRESSURE] = { default: 'mmHg', secondary: 'kPa' };
 
 export const convertable = [
   UnitTypes.WEIGHT,

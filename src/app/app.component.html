@@ -2,11 +2,11 @@
   <mat-sidenav #sidenav mode="over" position="end">
     <app-sidenav-items [sidenav]="sidenav"></app-sidenav-items>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content [ngClass]="{ dimmed: isSearchActive | async }">
     <app-toolbar [sidenav]="sidenav"></app-toolbar>
     <div
-      class="outlet-container"
-      [ngClass]="{ dimmer: isSearchActive | async }"
+      class="outlet-container "
+      [ngClass]="{ 'dimmer ui': isSearchActive | async }"
     >
       <router-outlet></router-outlet>
     </div>

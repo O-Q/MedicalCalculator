@@ -4,7 +4,7 @@ import { UtilityService } from './Services/database/utility.service';
 import { Router } from '@angular/router';
 import { BaseService } from './Services/base.service';
 import { SEOService } from './Services/seo.service';
-
+declare var $: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -27,6 +27,13 @@ export class AppComponent implements OnInit {
       // do something like walkthrough
     }
     this.isSearchActive = this.base.isSearchActive;
+    this.base.isSearchActive.subscribe(isActive => {
+      if (isActive) {
+        console.log('bib');
+
+        $('.ui.dimmer').dimmer('show');
+      }
+    });
     this._seoService.SEOWorker();
   }
   ngOnInit(): void {}

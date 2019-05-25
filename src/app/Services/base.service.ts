@@ -9,7 +9,7 @@ export class BaseService {
   isSearchActive = new Subject<boolean>();
   isMobile: boolean;
   constructor(private platform: Platform) {
-    // this.isMobile = this.platform.ANDROID || this.platform.IOS;
-    this.isMobile = true;
+    this.isMobile = this.platform.ANDROID || this.platform.IOS;
+    // this.isMobile = true;
   }
 }

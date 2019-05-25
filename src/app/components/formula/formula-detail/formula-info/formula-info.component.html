@@ -1,8 +1,6 @@
 <div class="sixteen wide column">
-  <div class="row"
-       *ngIf="formula.info.pearlsPitfalls">
-    <div class="ui container"
-         style="padding-top: 20px;">
+  <div class="row" *ngIf="formula.info.pearlsPitfalls">
+    <div class="ui container" style="padding-top: 20px;">
       <div class="ui medium header">
         مزایا و معایب
       </div>
@@ -11,15 +9,13 @@
       </p>
     </div>
   </div>
-  <div class="row"
-       *ngIf="formula.info.nextstep">
+  <div class="row" *ngIf="formula.info.nextstep">
     <div class="ui divider fluid"></div>
     <div class="ui container">
       <div class="ui medium header">
         قدم بعد
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.nextstep.advice">
+      <div class="ui segment" *ngIf="formula.info.nextstep.advice">
         <div class="ui tiny header">
           پیشنهاد
         </div>
@@ -27,8 +23,7 @@
           {{ formula.info.nextstep.advice }}
         </p>
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.nextstep.management">
+      <div class="ui segment" *ngIf="formula.info.nextstep.management">
         <div class="ui tiny header">
           مدیریت
         </div>
@@ -36,8 +31,7 @@
           {{ formula.info.nextstep.management }}
         </p>
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.nextstep.criticalActions">
+      <div class="ui segment" *ngIf="formula.info.nextstep.criticalActions">
         <div class="ui tiny header">
           اعمال حساس
         </div>
@@ -47,15 +41,13 @@
       </div>
     </div>
   </div>
-  <div class="row"
-       *ngIf="formula.info.evidence">
+  <div class="row" *ngIf="formula.info.evidence">
     <div class="ui divider fluid"></div>
     <div class="ui container">
       <div class="ui medium header">
         مدارک
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.evidence.formula">
+      <div class="ui segment" *ngIf="formula.info.evidence.formula">
         <div class="ui tiny header">
           فرمول
         </div>
@@ -63,8 +55,7 @@
           {{ formula.info.evidence.formula }}
         </p>
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.evidence.factsAndFigure">
+      <div class="ui segment" *ngIf="formula.info.evidence.factsAndFigure">
         <div class="ui tiny header">
           آمار و ارقام
         </div>
@@ -72,8 +63,7 @@
           {{ formula.info.evidence.factsAndFigure }}
         </p>
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.evidence.evidenceAppraisal">
+      <div class="ui segment" *ngIf="formula.info.evidence.evidenceAppraisal">
         <div class="ui tiny header">
           ارزیابی شواهد
         </div>
@@ -81,40 +71,38 @@
           {{ formula.info.evidence.evidenceAppraisal }}
         </p>
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.evidence.literature.length">
+      <div class="ui segment" *ngIf="formula.info.evidence.literature.length">
         <div class="ui tiny header">
           مقالات
         </div>
-        <div *ngFor="
+        <div
+          *ngFor="
             let literature of formula.info.evidence.literature;
             last as isLast
-          ">
+          "
+        >
           <p>
             {{ literature.desc }}
           </p>
-          <a [href]="literature.link"
-             target="_blank">منبع</a>
-          <div class="ui divider"
-               *ngIf="!isLast"></div>
+          <a [href]="literature.link" target="_blank">منبع</a>
+          <div class="ui divider" *ngIf="!isLast"></div>
         </div>
       </div>
-      <div class="ui segment"
-           *ngIf="formula.info.evidence.validation.length">
+      <div class="ui segment" *ngIf="formula.info.evidence.validation.length">
         <div class="ui tiny header">
           اعتبار سنجی
         </div>
-        <div *ngFor="
+        <div
+          *ngFor="
             let validation of formula.info.evidence.validation;
             last as isLast
-          ">
+          "
+        >
           <p>
             {{ validation.desc }}
           </p>
-          <a [href]="validation.link"
-             target="_blank">منبع</a>
-          <div class="ui divider"
-               *ngIf="!isLast"></div>
+          <a [href]="validation.link" target="_blank">منبع</a>
+          <div class="ui divider" *ngIf="!isLast"></div>
         </div>
       </div>
     </div>

@@ -24,10 +24,14 @@ export class FooterComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         const url = event.urlAfterRedirects;
         if (url.match(FormulaDetailRegex)) {
-          this.mode$.next(FooterType.HIDDEN);
+          if (!this.result.getValue()) {
+            this.mode$.next(FooterType.HIDDEN);
+          }
         } else if (url.match(FormulaListRegex)) {
+          this.result.next(null);
           this.mode$.next(FooterType.MAIN);
         } else {
+          this.result.next(null);
           this.mode$.next(FooterType.HIDDEN);
         }
       }

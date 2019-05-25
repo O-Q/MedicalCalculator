@@ -1,9 +1,9 @@
 <div class="search-container">
   <div class="searchbar-container">
-    <a class="backward" (click)="hideSearchBar()"
+    <a matRipple class="backward" (click)="hideSearchBar()"
       ><i class="arrow right icon"></i
     ></a>
-    <div class="left menu" id="searchbar">
+    <div matRipple class="left menu" id="searchbar">
       <div class="ui right aligned category search item">
         <div class="ui transparent icon input">
           <input
@@ -30,7 +30,7 @@
           </div>
           <div class="ui middle aligned celled list">
             <div *ngFor="let recent of recents" class="item">
-              <app-search-item [formula]="recent"> </app-search-item>
+              <app-search-item matRipple [formula]="recent"> </app-search-item>
             </div>
           </div>
         </div>
@@ -45,7 +45,8 @@
           </div>
           <div class="ui middle aligned celled list">
             <div *ngFor="let favorite of favorites" class="item">
-              <app-search-item [formula]="favorite"> </app-search-item>
+              <app-search-item matRipple [formula]="favorite">
+              </app-search-item>
             </div>
           </div>
         </div>
@@ -60,7 +61,8 @@
           </div>
           <div class="ui middle aligned celled list">
             <div *ngFor="let specialty of specialties" class="item">
-              <app-search-item [formula]="specialty"> </app-search-item>
+              <app-search-item matRipple [formula]="specialty">
+              </app-search-item>
             </div>
           </div>
         </div>
@@ -75,7 +77,7 @@
           </div>
           <div class="ui middle aligned celled list">
             <div *ngFor="let each of all" class="item">
-              <app-search-item [formula]="each"> </app-search-item>
+              <app-search-item matRipple [formula]="each"> </app-search-item>
             </div>
           </div>
         </div>

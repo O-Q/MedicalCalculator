@@ -1,18 +1,27 @@
 <div class="ui item">
-  <a (click)="onBack()" class="backward"><i class="arrow right icon"></i></a>
+  <a matRipple (click)="onBack()" class="backward"
+    ><i class="arrow right icon"></i
+  ></a>
   <span class="back-title">{{ title$ | async }}</span>
 </div>
 <div *ngIf="isShowInfoIcon" style="display: flex; margin-right: auto;">
-  <a (click)="onFavorite()" class="favorite"
+  <a class="favorite"
     ><i
+      (click)="onFavorite()"
+      matRipple
       [ngClass]="
         (isFavorite | async) ? 'yellow star icon' : 'star outline icon'
       "
     ></i
   ></a>
   <div class="info">
-    <a *ngIf="!(isInfo | async)" (click)="onInfo()"
-      ><i class="exclamation circle icon"></i
+    <a style="display: flex" *ngIf="!(isInfo | async)"
+      ><i
+        (click)="onInfo()"
+        matRipple
+        class="exclamation circle icon"
+        style="border-radius: 25px;"
+      ></i
     ></a>
   </div>
 </div>

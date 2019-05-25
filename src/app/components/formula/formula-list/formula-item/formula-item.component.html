@@ -1,13 +1,17 @@
-<div (click)="onFavoriteClick()" class="left floated content">
-  <i
-    [ngClass]="(isFavorite | async) ? 'yellow star icon' : 'star outline icon'"
-  ></i>
-</div>
-<div (click)="onItemClick(formula.id)" class="middle aligned content">
-  <div class="header">
-    {{ formula.name }}
+<div matRipple>
+  <div (click)="onFavoriteClick()" class="left floated content">
+    <i
+      [ngClass]="
+        (isFavorite | async) ? 'yellow star icon' : 'star outline icon'
+      "
+    ></i>
   </div>
-  <div class="desc">
-    {{ formula.desc }}
+  <div (click)="onItemClick(formula.id)" class="middle aligned content">
+    <div class="header">
+      {{ formula.name }}
+    </div>
+    <div class="desc">
+      {{ formula.desc }}
+    </div>
   </div>
 </div>

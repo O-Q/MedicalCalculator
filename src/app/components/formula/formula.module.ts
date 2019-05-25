@@ -10,7 +10,7 @@ import { FormulaInfoComponent } from './formula-detail/formula-info/formula-info
 import { FormulaSearchComponent } from './formula-list/formula-search/formula-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UnitFaPipe } from 'src/app/pipes/unit.pipe';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule, MatRippleModule } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -83,7 +83,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRippleModule
   ]
 })
 export class FormulaModule {}

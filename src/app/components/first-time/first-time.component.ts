@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SpecialtyService } from 'src/app/Services/database/specialty.service';
 import { Router } from '@angular/router';
+import { WalkthroughService } from 'src/app/Services/walkthrough.service';
 declare var $: any;
 @Component({
   selector: 'app-first-time',
@@ -13,7 +14,8 @@ export class FirstTimeComponent implements OnInit {
   specliaties$ = this.specialtyService.all$;
   constructor(
     private specialtyService: SpecialtyService,
-    private router: Router
+    private router: Router,
+    private walk: WalkthroughService
   ) {}
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class FirstTimeComponent implements OnInit {
       // select no specialty
       this.specialtyService.removeUserSpecialty();
     }
+    this.walk.enable();
     this.router.navigate(['formula', 'list', 'all']);
   }
 }

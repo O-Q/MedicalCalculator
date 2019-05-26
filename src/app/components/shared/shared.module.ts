@@ -45,4 +45,4 @@ const components: any[] = [
     MatRippleModule
   ]
 })
-export class SharedModule {}
+export class SharedModule { }

@@ -87,4 +87,4 @@ const routes: Routes = [
     MatRippleModule
   ]
 })
-export class FormulaModule {}
+export class FormulaModule { }

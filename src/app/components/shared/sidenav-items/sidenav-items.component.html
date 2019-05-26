@@ -1,14 +1,14 @@
 <div class="ui continer">
   <div class="ui row">
     <div class="ui card secondary-text secondary-bg-light">
-      <div class="content" style="margin-top: 4em; margin-right: 1em">
+      <div class="content"
+           style="margin-top: 4em; margin-right: 1em">
         <div class="ui internally celled grid">
-          <div class="four wide column" style="padding: 0">
+          <div class="four wide column"
+               style="padding: 0">
             <!-- <i id="profile-pic" class="circular user icon"></i> -->
-            <img
-              class="ui medium circular image"
-              src="/assets/images/avatar.jpg"
-            />
+            <img class="ui medium circular image"
+                 src="/assets/images/avatar.jpg" />
           </div>
           <div class="twelve wide column">
             مهدی شیری
@@ -16,11 +16,9 @@
         </div>
       </div>
       <div class="content">
-        <span
-          class="left floated"
-          (click)="closeSidenav()"
-          routerLink="/settings"
-        >
+        <span class="left floated"
+              (click)="closeSidenav()"
+              routerLink="/settings">
           {{ 'تخصص: ' + ((userSpecialty$ | async)?.name || 'بدون تخصص') }}
           <a><i class="edit icon"></i></a>
         </span>
@@ -28,29 +26,25 @@
     </div>
   </div>
   <div class="ui row">
-    <div
-      matRipple
-      (click)="closeSidenav()"
-      routerLink="/settings"
-      class="ui segment"
-    >
+    <div matRipple
+         (click)="closeSidenav()"
+         routerLink="/settings"
+         class="ui segment">
       <a>
         <i class="cog icon"></i>
         تنظیمات
       </a>
     </div>
-    <div
-      matRipple
-      (click)="closeSidenav()"
-      routerLink="/contact-us"
-      class="ui segment"
-    >
+    <div matRipple
+         (click)="closeSidenav()"
+         routerLink="/contact-us"
+         class="ui segment">
       <a>
         <i class="phone icon"></i>
         تماس با ما
       </a>
     </div>
-    <div
+    <!-- <div
       matRipple
       (click)="closeSidenav()"
       routerLink="/help"
@@ -60,13 +54,11 @@
         <i class="question circle icon"></i>
         راهنما
       </a>
-    </div>
-    <div
-      matRipple
-      (click)="closeSidenav()"
-      routerLink="/about-us"
-      class="ui segment"
-    >
+    </div> -->
+    <div matRipple
+         (click)="closeSidenav()"
+         routerLink="/about-us"
+         class="ui segment">
       <a>
         <i class="first aid icon"></i>
         درباره ما

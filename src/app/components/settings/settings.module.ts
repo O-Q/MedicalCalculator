@@ -4,6 +4,7 @@ import { SettingsComponent } from './settings.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MatRippleModule } from '@angular/material';
+import { WalkthroughModule } from 'ngx-walkthrough';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
-    MatRippleModule
+    MatRippleModule,
+    WalkthroughModule
   ]
 })
 export class SettingsModule {}

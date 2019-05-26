@@ -13,7 +13,6 @@ import { HelpComponent } from './components/help/help.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { FirstTimeComponent } from './components/first-time/first-time.component';
-import { WalkthroughModule } from 'ngx-walkthrough';
 
 export function dbLoader(appDatabaseInitService: DatabaseService) {
   return () => appDatabaseInitService.load();
@@ -33,7 +32,6 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    WalkthroughModule,
     ServiceWorkerModule.register('./ngsw-worker.js', {
       enabled: environment.production
     })
@@ -48,4 +46,4 @@ export function dbLoader(appDatabaseInitService: DatabaseService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

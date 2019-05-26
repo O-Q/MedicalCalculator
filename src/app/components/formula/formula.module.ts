@@ -11,6 +11,7 @@ import { FormulaSearchComponent } from './formula-list/formula-search/formula-se
 import { ReactiveFormsModule } from '@angular/forms';
 import { UnitFaPipe } from 'src/app/pipes/unit.pipe';
 import { MatTooltipModule, MatRippleModule } from '@angular/material';
+import { WalkthroughModule } from 'ngx-walkthrough';
 
 const routes: Routes = [
   {
@@ -84,7 +85,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    MatRippleModule
+    MatRippleModule,
+    WalkthroughModule
   ]
 })
-export class FormulaModule { }
+export class FormulaModule {}

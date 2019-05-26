@@ -14,6 +14,7 @@ import { ToolbarBackComponent } from './toolbar/toolbar-back/toolbar-back.compon
 import { FooterResultComponent } from './footer/footer-result/footer-result.component';
 import { SearchItemComponent } from './toolbar/toolbar-search/search-item/search-item.component';
 import { MatRippleModule } from '@angular/material';
+import { WalkthroughModule } from 'ngx-walkthrough';
 
 const components: any[] = [
   ErrorComponent,
@@ -35,14 +36,16 @@ const components: any[] = [
     FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    WalkthroughModule
   ],
   exports: [
     components,
     CommonModule,
     FormsModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    WalkthroughModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

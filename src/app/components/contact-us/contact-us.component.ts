@@ -7,16 +7,17 @@ import { ToastService, ToastType } from 'src/app/Services/toast.service';
   styleUrls: ['./contact-us.component.less']
 })
 export class ContactUsComponent implements OnInit {
-  constructor(private toast: ToastService) { }
-  walkthroughStep: number = 1;
+  constructor(private toast: ToastService) {}
+  walkthroughStep = 1;
 
-  ngOnInit() { }
+  ngOnInit() {}
   onSend() {
     this.toast.show('پیام شما با موفقیت ارسال شد!', '', ToastType.SUCCESS);
   }
 
   walkthrough() {
-    if (this.walkthroughStep < 4)
+    if (this.walkthroughStep < 4) {
       this.walkthroughStep++;
+    }
   }
 }

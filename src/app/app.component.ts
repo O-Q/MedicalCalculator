@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
     this.isSearchActive = this.base.isSearchActive;
     this.base.isSearchActive.subscribe(isActive => {
       if (isActive) {
-        console.log('bib');
 
         $('.ui-dimmer').dimmer('show');
         // $('.navigation-container.ui.bottom.fixed.labeled.icon.menu.animated.slideInUp.four-items').dimmer('show');

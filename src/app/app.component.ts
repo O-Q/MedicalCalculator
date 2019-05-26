@@ -31,10 +31,16 @@ export class AppComponent implements OnInit {
       if (isActive) {
         console.log('bib');
 
-        $('.ui.dimmer').dimmer('show');
+        $('.ui-dimmer').dimmer('show');
+        // $('.navigation-container.ui.bottom.fixed.labeled.icon.menu.animated.slideInUp.four-items').dimmer('show');
+        $('.ui.middle.aligned.celled.list').css('z-index', '-1');
+      } else {
+        $('.ui-dimmer').dimmer('hide');
+        // $('.navigation-container.ui.bottom.fixed.labeled.icon.menu.animated.slideInUp.four-items').dimmer('hide');
+        $('.ui.middle.aligned.celled.list').css('z-index', 'auto');
       }
     });
     this._seoService.SEOWorker();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

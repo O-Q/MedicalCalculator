@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SpecialtyService } from 'src/app/Services/database/specialty.service';
+import { WalkthroughService } from 'src/app/Services/walkthrough.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -9,7 +10,9 @@ import { SpecialtyService } from 'src/app/Services/database/specialty.service';
 })
 export class NavigationBarComponent implements OnInit {
   userSpecialty$ = this.specialtyService.userSpecialty$;
-  constructor(private specialtyService: SpecialtyService) {}
+  constructor(private specialtyService: SpecialtyService,
+    public walk: WalkthroughService) { }
 
-  ngOnInit() {}
+
+  ngOnInit() { }
 }

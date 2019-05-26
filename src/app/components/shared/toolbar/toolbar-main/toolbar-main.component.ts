@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Subject } from 'rxjs';
 import { ToolbarType } from 'src/app/constants/toolbar.constant';
 import { BaseService } from 'src/app/Services/base.service';
+import { WalkthroughService } from 'src/app/Services/walkthrough.service';
 
 @Component({
   selector: 'app-toolbar-main',
@@ -18,7 +19,8 @@ import { BaseService } from 'src/app/Services/base.service';
 export class ToolbarMainComponent implements OnInit {
   @Input() sidenav: MatSidenav;
   @Input() mode$: Subject<ToolbarType>;
-  constructor(private base: BaseService) {}
+
+  constructor(public walk: WalkthroughService) {}
 
   ngOnInit() {}
   showSearchBar() {

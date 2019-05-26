@@ -15,7 +15,6 @@ import {
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
-import { BaseService } from 'src/app/Services/base.service';
 
 @Component({
   selector: 'app-toolbar-search',
@@ -31,11 +30,7 @@ export class ToolbarSearchComponent implements OnInit, AfterViewInit {
   recentResults = new BehaviorSubject<IFormulaStorage[]>(null);
   input = new FormControl('');
   @ViewChild('inputTag') inputTag;
-  constructor(
-    private formulaService: FormulaService,
-    private router: Router,
-    private base: BaseService
-  ) {}
+  constructor(private formulaService: FormulaService, private router: Router) {}
   ngOnInit(): void {
     this.input.valueChanges
       .pipe(debounceTime(1000))

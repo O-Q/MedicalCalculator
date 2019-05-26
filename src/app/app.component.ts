@@ -4,6 +4,7 @@ import { UtilityService } from './Services/database/utility.service';
 import { Router } from '@angular/router';
 import { BaseService } from './Services/base.service';
 import { SEOService } from './Services/seo.service';
+import { WalkthroughService } from './Services/walkthrough.service';
 declare var $: any;
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ export class AppComponent implements OnInit {
     private utilityService: UtilityService,
     private base: BaseService,
     private router: Router,
-    private _seoService: SEOService
+    private _seoService: SEOService,
+    public walk: WalkthroughService
   ) {
     this.update.checkUpdate();
     if (this.utilityService.isFirstTime()) {
@@ -29,7 +31,6 @@ export class AppComponent implements OnInit {
     this.isSearchActive = this.base.isSearchActive;
     this.base.isSearchActive.subscribe(isActive => {
       if (isActive) {
-
         $('.ui-dimmer').dimmer('show');
         // $('.navigation-container.ui.bottom.fixed.labeled.icon.menu.animated.slideInUp.four-items').dimmer('show');
         $('.ui.middle.aligned.celled.list').css('z-index', '-1');
@@ -41,5 +42,5 @@ export class AppComponent implements OnInit {
     });
     this._seoService.SEOWorker();
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }

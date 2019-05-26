@@ -36,7 +36,8 @@ const components: any[] = [
     FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
-    MatRippleModule
+    MatRippleModule,
+    WalkthroughModule
   ],
   exports: [
     components,

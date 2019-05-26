@@ -1,10 +1,11 @@
-<span>
+<span id="menu">
   <a matRipple (click)="sidenav.toggle()" id="menu-toggle" class="item">
     <i class="sidebar icon"></i>
   </a>
 </span>
 <div class="right menu" id="searchbar-icon">
   <a
+    id="search"
     matRipple
     style="margin-right: auto; border-radius: 25px"
     (click)="showSearchBar()"
@@ -14,3 +15,27 @@
     </div>
   </a>
 </div>
+
+<ngx-walkthrough
+  *ngIf="(walk.step | async) == 2"
+  [is-round]="false"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'#menu'"
+  [icon]="'single_tap'"
+  [main-caption]="'با انتخاب این گزینه وارد منو برنامه می‌شوید.'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walk.next()"
+>
+</ngx-walkthrough>
+<ngx-walkthrough
+  id="search-wt"
+  *ngIf="(walk.step | async) == 3"
+  [is-round]="false"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'#search'"
+  [icon]="'single_tap'"
+  [main-caption]="'.برای جستجو از این دکمه استفاده کنید'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walk.next()"
+>
+</ngx-walkthrough>

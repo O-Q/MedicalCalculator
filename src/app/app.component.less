@@ -1,31 +1,32 @@
 mat-sidenav {
-    min-width: 250px;
-    background-color: #fafafa;
+  min-width: 250px;
+  background-color: #fafafa;
 }
 
 mat-sidenav-content {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 app-toolbar {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    // height: 100%
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  // height: 100%
 }
 
 app-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .outlet-container {
-    margin-top: 55px;
-    margin-bottom: 75px;
+  margin-top: 55px;
+  margin-bottom: 75px;
 }
 
-.dimmer {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+.dimmed {
+  height: 100vh;
+  transition: background-color 0.5s linear;
+  background-color: rgba(0, 0, 0, 0.6);
 }

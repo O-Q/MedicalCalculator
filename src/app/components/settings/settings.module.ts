@@ -18,8 +18,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
-    MatRippleModule,
-    WalkthroughModule
+    MatRippleModule
+    // WalkthroughModule.forChild()
   ]
 })
 export class SettingsModule {}

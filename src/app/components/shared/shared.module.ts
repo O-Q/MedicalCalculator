@@ -36,16 +36,14 @@ const components: any[] = [
     FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
-    MatRippleModule,
-    WalkthroughModule
+    MatRippleModule
   ],
   exports: [
     components,
     CommonModule,
     FormsModule,
     MatSidenavModule,
-    MatRippleModule,
-    WalkthroughModule
+    MatRippleModule
   ]
 })
 export class SharedModule {}

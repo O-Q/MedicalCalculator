@@ -85,8 +85,8 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    MatRippleModule,
-    WalkthroughModule
+    MatRippleModule
+    // WalkthroughModule.forChild()
   ]
 })
 export class FormulaModule {}

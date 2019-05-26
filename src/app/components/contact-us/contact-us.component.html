@@ -1,29 +1,20 @@
-<div class="ui container"
-     style="padding-top: 20px;">
+<div class="ui container" style="padding-top: 20px;">
   <div class="ui form">
     <div class="inline fields">
-      <div style="margin: 0 auto;width: 100%;"
-           matRipple>
-        <div class="sixteen wide field"
-             style="padding: 0">
-          <input type="text"
-                 placeholder="موضوع پیام" />
+      <div style="margin: 0 auto;width: 100%;" matRipple>
+        <div class="sixteen wide field" style="padding: 0">
+          <input type="text" placeholder="موضوع پیام" />
         </div>
       </div>
     </div>
     <div class="one fields">
       <div class="sixteen wide field">
         <label>پیام</label>
-        <textarea cols="30"
-                  rows="10"
-                  placeholder="پیام"></textarea>
+        <textarea cols="30" rows="10" placeholder="پیام"></textarea>
       </div>
     </div>
-    <div class="sixteen wide column"
-         style="padding-top: 20px;">
-      <div matRipple
-           class="ui primary button"
-           (click)="onSend()">
+    <div class="sixteen wide column" style="padding-top: 20px;">
+      <div matRipple class="ui primary button" (click)="onSend()">
         ارسال پیام
       </div>
     </div>
@@ -32,44 +23,51 @@
     <h3 class="ui horizontal divider header">
       توجه!
     </h3>
-    <div class="sixteen wide column"
-         style="text-align: center;">
+    <div class="sixteen wide column" style="text-align: center;">
       پیام شما پس از ارسال و بررسی پاسخ داده خواهد شد.
     </div>
   </div>
 </div>
-<ngx-walkthrough *ngIf="walkthroughStep == 1"
-                 [is-round]="true"
-                 [walkthrough-type]="'transparency'"
-                 [focus-element-selector]="'input[type=\'text\']'"
-                 [icon]="'single_tap'"
-                 [main-caption]="'موضوع پیام را اینجا بنویسید'"
-                 [is-active]="true"
-                 (on-walkthrough-hide)="walkthrough()">
+<ngx-walkthrough
+  *ngIf="walkthroughStep == 1"
+  [is-round]="true"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'input[type=\'text\']'"
+  [icon]="'single_tap'"
+  [main-caption]="'موضوع پیام را اینجا بنویسید'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walkthrough()"
+>
 </ngx-walkthrough>
-<ngx-walkthrough *ngIf="walkthroughStep == 2"
-                 [walkthrough-type]="'transparency'"
-                 [focus-element-selector]="'textarea'"
-                 [icon]="'single_tap'"
-                 [main-caption]="'متن پیام را اینجا بنویسید'"
-                 [is-active]="true"
-                 (on-walkthrough-hide)="walkthrough()">
+<ngx-walkthrough
+  *ngIf="walkthroughStep == 2"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'textarea'"
+  [icon]="'single_tap'"
+  [main-caption]="'متن پیام را اینجا بنویسید'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walkthrough()"
+>
 </ngx-walkthrough>
-<ngx-walkthrough *ngIf="walkthroughStep == 3"
-                 [is-round]="true"
-                 [walkthrough-type]="'transparency'"
-                 [focus-element-selector]="'.ui.button'"
-                 [icon]="'single_tap'"
-                 [main-caption]="'با فشار دادن این دکمه پیام خود را ارسال کنید'"
-                 [is-active]="true"
-                 (on-walkthrough-hide)="walkthrough()">
+<ngx-walkthrough
+  *ngIf="walkthroughStep == 3"
+  [is-round]="true"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'.ui.button'"
+  [icon]="'single_tap'"
+  [main-caption]="'با فشار دادن این دکمه پیام خود را ارسال کنید'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walkthrough()"
+>
 </ngx-walkthrough>
-<ngx-walkthrough *ngIf="walkthroughStep == 4"
-                 [is-round]="true"
-                 [walkthrough-type]="'transparency'"
-                 [focus-element-selector]="'#caution'"
-                 [icon]="'single_tap'"
-                 [main-caption]="'نکاتی هم در این قسمت نوشته شده است'"
-                 [is-active]="true"
-                 (on-walkthrough-hide)="walkthrough()">
+<ngx-walkthrough
+  *ngIf="walkthroughStep == 4"
+  [is-round]="true"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'#caution'"
+  [icon]="'single_tap'"
+  [main-caption]="'نکاتی هم در این قسمت نوشته شده است'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walkthrough()"
+>
 </ngx-walkthrough>

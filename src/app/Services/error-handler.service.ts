@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ToastService, ToastType } from './toast.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })

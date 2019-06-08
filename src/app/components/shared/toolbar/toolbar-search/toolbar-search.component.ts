@@ -29,7 +29,7 @@ export class ToolbarSearchComponent implements OnInit, AfterViewInit {
   favoriteResults = new BehaviorSubject<IFormulaStorage[]>(null);
   recentResults = new BehaviorSubject<IFormulaStorage[]>(null);
   input = new FormControl('');
-  @ViewChild('inputTag') inputTag;
+  @ViewChild('inputTag', { static: false }) inputTag;
   constructor(private formulaService: FormulaService, private router: Router) {}
   ngOnInit(): void {
     this.input.valueChanges

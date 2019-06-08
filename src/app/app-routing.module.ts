@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'formula',
-    loadChildren: 'src/app/components/formula/formula.module#FormulaModule',
+    loadChildren: () => import('src/app/components/formula/formula.module').then(m => m.FormulaModule),
     canActivate: [MobileGuard],
     data: {
       title: 'فرمول‌ها',
@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'settings',
-    loadChildren: 'src/app/components/settings/settings.module#SettingsModule',
+    loadChildren: () => import('src/app/components/settings/settings.module').then(m => m.SettingsModule),
     canActivate: [MobileGuard],
     data: {
       title: 'تنظیمات',

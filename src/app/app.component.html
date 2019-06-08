@@ -1,25 +1,30 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav
-               mode="over"
-               position="end">
+  <mat-sidenav #sidenav mode="over" position="end">
     <app-sidenav-items [sidenav]="sidenav"></app-sidenav-items>
   </mat-sidenav>
   <mat-sidenav-content [ngClass]="{ dimmed: isSearchActive | async }">
     <app-toolbar [sidenav]="sidenav"></app-toolbar>
-    <div class="outlet-container"
-         [ngClass]="{ 'ui-dimmer': isSearchActive | async }"
-         id="content">
+    <div
+      class="outlet-container"
+      [ngClass]="{ 'ui-dimmer': isSearchActive | async }"
+      id="content"
+    >
       <router-outlet></router-outlet>
     </div>
-    <app-footer [ngClass]="{ 'ui-dimmer': isSearchActive | async }"></app-footer>
+    <app-footer
+      [ngClass]="{ 'ui-dimmer': isSearchActive | async }"
+    ></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<ngx-walkthrough *ngIf="(walk.step | async) == 1"
-                 [is-round]="false"
-                 [walkthrough-type]="'transparency'"
-                 [focus-element-selector]="'#content'"
-                 [main-caption]="'به برنامه خوش آمدید!'"
-                 [is-active]="true"
-                 (on-walkthrough-hide)="walk.next()">
+<ngx-walkthrough
+  *ngIf="(walk.step | async) == 1"
+  [is-round]="false"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'#content'"
+  [main-caption]="'به برنامه خوش آمدید!'"
+  [icon]="'single_tap'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walk.next()"
+>
 </ngx-walkthrough>

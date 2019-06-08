@@ -1,45 +1,58 @@
 <div class="ui centerd aligned grid">
   <div class="column">
-    <div class="navigation-container ui bottom fixed labeled icon menu animated slideInUp"
-         [ngClass]="(userSpecialty$ | async) ? 'four-items' : 'three-items'"
-         id="navigation">
-      <a matRipple
-         *ngIf="userSpecialty$ | async"
-         routerLink="formula/list/specialties"
-         routerLinkActive="active"
-         class="item">
+    <div
+      class="navigation-container ui bottom fixed labeled icon menu animated slideInUp"
+      [ngClass]="(userSpecialty$ | async) ? 'four-items' : 'three-items'"
+      id="navigation"
+    >
+      <a
+        matRipple
+        *ngIf="userSpecialty$ | async"
+        routerLink="formula/list/specialties"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="stethoscope icon"></i>
         تخصص
       </a>
-      <a matRipple
-         routerLink="formula/list/favorites"
-         routerLinkActive="active"
-         class="item">
+      <a
+        matRipple
+        routerLink="formula/list/favorites"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="star icon"></i>
         علاقه‌مندی
       </a>
-      <a matRipple
-         routerLink="formula/list/recents"
-         routerLinkActive="active"
-         class="item">
+      <a
+        matRipple
+        routerLink="formula/list/recents"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="history icon"></i>
         اخیر
       </a>
-      <a matRipple
-         routerLink="formula/list/all"
-         routerLinkActive="active"
-         class="item">
+      <a
+        matRipple
+        routerLink="formula/list/all"
+        routerLinkActive="active"
+        class="item"
+      >
         <i class="infinity icon"></i>
         همه
       </a>
     </div>
   </div>
 </div>
-<ngx-walkthrough *ngIf="(walk.step | async) == 4"
-                 [is-round]="false"
-                 [walkthrough-type]="'transparency'"
-                 [focus-element-selector]="'#navigation'"
-                 [icon]="'single_tap'"
-                 [main-caption]="'از اینجا می‌توانید دسته بندی مورد نظر را انتخاب کنید'"
-                 [is-active]="true"
-                 (on-walkthrough-hide)="walk.next()">
+<!-- <ngx-walkthrough
+  *ngIf="(walk.step | async) == 4"
+  [is-round]="false"
+  [walkthrough-type]="'transparency'"
+  [focus-element-selector]="'#navigation'"
+  [icon]="'single_tap'"
+  [main-caption]="'از اینجا می‌توانید دسته بندی مورد نظر را انتخاب کنید'"
+  [is-active]="true"
+  (on-walkthrough-hide)="walk.next()"
+>
+</ngx-walkthrough> -->
